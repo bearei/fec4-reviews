@@ -7,8 +7,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: sampleReviews
+      reviews: []
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      reviews: sampleReviews
+    })
   }
 
   render() {
