@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import sampelReviews from './sample_data';
+import sampleReviews from './sample_data';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      reviews: sampleReviews
+    };
   }
 
   render() {
