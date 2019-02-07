@@ -7,7 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "webpack --mode development",
+    "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
   "dependencies": {},
@@ -21,7 +21,8 @@
     "react-dom": "^16.8.1",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
-    "webpack-dev": "^1.1.1"
+    "webpack-dev": "^1.1.1",
+    "webpack-dev-server": "^3.1.14"
   },
   "version": "1.0.0",
   "main": "index.js",

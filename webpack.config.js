@@ -8,6 +8,10 @@ module.exports = {
     filename: 'bundle.js',
     path: DIST_DIR
   },
+  devServer: {
+    contentBase: DIST_DIR,
+    inline: true
+  },
   module: {
     rules: [
       {
