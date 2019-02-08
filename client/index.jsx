@@ -2,19 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import sampleReviews from './sample_data';
 import ReviewList from './components/ReviewList.jsx';
+import $ from 'jquery';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: []
+      reviews: [],
+      itemId: 1
     };
   }
 
   componentDidMount() {
-    this.setState({
-      reviews: sampleReviews
-    })
+    $.ajax({
+      url: '/reviews/' + this.state.itemId,
+        type: 'GET',
+        contentType: 'application/json',
+        success: (results) => {
+          this.setState({
+            reviews: results
+          });
+        },
+        error: (err) => console.log('Get:', err)
+    });
   }
 
   render() {

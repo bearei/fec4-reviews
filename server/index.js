@@ -10,8 +10,10 @@ app.use(parser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname + '/../public'));
 
-app.get('/reviews', (req, res) => {
+app.get('/reviews/:itemId', (req, res) => {
   console.log('GET');
+  Reviews.find({itemId: req.params.itemId})
+    .then(data => res.status(200).send(data));
 });
 
 app.post('/reviews', (req, res) => {
