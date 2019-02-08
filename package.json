@@ -19,6 +19,7 @@
     "body-parser": "^1.18.3",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "express": "^4.16.4",
+    "moment": "^2.24.0",
     "mongoose": "^5.4.10",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
