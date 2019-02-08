@@ -3,17 +3,16 @@ import db from './index.js';
 mongoose.Promise = global.Promise;
 
 const reviewSchema = new mongoose.Schema({
-  rating: String,
-  title: String,
-  text: String,
-  recommend: String,
-  name: String,
-  email: String,
-  fit: Number,
-  itemId: Number,
+  rating: {type: Number, required: true},
+  title: {type: String, required: true},
+  text: {type: String, required: true},
+  recommend: {type: Boolean, required: true},
+  name: {type: String, required: true},
+  fit: {type: Number, default: 0},
+  itemId: {type: Number, required: true},
   helpful: {type: Number, default: 0},
   notHelpful: {type: Number, default: 0},
-  inappropriate: Boolean,
+  inappropriate: {type: Boolean, default: 0},
 }, 
   {
     timestamps: true
