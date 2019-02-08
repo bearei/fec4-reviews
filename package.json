@@ -1,17 +1,45 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
+  "name": "fec4-reviews",
+  "description": "> Project description",
   "author": "",
-  "license": "",
+  "license": "ISC",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production",
+    "db:setup": "node server/db/seed.js",
+    "test": "jest"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
-  }
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "body-parser": "^1.18.3",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "express": "^4.16.4",
+    "jest": "^24.1.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.10",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev": "^1.1.1",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrr36-fec4/fec4-reviews.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/hrr36-fec4/fec4-reviews/issues"
+  },
+  "homepage": "https://github.com/hrr36-fec4/fec4-reviews#readme"
 }
