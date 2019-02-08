@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import db from './index.js';
+const mongoose = require('mongoose');
+const db = require('./index.js');
 mongoose.Promise = global.Promise;
 
 const reviewSchema = new mongoose.Schema({

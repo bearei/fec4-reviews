@@ -1003,8 +1003,8 @@ const sampleReviews = [{"rating":0,"title":"ac enim in tempor","text":"nulla sus
 {"rating":2,"title":"a nibh in","text":"integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero","recommend":true,"name":"Anthea","fit":4,"itemId":79,"helpful":16,"notHelpful":40,"inappropriate":false}];
 
 const insertSampleReviews = function() {
-  Blog.create(sampleReviews)
+  Review.create(sampleReviews)
     .then(() => db.disconnect());
 };
 
-insertSampleBlogs();
+insertSampleReviews();
