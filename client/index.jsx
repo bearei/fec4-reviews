@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import sampleReviews from './sample_data';
 import ReviewList from './components/ReviewList.jsx';
 import $ from 'jquery';
+const serverUrl = 'localhost:3003';
 
 class App extends React.Component {
   constructor(props) {

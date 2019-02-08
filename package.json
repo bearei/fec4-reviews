@@ -7,7 +7,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open",
+    "dev:react": "webpack -d --watch",
+    "server": "nodemon server/index.js",
     "build": "webpack --mode production",
     "db:setup": "node server/db/seed.js",
     "test": "jest"
