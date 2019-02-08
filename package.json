@@ -9,7 +9,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "db:setup": "node server/db/seed.js"
+    "db:setup": "node server/db/seed.js",
+    "test": "jest"
   },
   "dependencies": {},
   "devDependencies": {
