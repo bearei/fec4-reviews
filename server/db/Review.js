@@ -12,7 +12,7 @@ const reviewSchema = new mongoose.Schema({
   itemId: {type: Number, required: true},
   helpful: {type: Number, default: 0},
   notHelpful: {type: Number, default: 0},
-  inappropriate: {type: Boolean, default: 0},
+  inappropriate: {type: Boolean, default: 0}
 }, 
   {
     timestamps: true
