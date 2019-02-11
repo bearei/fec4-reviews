@@ -1,17 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import sampleReviews from './sample_data';
 import ReviewList from './components/ReviewList.jsx';
+import Modal from './components/Modal.jsx';
 import $ from 'jquery';
-const serverUrl = 'localhost:3003';
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       reviews: [],
-      itemId: 1
+      itemId: 1,
+      show: false
     };
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   componentDidMount() {
@@ -28,11 +31,23 @@ class App extends React.Component {
     });
   }
 
+  showModal() {
+    console.log('SHOW');
+    this.setState({ show: true});
+  }
+
+  hideModal() {
+    console.log('HIDE');
+    this.setState({ show: false});
+  }
+
   render() {
     return (
       <div>
         <div id='nav'>
-        <h1>HREI Reviews</h1><span>WRITE</span>
+          <h1>HREI Reviews</h1>
+          <div id='write' onClick={this.showModal}>WRITE</div>
+          <Modal show={this.state.show} handleClose={this.hideModal} />
           <div id='snapshot'>
             <h1>Rating Snapshot</h1>
             <h2>Select a row below to filter</h2>
@@ -52,7 +67,7 @@ class App extends React.Component {
           </div>
         </div>
           <h1>------------------------------</h1>
-        <ReviewList reviews={this.state.reviews}/>
+        <ReviewList reviews={this.state.reviews} />
         </div>
     );
   }

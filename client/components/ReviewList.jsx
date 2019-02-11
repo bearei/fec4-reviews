@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import ReviewListItem from './ReviewListItem.jsx';
 
 const ReviewList = (props) => (
