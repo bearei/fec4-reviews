@@ -47,7 +47,9 @@ class App extends Component {
         <div id='nav'>
           <h1>HREI Reviews</h1>
           <div id='write' onClick={this.showModal}>WRITE</div>
-          <Modal show={this.state.show} handleClose={this.hideModal} />
+          <Modal show={this.state.show} handleClose={this.hideModal}>
+          <p>TEST</p>
+          </Modal>
           <div id='snapshot'>
             <h1>Rating Snapshot</h1>
             <h2>Select a row below to filter</h2>
