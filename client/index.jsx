@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import sampleReviews from './sample_data';
 import ReviewList from './components/ReviewList.jsx';
-import Modal from './components/Modal.jsx';
+import ModalModel from './components/ModalModel.jsx';
 import $ from 'jquery';
+
 
 class App extends Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class App extends Component {
       itemId: 1,
       show: false
     };
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentDidMount() {
@@ -31,12 +32,12 @@ class App extends Component {
     });
   }
 
-  showModal() {
+  handleOpen() {
     console.log('SHOW');
     this.setState({ show: true});
   }
 
-  hideModal() {
+  handleClose() {
     console.log('HIDE');
     this.setState({ show: false});
   }
@@ -46,10 +47,12 @@ class App extends Component {
       <div>
         <div id='nav'>
           <h1>HREI Reviews</h1>
-          <div id='write' onClick={this.showModal}>WRITE</div>
-          <Modal show={this.state.show} handleClose={this.hideModal}>
+          
+          
+          {/* <Modal show={this.state.show} handleClose={this.handleClose}>
           <p>TEST</p>
-          </Modal>
+          </Modal> */}
+          <ModalModel />
           <div id='snapshot'>
             <h1>Rating Snapshot</h1>
             <h2>Select a row below to filter</h2>
@@ -70,7 +73,7 @@ class App extends Component {
         </div>
           <h1>------------------------------</h1>
         <ReviewList reviews={this.state.reviews} />
-        </div>
+      </div>
     );
   }
 }
