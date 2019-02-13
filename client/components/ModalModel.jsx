@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
-import { Typography } from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 class ModalModel extends Component {
   constructor(props) {
@@ -14,12 +15,10 @@ class ModalModel extends Component {
   }
 
   handleOpen() {
-    console.log('SHOW');
     this.setState({ show: true});
   }
 
   handleClose() {
-    console.log('HIDE');
     this.setState({ show: false});
   }
 
@@ -28,13 +27,26 @@ class ModalModel extends Component {
       <div>
         <Button onClick={this.handleOpen}>Write</Button>
         <Modal
-            open={this.state.show}
-          >
-            <div>
-              <Typography variant='h6' id='modal-title'>TTTTTTTTTTTTTTTTTTTTTTTTT</Typography>
+          open={this.state.show}
+        >
+          <div className='modal'>
+            <div id='modal-left'>
+              <h1>PRODUCT NAME AND PIC</h1>
+              <img src='https://s7.landsend.com/is/image/LandsEnd/502853_FW18_FF_BLA?$prp_index_4up_v1$' />
             </div>
-          </Modal>
+            <div id='modal-right'>
+              <div className='modal-right-el'>
+                <FontAwesomeIcon onClick={this.handleClose} className='cancel' icon='times-circle' size='lg' />
+                <h1 className='review-title'>My Review for COMPANY PRODUCT-NAME</h1>
+                <p>Required fields are marked with *</p>
+              </div>
+              <div className='modal-right-el'>
+
+              </div>
+            </div>
           </div>
+        </Modal>
+      </div>
     )
   }
 

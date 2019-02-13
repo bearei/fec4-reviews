@@ -1,32 +1,40 @@
-#write {
-  background-color: black;
-  color: white;
-  width: 80px;
-}
-
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0,  0.6);
-}
-
-.modal-main {
-  position: fixed;
-  background: white;
   width: 80%;
   height: auto;
-  top: 50%;
+  top: 300px;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: 1fr 3fr;
 }
 
-.display-block {
-  display: block;
+.cancel {
+  color: rgb(118, 118, 118);
+  float: right;
+  margin-top: 5px;
+  margin-right: 5px;
 }
 
-.display-none {
-  display: none;
+.cancel:hover {
+  color: rgb(80, 80, 80);
+}
+
+#modal-left {
+  background-color: rgb(229, 229, 229);
+  height: auto;
+}
+
+#modal-right {
+  height: auto;
+}
+
+.modal-right-el {
+  background-color: white;
+  border-bottom-color: rgb(229, 229, 229);
+  border-bottom: 1px;
+}
+
+.review-title {
+  margin-top: 0;
 }

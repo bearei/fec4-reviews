@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom';
 import sampleReviews from './sample_data';
 import ReviewList from './components/ReviewList.jsx';
 import ModalModel from './components/ModalModel.jsx';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import $ from 'jquery';
+
+library.add(faTimesCircle);
 
 
 class App extends Component {
@@ -11,11 +16,8 @@ class App extends Component {
     super(props);
     this.state = {
       reviews: [],
-      itemId: 1,
-      show: false
+      itemId: 1
     };
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
   }
 
   componentDidMount() {
@@ -32,26 +34,11 @@ class App extends Component {
     });
   }
 
-  handleOpen() {
-    console.log('SHOW');
-    this.setState({ show: true});
-  }
-
-  handleClose() {
-    console.log('HIDE');
-    this.setState({ show: false});
-  }
-
   render() {
     return (
       <div>
         <div id='nav'>
           <h1>HREI Reviews</h1>
-          
-          
-          {/* <Modal show={this.state.show} handleClose={this.handleClose}>
-          <p>TEST</p>
-          </Modal> */}
           <ModalModel />
           <div id='snapshot'>
             <h1>Rating Snapshot</h1>
