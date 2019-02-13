@@ -6,9 +6,13 @@ import ModalModel from './components/ModalModel.jsx';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import $ from 'jquery';
 
 library.add(faTimesCircle);
+library.add(faStar);
+library.add(faCheckCircle);
 
 
 class App extends Component {

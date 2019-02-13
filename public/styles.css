@@ -20,6 +20,35 @@
   color: rgb(80, 80, 80);
 }
 
+.star {
+  color: white;
+  background-color: green;
+}
+
+.star-poor {
+  background-color: rgb(180, 48, 52);
+}
+
+.star-fair {
+  background-color: rgb(222, 149, 0);
+}
+
+.star-average {
+  background-color: rgb(236, 219, 0);
+}
+
+.star-good {
+  background-color: rgb(138, 193, 0);
+}
+
+.star-excellent {
+  background-color: rgb(51, 139, 43);
+}
+
+.same-line {
+  display: inline;
+}
+
 #modal-left {
   background-color: rgb(229, 229, 229);
   height: auto;
@@ -31,10 +60,38 @@
 
 .modal-right-el {
   background-color: white;
-  border-bottom-color: rgb(229, 229, 229);
   border-bottom: 1px;
+  border-color: rgb(118, 118, 118);
 }
 
 .review-title {
-  margin-top: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 20px 12px 20px 12px;
+  font-family: Sentinel, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 400px;
+  line-height: 30px  
+}
+
+.required {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0px 20px 0px 20px;
+  margin: 0;
+  line-height: 19.5px;
+  font-weight: 400px;
+  font-size: 11.7px;
+}
+
+.review-header {
+  margin: 0px;
+  padding: 10px 12px 10px ;
+  font-family: Sentinel, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700px;
+  line-height: 24px;
+}
+
+img {
+  padding: 10px;
 }
