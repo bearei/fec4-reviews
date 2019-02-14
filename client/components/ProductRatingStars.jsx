@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { darkWhite } from 'material-ui/styles/colors';
 
 const TEXT = {
   0: 'Click to rate',
@@ -61,7 +60,7 @@ class ProductRatingStars extends Component {
           {STARS.map(star => (
             <FontAwesomeIcon
               className={this.getClass(Number(star))}
-              color={darkWhite}
+              color="white"
               onMouseEnter={() => this.handleEnter({ star })}
               onMouseLeave={() => this.handleLeave({ star })}
               onClick={() => this.handleClick({ star })}

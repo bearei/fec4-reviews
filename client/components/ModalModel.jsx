@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Modal from '@material-ui/core/Modal';
-import ProductInfo from './ProductInfo.jsx'
+import ProductInfo from './ProductInfo.jsx';
 import ModalHeader from './ModalHeader.jsx';
 import ProductRatingStars from './ProductRatingStars.jsx';
 import UserProductRating from './UserProductRating.jsx';
@@ -36,7 +35,7 @@ class ModalModel extends Component {
     const visible = { ...this.state };
     return (
       <div>
-        <div className="button-write" onClick={this.handleOpen}>Write Post</div>
+        <div role="button" tabIndex={0} className="button-write" onKeyPress={() => {}} onClick={this.handleOpen}>Write Post</div>
         <div className={visible.show ? 'modal-background' : 'hidden'} />
         <div className={visible.show ? 'modal' : 'hidden'}>
           <div id="modal-left">
