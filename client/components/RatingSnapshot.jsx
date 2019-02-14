@@ -1,6 +1,8 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const RatingSnapshot = (props) => {
+  const classes = { ...props };
   return (
     <div id="snapshot">
       <h1>Rating Snapshot</h1>

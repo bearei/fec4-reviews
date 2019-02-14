@@ -30,10 +30,19 @@ class App extends Component {
       success: (results) => {
         this.setState({
           reviews: results,
+          filter: 0,
         });
       },
       error: err => console.log(err),
     });
+  }
+
+  setFilter(id) {
+    this.setState({ filter: id });
+  }
+
+  clearFilter() {
+    this.setState({ filter: 0 });
   }
 
   render() {
@@ -43,7 +52,7 @@ class App extends Component {
         <h1>HREI Reviews</h1>
         <ModalModel />
         <div id="nav">
-          <RatingSnapshot />
+          <RatingSnapshot reviews={classes.reviews} />
           <Averages />
         </div>
         <hr />
