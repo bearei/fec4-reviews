@@ -219,3 +219,18 @@ img {
 .button-write:hover {
   background-color: rgb(43, 69, 92);
 }
+
+.rating-empty {
+  background-color: rgb(197, 197, 197);
+  width: 1.2px;
+  height: 10px;
+  display: inline-block;
+
+}
+
+.rating-full {
+  background-color: rgb(189, 91, 13);
+  width: 1.2px;
+  height: 10px;
+  display: inline-block;
+}

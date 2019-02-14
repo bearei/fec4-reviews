@@ -52,7 +52,7 @@ class App extends Component {
         <h1>HREI Reviews</h1>
         <ModalModel />
         <div id="nav">
-          <RatingSnapshot reviews={classes.reviews} />
+          <RatingSnapshot setFilter={this.setFilter} clearFilter={this.clearFilter} reviews={classes.reviews} />
           <Averages />
         </div>
         <hr />
