@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import { faTimesCircle, faCheckCircle, faStar, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import {
+  faTimesCircle, faCheckCircle, faStar, faQuestionCircle, faStarHalf,
+} from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import ReviewList from './components/ReviewList';
 import ModalModel from './components/ModalModel';
@@ -14,6 +16,7 @@ library.add(faTimesCircle);
 library.add(faStar);
 library.add(faCheckCircle);
 library.add(faQuestionCircle);
+library.add(faStarHalf);
 
 class App extends Component {
   constructor(props) {
