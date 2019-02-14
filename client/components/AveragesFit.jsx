@@ -6,7 +6,7 @@ const AveragesFit = (props) => {
   return (
     <div>
       <span>Fit</span>
-      <AveragesFitBar />
+      <AveragesFitBar average={classes.average} />
       <p>Runs Small    Runs Large</p>
     </div>
   );

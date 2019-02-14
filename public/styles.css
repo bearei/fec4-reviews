@@ -259,6 +259,13 @@ img {
   border-right: 2px solid;
 }
 
+.fit-slider {
+  display: inline-block;
+  width: 1.2px;
+  height: 12px;
+  background-color: rgb(189, 91, 13);
+}
+
 .dropbtn {
   background: white;
   padding: 16px;

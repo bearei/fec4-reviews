@@ -14,7 +14,7 @@ const SortSelector = (props) => {
   const numbers = Array.from({ length: 5 }, (v, k) => k);
   return (
     <div>
-      <FontAwesomeIcon icon="question-circle" size="sm" />
+      <FontAwesomeIcon className={classes.selector > 0 ? 'hidden' : ''} icon="question-circle" size="sm" />
       <span>
         <div className="dropdown">
           <button type="button" tabIndex={0} className="dropbtn">
