@@ -1,11 +1,22 @@
 .modal {
-  position: relative;
+  position: absolute;
   width: 80%;
   height: auto;
   top: 50px;
+  left: 10%;
   margin: 0 auto;
   display: grid;
+  overflow-y: visible;
   grid-template-columns: 1fr 3fr;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .cancel {
@@ -37,7 +48,7 @@
   color: rgb(118, 118, 118);
 }
 
-.check-hidden {
+.check-hidden, .hidden {
   display: none;
 }
 
@@ -82,7 +93,7 @@
 
 .modal-right-el {
   background-color: white;
-  border-bottom: 1px;
+  border-bottom: 2px;
   border-color: rgb(118, 118, 118);
   height: auto;
   display: block;

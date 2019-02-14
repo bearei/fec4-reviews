@@ -37,29 +37,26 @@ class ModalModel extends Component {
     return (
       <div>
         <div onClick={this.handleOpen}>Write</div>
-        <Modal
-          open={visible.show}
-        >
-          <div className="modal">
-            <div id="modal-left">
-              <ProductInfo />
-            </div>
-            <div id="modal-right">
-              <ModalHeader handleClose={this.handleClose} />
-              <ProductRatingStars />
-              <UserProductRating />
-              <UserReview />
-              <UserRecommend />
-              <UserNameAndLoc />
-              <UserEmail />
-              <UserFit />
-              <UserReadReview />
-              <UserPurchase />
-              <UserFeedback />
-              <ModalSubmit />
-            </div>
+        <div className={visible.show ? 'modal-background' : 'hidden'} />
+        <div className={visible.show ? 'modal' : 'hidden'}>
+          <div id="modal-left">
+            <ProductInfo />
           </div>
-        </Modal>
+          <div id="modal-right">
+            <ModalHeader handleClose={this.handleClose} />
+            <ProductRatingStars />
+            <UserProductRating />
+            <UserReview />
+            <UserRecommend />
+            <UserNameAndLoc />
+            <UserEmail />
+            <UserFit />
+            <UserReadReview />
+            <UserPurchase />
+            <UserFeedback />
+            <ModalSubmit />
+          </div>
+        </div>
       </div>
     );
   }
