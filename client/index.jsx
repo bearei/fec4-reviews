@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import { faTimesCircle, faCheckCircle, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faTimesCircle, faCheckCircle, faStar, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import ReviewList from './components/ReviewList';
 import ModalModel from './components/ModalModel';
 import RatingSnapshot from './components/RatingSnapshot';
 import Averages from './components/Averages';
 import ReviewIndex from './components/ReviewIndex';
+import SortSelector from './components/SortSelector';
 
 library.add(faTimesCircle);
 library.add(faStar);
 library.add(faCheckCircle);
+library.add(faQuestionCircle);
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +21,8 @@ class App extends Component {
     this.state = {
       reviews: [],
       itemId: Math.ceil(Math.random() * 100),
+      selector: 0,
+      filter: 0,
     };
   }
 
@@ -31,7 +35,6 @@ class App extends Component {
       success: (results) => {
         this.setState({
           reviews: results,
-          filter: 0,
         });
       },
       error: err => console.log(err),
@@ -78,6 +81,7 @@ class App extends Component {
           />
           <Averages average={this.getAverageFit()} />
           <ReviewIndex total={this.filteredTotal()} />
+          <SortSelector selector={classes.selector} />
         </div>
         <hr />
         <ReviewList reviews={classes.reviews} />
