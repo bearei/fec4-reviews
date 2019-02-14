@@ -1,13 +1,15 @@
-import React from 'react'
-import ReviewListItem from './ReviewListItem.jsx';
+import React from 'react';
+import ReviewListItem from './ReviewListItem';
 
-const ReviewList = (props) => (
-  <div>
-    <div id='reviews'>
-      <h1>------------------------------</h1>
-      {props.reviews.map((review, index) => <ReviewListItem review={review} key={index} />)}
+const ReviewList = (props) => {
+  const classes = { ...props };
+  return (
+    <div>
+      <div id="reviews">
+        {classes.reviews.map(review => <ReviewListItem review={review} key={review.objectId} />)}
       </div>
-  </div>
-)
+    </div>
+  );
+};
 
 export default ReviewList;

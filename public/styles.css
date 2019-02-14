@@ -1,0 +1,221 @@
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.modal {
+  position: absolute;
+  width: 80%;
+  height: auto;
+  top: 50px;
+  left: 10%;
+  margin: 0 auto;
+  display: grid;
+  overflow-y: visible;
+  grid-template-columns: 1fr 3fr;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.cancel {
+  color: rgb(118, 118, 118);
+  float: right;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.cancel:hover {
+  color: rgb(80, 80, 80);
+}
+
+.star {
+  background-color: rgb(118, 118, 118);
+}
+
+#stars {
+  padding-left: 20px;
+}
+
+#rating-text {
+  padding-left: 20px;
+}
+
+.check-default {
+  float: right;
+  padding-right: 15px;
+  color: rgb(118, 118, 118);
+}
+
+.check-hidden, .hidden {
+  display: none;
+}
+
+.check-complete {
+  float: right;
+  padding-right: 15px;
+  color: rgb(51, 139, 43);
+}
+
+.star-Poor {
+  background-color: rgb(180, 48, 52);
+}
+
+.star-Fair {
+  background-color: rgb(222, 149, 0);
+}
+
+.star-Average {
+  background-color: rgb(236, 219, 0);
+}
+
+.star-Good {
+  background-color: rgb(138, 193, 0);
+}
+
+.star-Excellent {
+  background-color: rgb(51, 139, 43);
+}
+
+.same-line {
+  display: inline;
+}
+
+#modal-left {
+  background-color: rgb(229, 229, 229);
+  height: auto;
+}
+
+#modal-right {
+  height: auto;
+}
+
+.modal-right-el {
+  background-color: white;
+  border-bottom: 2px;
+  border-color: rgb(118, 118, 118);
+  height: auto;
+  display: block;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.button-recommend {
+  background-color:rgb(237, 237, 237);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0) 100%);
+  border-bottom-color: rgb(170, 170, 170);
+  border-bottom-left-radius: 4px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: rgb(208, 208, 208);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: rgb(204, 204, 204);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: rgb(204, 204, 204);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 0px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  bottom: 0px;
+  box-shadow: rgb(255, 255, 255) 0px 1px 0px 0px, rgb(255, 255, 255) 0px 1px 0px 0px inset;
+  box-sizing: content-box;
+  clear: both;
+  clip: auto;
+  color: rgb(102, 102, 102);
+  cursor: pointer;
+  direction: ltr;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 16px;
+  left: 0px;
+  line-height: 16px;
+  margin: 0px;
+  padding: 8px 0px 8px 0px;
+  position: relative;
+  text-align: center;
+  text-decoration-color:rgb(102, 102, 102);
+  transition-duration: 0.2s;
+  width: 68.4062px;
+  z-index: auto;
+}
+
+.button-recommend:hover {
+  color: rgb(80, 80, 80);
+}
+
+.input-field {
+  padding: 0 0 0 10px;
+  margin: 0 0 10px 12px;
+  width: 90%;
+  height: auto;
+}
+
+.review-title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 20px 12px 20px 12px;
+  font-family: Sentinel, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 400px;
+  line-height: 30px  
+}
+
+.required {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0px 20px 0px 20px;
+  margin: 0;
+  line-height: 19.5px;
+  font-weight: 400px;
+  font-size: 11.7px;
+}
+
+.review-header {
+  margin: 0px;
+  padding: 10px 12px 10px ;
+  font-family: Sentinel, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700px;
+  line-height: 24px;
+}
+
+img {
+  padding: 10px;
+}
+
+.button-write {
+  float: right;
+  display: block;
+  clear: both;
+  background-color:rgb(66, 108, 144);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0) 100%);
+  bottom: auto ;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 44px;
+  line-height: 28px;
+  margin: 0;
+  padding: 8px 16px 8px 16px;
+  text-align: center;
+  width: 131.438px;
+}
+
+.button-write:hover {
+  background-color: rgb(43, 69, 92);
+}
