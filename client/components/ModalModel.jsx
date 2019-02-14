@@ -36,7 +36,7 @@ class ModalModel extends Component {
     const visible = { ...this.state };
     return (
       <div>
-        <div onClick={this.handleOpen}>Write</div>
+        <div className="button-write" onClick={this.handleOpen}>Write Post</div>
         <div className={visible.show ? 'modal-background' : 'hidden'} />
         <div className={visible.show ? 'modal' : 'hidden'}>
           <div id="modal-left">
