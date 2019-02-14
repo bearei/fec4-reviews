@@ -7,6 +7,7 @@ import ReviewList from './components/ReviewList';
 import ModalModel from './components/ModalModel';
 import RatingSnapshot from './components/RatingSnapshot';
 import Averages from './components/Averages';
+import ReviewIndex from './components/ReviewIndex';
 
 library.add(faTimesCircle);
 library.add(faStar);
@@ -52,6 +53,17 @@ class App extends Component {
     this.setState({ filter: 0 });
   }
 
+  filteredTotal() {
+    const classes = { ...this.state };
+    let total = 0;
+    if (classes.filter > 0) {
+      total = classes.reviews.filter(review => review.rating === classes.filter).length;
+    } else {
+      total = classes.reviews.length;
+    }
+    return total;
+  }
+
   render() {
     const classes = { ...this.state };
     return (
@@ -65,6 +77,7 @@ class App extends Component {
             reviews={classes.reviews}
           />
           <Averages average={this.getAverageFit()} />
+          <ReviewIndex total={this.filteredTotal()} />
         </div>
         <hr />
         <ReviewList reviews={classes.reviews} />

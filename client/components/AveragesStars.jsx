@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const AveragesStarsw = (props) => {
+const AveragesStars = (props) => {
   const classes = { ...props };
   const numbers = Array.from({ length: 5 }, (v, k) => k + 1);
   return (
@@ -13,4 +13,4 @@ const AveragesStarsw = (props) => {
   );
 };
 
-export default AveragesStarsw;
+export default AveragesStars;
