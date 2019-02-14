@@ -5,7 +5,7 @@ const Averages = (props) => {
   return (
     <div>
       <span> 1 of </span>
-      {classes.total < 8 ? 8 : classes.total}
+      {classes.total > 8 ? 8 : classes.total}
       <span> out of </span>
       {classes.total}
       <span> Reviews</span>
