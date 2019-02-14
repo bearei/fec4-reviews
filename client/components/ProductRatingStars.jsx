@@ -12,7 +12,7 @@ const TEXT = {
 };
 const STARS = ['1', '2', '3', '4', '5'];
 
-class ProductRating extends Component {
+class ProductRatingStars extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,28 +55,30 @@ class ProductRating extends Component {
   render() {
     const classes = { ...this.state };
     return (
-      <span id="stars">
-        <h1 className="review-header same-line">Product Rating*</h1>
-        {STARS.map(star => (
-          <FontAwesomeIcon
-            className={this.getClass(Number(star))}
-            color={darkWhite}
-            onMouseEnter={() => this.handleEnter({ star })}
-            onMouseLeave={() => this.handleLeave({ star })}
-            onClick={() => this.handleClick({ star })}
-            prefix="fas"
-            key={classes.key}
-            icon="star"
-            size="2x"
-            id={star}
-          />
-        ))
-          }
-        <span id="rating-text">{classes.hover > 0 ? TEXT[classes.hover] : TEXT[classes.selected]}</span>
-        <FontAwesomeIcon className={classes.selected > 0 ? 'check-complete' : 'check-default'} icon="check-circle" size="lg" />
-      </span>
+      <div className="modal-right-el">
+        <span id="stars">
+          <h1 className="review-header same-line">Product Rating*</h1>
+          {STARS.map(star => (
+            <FontAwesomeIcon
+              className={this.getClass(Number(star))}
+              color={darkWhite}
+              onMouseEnter={() => this.handleEnter({ star })}
+              onMouseLeave={() => this.handleLeave({ star })}
+              onClick={() => this.handleClick({ star })}
+              prefix="fas"
+              key={classes.key}
+              icon="star"
+              size="2x"
+              id={star}
+            />
+          ))
+            }
+          <span id="rating-text">{classes.hover > 0 ? TEXT[classes.hover] : TEXT[classes.selected]}</span>
+          <FontAwesomeIcon className={classes.selected > 0 ? 'check-complete' : 'check-default'} icon="check-circle" size="lg" />
+        </span>
+      </div>
     );
   }
 }
 
-export default ProductRating;
+export default ProductRatingStars;

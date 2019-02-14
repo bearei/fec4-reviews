@@ -6,7 +6,6 @@ const ReviewList = (props) => {
   return (
     <div>
       <div id="reviews">
-        <h1>------------------------------</h1>
         {classes.reviews.map(review => <ReviewListItem review={review} key={review.objectId} />)}
       </div>
     </div>
