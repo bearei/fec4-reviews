@@ -1,55 +1,54 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Modal from '@material-ui/core/Modal';
-import Button from '@material-ui/core/Button';
-import ProductRating from './ProductRating.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import ProductRating from './ProductRating.jsx';
 
 class ModalModel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false
+      show: false,
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
 
   handleOpen() {
-    this.setState({ show: true});
+    this.setState({ show: true });
   }
 
   handleClose() {
-    this.setState({ show: false});
+    this.setState({ show: false });
   }
 
   render() {
+    const visible = { ...this.state };
     return (
       <div>
-        <Button onClick={this.handleOpen}>Write</Button>
+        <div onClick={this.handleOpen}>Write</div>
         <Modal
-          open={this.state.show}
+          open={visible.show}
         >
-          <div className='modal'>
-            <div id='modal-left'>
-              <img src='https://s7.landsend.com/is/image/LandsEnd/502853_FW18_FF_BLA?$prp_index_4up_v1$' />
+          <div className="modal">
+            <div id="modal-left">
+              <img alt="" src="https://s7.landsend.com/is/image/LandsEnd/502853_FW18_FF_BLA?$prp_index_4up_v1$" />
               <h1>PRODUCT NAME AND PIC</h1>
             </div>
-            <div id='modal-right'>
-              <div className='modal-right-el'>
-                <FontAwesomeIcon onClick={this.handleClose} className='cancel' icon='times-circle' size='lg' />
-                <h1 className='review-title'>My Review for COMPANY PRODUCT-NAME</h1>
-                <p className='required'>Required fields are marked with *</p>
+            <div id="modal-right">
+              <div className="modal-right-el">
+                <FontAwesomeIcon onClick={this.handleClose} className="cancel" icon="times-circle" size="lg" />
+                <h1 className="review-title">My Review for COMPANY PRODUCT-NAME</h1>
+                <p className="required">Required fields are marked with *</p>
               </div>
-              <div className='modal-right-el'>
-                <h1 className='review-header same-line'>Product Rating*</h1>
+              <div className="modal-right-el">
+                <h1 className="review-header same-line">Product Rating*</h1>
                 <ProductRating />
               </div>
             </div>
           </div>
         </Modal>
       </div>
-    )
+    );
   }
 
   // render() {

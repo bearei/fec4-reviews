@@ -4,5 +4,9 @@
         "browser": true,
         "node": true
     },
-    "extends": "airbnb"
+    "extends": "airbnb",
+    "rules": {
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    }
 }
