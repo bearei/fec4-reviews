@@ -10,7 +10,7 @@ const getCount = (stars, reviews) => (
 const RatingSnapshot = (props) => {
   const classes = { ...props };
   return (
-    <div id="snapshot">
+    <div>
       <h1>Rating Snapshot</h1>
       <h2>Select a row below to filter</h2>
       {STARS.map(star => (
