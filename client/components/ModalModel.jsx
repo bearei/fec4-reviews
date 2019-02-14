@@ -41,8 +41,92 @@ class ModalModel extends Component {
                 <p className="required">Required fields are marked with *</p>
               </div>
               <div className="modal-right-el">
-                <h1 className="review-header same-line">Product Rating*</h1>
                 <ProductRating />
+              </div>
+              <div className="modal-right-el">
+                <h1 className="review-header ">Product Rating*</h1>
+                <input className="input-field" type="text" placeholder="Example: Makes hiking even easier" />
+              </div>
+              <div className="modal-right-el">
+                <h1 className="review-header ">Review*</h1>
+                <textarea className="input-field" rows="4" />
+              </div>
+
+              <div className="modal-right-el modal-grid">
+                <div>
+                  <h1 className="review-header ">Would you recommend this product to a friend?</h1>
+                </div>
+                <ul>
+                  <li className="button-recommend">Yes</li>
+                  <li className="button-recommend">No</li>
+                </ul>
+              </div>
+              <div className="modal-right-el modal-grid">
+                <div>
+                  <h1 className="review-header ">Nickname*</h1>
+                  <input className="input-field" type="text" placeholder="Example: jackie27" />
+                </div>
+                <div>
+                  <h1 className="review-header ">Location</h1>
+                  <input className="input-field" type="text" placeholder="Example: Seattle, WA" />
+                </div>
+              </div>
+              <div className="modal-right-el modal-grid">
+                <div>
+                  <h1 className="review-header ">Email*</h1>
+                  <input className="input-field" type="text" placeholder="Example: youremail@example.com" />
+                </div>
+              </div>
+              <div className="modal-right-el modal-grid">
+                <div>
+                  <h1 className="review-header ">Fit</h1>
+                </div>
+                <div>
+                  <input type="radio" name="fitbuttons" id="1" value="1" />
+                  <input type="radio" name="fitbuttons" id="2" value="2" />
+                  <input type="radio" name="fitbuttons" id="3" value="3" />
+                  <input type="radio" name="fitbuttons" id="4" value="4" />
+                  <input type="radio" name="fitbuttons" id="5" value="5" />
+                  <p>Runs Small   Too Large</p>
+                </div>
+              </div>
+              <div className="modal-right-el modal-grid">
+                <div>
+                  <h1 className="review-header ">Did you read product reviews online before first purchasing this item?</h1>
+                </div>
+                <div>
+                  <select>
+                    <option value="select">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+              </div>
+              <div className="modal-right-el modal-grid">
+                <div>
+                  <h1 className="review-header ">Where did you purchase this product?</h1>
+                </div>
+                <div>
+                  <select>
+                    <option value="select">Select</option>
+                    <option value="online">Online</option>
+                    <option value="in-store">In-Store</option>
+                  </select>
+                </div>
+              </div>
+              <div className="modal-right-el">
+                <h1 className="review-header ">What feedback do you have for the people who designed and manufactred this product?</h1>
+                <textarea className="input-field" rows="4" />
+              </div>
+              <div className="modal-right-el">
+                <input className="same-line" type='checkbox' />
+                <span>
+                  I agree to the Bazaarvoice
+                  <span> Terms of Use & Privacy Policy</span>
+                  *
+                </span>
+                <p>You may recieve emails regarding this submission.  Any emails will include the ability to opt out of future communications.</p>
+                <button>Post review</button>
               </div>
             </div>
           </div>
@@ -50,56 +134,6 @@ class ModalModel extends Component {
       </div>
     );
   }
-
-  // render() {
-  //   let visibility = this.props.show ? 'modal display-block' : 'modal: display: none';
-  //   return (
-  //     <div className={visibility}>
-  //       <section className='modal-main'>
-  //         <div className='modal-container'>
-  //           {this.props.children}
-  //           <h1>My Review for COMPANY PRODUCT-NAME</h1>
-  //           <p>Required fields are marked with *</p>
-  //           <p>Product Rating* ***** Click to rate</p>
-  //           <h3>Review title*</h3>
-  //           <input type='text' placeholder='Example: Makes hiking even easier'/>
-  //           <h3>Review*</h3>
-  //           <textarea />
-  //           <p>Add photo Add vidoe</p>
-  //           <h3>Would you recommend this product to a friend?</h3>
-  //           <p>Yes No</p>
-  //           <h3>Nickname*</h3>
-  //           <input type='text' placeholder='Example: jackie27' />
-  //           <h3>Location</h3>
-  //           <input type='text' placeholder='Example: Seattle, WA' />
-  //           <h3>Email*</h3>
-  //           <input type='text' placeholder='Example: youremail@example.com' />
-  //           <h3>Fit</h3>
-  //           <p>Runs Small  Runs Large</p>
-  //           <h3>Did you read product reviews online before first purchasing this item?</h3>
-  //           <select>
-  //             <option value='select'>Select</option>
-  //             <option value='yes'>Yes</option>
-  //             <option value='no'>No</option>
-  //           </select>
-  //           <h3>Where did you purchase the product</h3>
-  //           <select>
-  //             <option value='select'>Select</option>
-  //             <option value='online'>Online</option>
-  //             <option value='in-store'>In-Store</option>
-  //           </select>
-  //           <h3>What feedback do you have for the people who designed and manufactred this product?</h3>
-  //           <textarea />
-  //           <input type='checkbox' />
-  //           <p>I agree to the Bazaarvoice Terms of Use & Privacy Policy *</p>
-  //           <p>You may recieve emails regarding this submission.  Any emails will include the ability to opt out of future communications.</p>
-  //           <button>Post review</button>
-  //           <button onClick={this.props.handleClose}> close</button>
-  //           </div>
-  //       </section>
-  //     </div>
-  //   );
-  // }
 }
 
 export default ModalModel;

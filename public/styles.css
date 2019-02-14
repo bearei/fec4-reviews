@@ -21,27 +21,50 @@
 }
 
 .star {
-  color: white;
-  background-color: green;
+  background-color: rgb(118, 118, 118);
 }
 
-.star-poor {
+#stars {
+  padding-left: 20px;
+}
+
+#rating-text {
+  padding-left: 20px;
+}
+
+.check-default {
+  float: right;
+  padding-right: 15px;
+  color: rgb(118, 118, 118);
+}
+
+.check-hidden {
+  display: none;
+}
+
+.check-complete {
+  float: right;
+  padding-right: 15px;
+  color: rgb(51, 139, 43);
+}
+
+.star-Poor {
   background-color: rgb(180, 48, 52);
 }
 
-.star-fair {
+.star-Fair {
   background-color: rgb(222, 149, 0);
 }
 
-.star-average {
+.star-Average {
   background-color: rgb(236, 219, 0);
 }
 
-.star-good {
+.star-Good {
   background-color: rgb(138, 193, 0);
 }
 
-.star-excellent {
+.star-Excellent {
   background-color: rgb(51, 139, 43);
 }
 
@@ -62,6 +85,67 @@
   background-color: white;
   border-bottom: 1px;
   border-color: rgb(118, 118, 118);
+  height: auto;
+  display: block;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.button-recommend {
+  background-color:rgb(237, 237, 237);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0) 100%);
+  border-bottom-color: rgb(170, 170, 170);
+  border-bottom-left-radius: 4px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: rgb(208, 208, 208);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: rgb(204, 204, 204);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: rgb(204, 204, 204);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 0px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  bottom: 0px;
+  box-shadow: rgb(255, 255, 255) 0px 1px 0px 0px, rgb(255, 255, 255) 0px 1px 0px 0px inset;
+  box-sizing: content-box;
+  clear: both;
+  clip: auto;
+  color: rgb(102, 102, 102);
+  cursor: pointer;
+  direction: ltr;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 16px;
+  left: 0px;
+  line-height: 16px;
+  margin: 0px;
+  padding: 8px 0px 8px 0px;
+  position: relative;
+  text-align: center;
+  text-decoration-color:rgb(102, 102, 102);
+  transition-duration: 0.2s;
+  width: 68.4062px;
+  z-index: auto;
+}
+
+.button-recommend:hover {
+  color: rgb(80, 80, 80);
+}
+
+.input-field {
+  padding: 0 0 0 10px;
+  margin: 0 0 10px 12px;
+  width: 90%;
+  height: auto;
 }
 
 .review-title {
