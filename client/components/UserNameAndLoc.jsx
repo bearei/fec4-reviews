@@ -1,6 +1,6 @@
 import React from 'react';
-import UserNickname from './UserNickname.jsx';
-import UserLocation from './UserLocation.jsx';
+import UserNickname from './UserNickname';
+import UserLocation from './UserLocation';
 
 const UserNameAndLoc = (props) => {
   return (

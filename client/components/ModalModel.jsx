@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import ProductInfo from './ProductInfo.jsx';
-import ModalHeader from './ModalHeader.jsx';
-import ProductRatingStars from './ProductRatingStars.jsx';
-import UserProductRating from './UserProductRating.jsx';
-import UserReview from './UserReview.jsx';
-import UserRecommend from './UserRecommend.jsx';
-import UserNameAndLoc from './UserNameAndLoc.jsx';
-import UserEmail from './UserEmail.jsx';
-import UserFit from './UserFit.jsx';
-import UserReadReview from './UserReadReview.jsx';
-import UserPurchase from './UserPurchase.jsx';
-import UserFeedback from './UserFeedback.jsx';
-import ModalSubmit from './ModalSubmit.jsx';
+import ProductInfo from './ProductInfo';
+import ModalHeader from './ModalHeader';
+import ProductRatingStars from './ProductRatingStars';
+import UserProductRating from './UserProductRating';
+import UserReview from './UserReview';
+import UserRecommend from './UserRecommend';
+import UserNameAndLoc from './UserNameAndLoc';
+import UserEmail from './UserEmail';
+import UserFit from './UserFit';
+import UserReadReview from './UserReadReview';
+import UserPurchase from './UserPurchase';
+import UserFeedback from './UserFeedback';
+import ModalSubmit from './ModalSubmit';
 
 class ModalModel extends Component {
   constructor(props) {

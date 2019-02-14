@@ -1,3 +1,8 @@
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .modal {
   position: absolute;
   width: 80%;

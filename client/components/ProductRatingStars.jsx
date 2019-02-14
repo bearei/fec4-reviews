@@ -38,17 +38,14 @@ class ProductRatingStars extends Component {
 
   handleEnter(star) {
     this.setState({ hover: star.star });
-    console.log(`Enter, ${star.star}, ${TEXT[star.star]}`);
   }
 
   handleLeave(star) {
     this.setState({ hover: 0 });
-    console.log(`Leave, ${star.star}, ${TEXT[star.star]}`);
   }
 
   handleClick(star) {
     this.setState({ selected: star.star });
-    console.log(`Click, ${star.star}, ${TEXT[star.star]}`);
   }
 
   render() {
