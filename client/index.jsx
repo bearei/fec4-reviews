@@ -37,6 +37,13 @@ class App extends Component {
     });
   }
 
+  getAverageFit() {
+    const classes = { ...this.state };
+    const total = classes.reviews.reduce((res, review) => res + review.fit, 0);
+    const count = classes.reviews.reduce((res, review) => review.fit > 0 ? res + 1 : res, 0);
+    return Math.ceil((total / count) * 10) / 10;
+  }
+
   setFilter(id) {
     this.setState({ filter: id });
   }
@@ -51,9 +58,13 @@ class App extends Component {
       <div>
         <h1>HREI Reviews</h1>
         <ModalModel />
-        <div id="nav">
-          <RatingSnapshot setFilter={this.setFilter} clearFilter={this.clearFilter} reviews={classes.reviews} />
-          <Averages />
+        <div className="nav">
+          <RatingSnapshot
+            setFilter={this.setFilter}
+            clearFilter={this.clearFilter}
+            reviews={classes.reviews}
+          />
+          <Averages average={this.getAverageFit()} />
         </div>
         <hr />
         <ReviewList reviews={classes.reviews} />

@@ -1,6 +1,7 @@
 .nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  clear: both;
 }
 
 .modal {
@@ -233,4 +234,12 @@ img {
   width: 1.2px;
   height: 10px;
   display: inline-block;
+}
+
+.background-star {
+  color: rgb(197, 197, 197);
+}
+
+.foreground-star {
+  color: rgb(189, 91, 13);
 }

@@ -1,13 +1,14 @@
 import React from 'react';
+import AveragesStars from './AveragesStars';
 
 const Averages = (props) => {
+  const classes = { ...props };
   return (
-    <div id="averages">
+    <div>
       <h1>Average Customer Rating</h1>
-      <h1>* * * - -</h1>
+      <AveragesStars average={classes.average} />
       <h1>Fit   |  |  |  ||| |</h1>
       <p>Runs Small    Runs Large</p>
-      <h1>Sort By Most Relvant</h1>
     </div>
   );
 };
