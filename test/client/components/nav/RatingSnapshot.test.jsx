@@ -1,4 +1,4 @@
-const getCount = require('../../../client/components/RatingSnapshot.jsx').__get__('getCount');
+const getCount = require('../../../../client/components/nav/RatingSnapshot').__get__('getCount');
 
 const sampleReviews = [{
   rating: 0,
