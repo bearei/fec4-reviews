@@ -1,19 +1,36 @@
 import React from 'react';
+import moment from 'moment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Stars from './Stars';
+import ReviewListItemFooter from './ReviewListItemFooter';
 
 const ReviewListItem = (props) => {
   const classes = { ...props };
   return (
     <div>
+      <hr />
       <div id="review">
         <Stars average={classes.review.rating} />
-        <h1>{classes.review.name} - {classes.review.createdAt}</h1>
+        <span>
+          {classes.review.name}
+        </span>
+        <span> - </span>
+        <span>
+          {moment(classes.review.createdAt).fromNow()}
+        </span>
         <h2>{classes.review.title}</h2>
         <h3>{classes.review.text}</h3>
-        <h3> {classes.review.recommend} I recommend</h3>
-        <h3>Helfpul Yes{classes.review.helpful} No{classes.review.notHelpful} Report as inappropriate={props.review.innapropriate}</h3> 
+        <FontAwesomeIcon icon={classes.review.recommend ? 'check-circle' : 'times-circle'} />
+        <span>{classes.review.recommend ? 'Yes, ' : 'No, '}</span>
+        <span>I </span>
+        <span>{classes.review.recommend ? '' : 'don\'t'}</span>
+        <span>recommend this product.</span>
+        <ReviewListItemFooter
+          helpful={classes.review.helpful}
+          not={classes.review.notHelpful}
+          flag={classes.review.inappropriate}
+        />
       </div>
-      <h1>------------------------------</h1>
     </div>
   );
 };

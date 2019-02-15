@@ -26,6 +26,7 @@ class App extends Component {
       itemId: Math.ceil(Math.random() * 100),
       selector: 0,
       filter: 0,
+      showing: 8,
     };
   }
 
@@ -86,8 +87,10 @@ class App extends Component {
           <ReviewIndex total={this.filteredTotal()} />
           <SortSelector selector={classes.selector} />
         </div>
-        <hr />
-        <ReviewList reviews={classes.reviews} />
+        <ReviewList
+          reviews={classes.reviews.slice(0, classes.showing)}
+          hasMore={classes.showing > classes.reviews.length}
+        />
       </div>
     );
   }
