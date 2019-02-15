@@ -28,6 +28,7 @@ class App extends Component {
       filter: 0,
       showing: 8,
     };
+    this.handleMore = this.handleMore.bind(this);
   }
 
   componentDidMount() {
@@ -60,6 +61,12 @@ class App extends Component {
     this.setState({ filter: 0 });
   }
 
+  handleMore() {
+    this.setState(prevState => (
+      { showing: prevState.showing + 8 }
+    ));
+  }
+
   filteredTotal() {
     const classes = { ...this.state };
     let total = 0;
@@ -84,12 +91,13 @@ class App extends Component {
             reviews={classes.reviews}
           />
           <Averages average={this.getAverageFit()} />
-          <ReviewIndex total={this.filteredTotal()} />
+          <ReviewIndex total={this.filteredTotal()} showing={classes.showing} />
           <SortSelector selector={classes.selector} />
         </div>
         <ReviewList
           reviews={classes.reviews.slice(0, classes.showing)}
-          hasMore={classes.showing > classes.reviews.length}
+          hasMore={classes.showing < classes.reviews.length}
+          handleMore={this.handleMore}
         />
       </div>
     );

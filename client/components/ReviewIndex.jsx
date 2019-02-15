@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Averages = (props) => {
+const ReviewIndex = (props) => {
   const classes = { ...props };
   return (
     <div>
       <span> 1 of </span>
-      {classes.total > 8 ? 8 : classes.total}
+      {classes.showing < classes.total ? classes.showing : classes.total}
       <span> out of </span>
       {classes.total}
       <span> Reviews</span>
@@ -13,4 +13,4 @@ const Averages = (props) => {
   );
 };
 
-export default Averages;
+export default ReviewIndex;

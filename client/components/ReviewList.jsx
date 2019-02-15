@@ -7,6 +7,15 @@ const ReviewList = (props) => {
     <div>
       <div id="reviews">
         {classes.reviews.map(review => <ReviewListItem key={review._id} review={review} />)}
+        <div
+          className={classes.hasMore ? 'button-helpful button-load-more' : 'hidden'}
+          onClick={classes.handleMore}
+          onKeyPress={() => {}}
+          role="button"
+          tabIndex={0}
+        >
+          Load More Posts
+        </div>
       </div>
     </div>
   );
