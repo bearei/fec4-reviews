@@ -1,4 +1,4 @@
-const getIcon = require('../../../client/components/AveragesStars.jsx').__get__('getIcon');
+const getIcon = require('../../../client/components/Stars.jsx').__get__('getIcon');
 
 describe('GetIcon Test', () => {
   describe('getIcon', () => {
