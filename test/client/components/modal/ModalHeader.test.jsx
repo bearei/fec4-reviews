@@ -21,5 +21,4 @@ describe('<ModalHeader />', () => {
   test('should exist', () => {
     expect(ModalHeader).toBeDefined();
   });
-  
 });

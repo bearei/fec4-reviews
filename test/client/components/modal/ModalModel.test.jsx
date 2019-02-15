@@ -16,7 +16,7 @@ import UserPurchase from '../../../../client/components/modal/UserPurchase';
 import UserFeedback from '../../../../client/components/modal/UserFeedback';
 import ModalSubmit from '../../../../client/components/modal/ModalSubmit';
 
-describe('<ModalHeader />', () => {
+describe('<ModalModel />', () => {
   test('should exist', () => {
     expect(Stars).toBeDefined();
     expect(ProductInfo).toBeDefined();
