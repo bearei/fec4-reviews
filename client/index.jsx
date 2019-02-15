@@ -76,8 +76,8 @@ class App extends Component {
     return (
       <div>
         <h1>HREI Reviews</h1>
-        <ModalModel />
-        <div className="nav">
+        <ModalModel empty={classes.reviews.length === 0} />
+        <div className={classes.reviews.length === 0 ? 'hidden' : 'nav'}>
           <RatingSnapshot
             setFilter={this.setFilter}
             clearFilter={this.clearFilter}

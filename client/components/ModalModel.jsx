@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Stars from './Stars';
 import ProductInfo from './ProductInfo';
 import ModalHeader from './ModalHeader';
 import ProductRatingStars from './ProductRatingStars';
@@ -24,6 +25,7 @@ class ModalModel extends Component {
   }
 
   handleOpen() {
+    console.log("HI")
     this.setState({ show: true });
   }
 
@@ -33,27 +35,34 @@ class ModalModel extends Component {
 
   render() {
     const visible = { ...this.state };
+    const classes = { ...this.props };
     return (
       <div>
-        <div role="button" tabIndex={0} className="button-write" onKeyPress={() => {}} onClick={this.handleOpen}>Write Post</div>
-        <div className={visible.show ? 'modal-background' : 'hidden'} />
-        <div className={visible.show ? 'modal' : 'hidden'}>
-          <div id="modal-left">
-            <ProductInfo />
-          </div>
-          <div id="modal-right">
-            <ModalHeader handleClose={this.handleClose} />
-            <ProductRatingStars />
-            <UserProductRating />
-            <UserReview />
-            <UserRecommend />
-            <UserNameAndLoc />
-            <UserEmail />
-            <UserFit />
-            <UserReadReview />
-            <UserPurchase />
-            <UserFeedback />
-            <ModalSubmit />
+        <div className={classes.empty ? '' : 'hidden'}>
+          <Stars average={0} />
+          <div role="button" tabIndex={0} onKeyPress={() => {}} onClick={this.handleOpen}>Be the first to review this product</div>
+        </div>
+        <div className={classes.empty && !(classes.empty && visible.show) ? 'hidden' : ''}>
+          <div role="button" tabIndex={0} className={classes.empty ? 'hidden' : 'button-write'} onKeyPress={() => {}} onClick={this.handleOpen}>Write Post</div>
+          <div className={visible.show ? 'modal-background' : 'hidden'} />
+          <div className={visible.show ? 'modal' : 'hidden'}>
+            <div id="modal-left">
+              <ProductInfo />
+            </div>
+            <div id="modal-right">
+              <ModalHeader handleClose={this.handleClose} />
+              <ProductRatingStars />
+              <UserProductRating />
+              <UserReview />
+              <UserRecommend />
+              <UserNameAndLoc />
+              <UserEmail />
+              <UserFit />
+              <UserReadReview />
+              <UserPurchase />
+              <UserFeedback />
+              <ModalSubmit />
+            </div>
           </div>
         </div>
       </div>
