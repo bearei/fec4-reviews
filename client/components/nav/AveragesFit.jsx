@@ -1,5 +1,5 @@
 import React from 'react';
-import FitBar from './FitBar';
+import FitBar from '../FitBar';
 
 const AveragesFit = (props) => {
   const classes = { ...props };
