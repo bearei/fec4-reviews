@@ -34,6 +34,8 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-rewire": "^1.2.0",
     "babel-polyfill": "^6.26.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "eslint": "^5.13.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
@@ -45,6 +47,11 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev": "^1.1.1",
     "webpack-dev-server": "^3.1.14"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/enzyme.setup.js"
+    ]
   },
   "version": "1.0.0",
   "main": "index.js",
