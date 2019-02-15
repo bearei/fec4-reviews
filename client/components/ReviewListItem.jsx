@@ -34,7 +34,7 @@ const ReviewListItem = (props) => {
           />
         </div>
         <div>
-          <AveragesFit className={classes.review.fit === 0 ? 'hidden' : '' }average={classes.review.fit} />
+          <AveragesFit className={classes.review.fit === 0 ? 'hidden' : ''} average={classes.review.fit} />
         </div>
       </div>
     </div>

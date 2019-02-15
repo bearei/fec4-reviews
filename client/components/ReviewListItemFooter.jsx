@@ -2,7 +2,6 @@ import React from 'react';
 
 const ReviewListItemFooter = (props) => {
   const classes = { ...props };
-  console.log(classes)
   return (
     <div>
       <span>Helpful?</span>
