@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Stars from './Stars';
+import Stars from '../util/Stars';
 import ProductInfo from './ProductInfo';
 import ModalHeader from './ModalHeader';
 import ProductRatingStars from './ProductRatingStars';
@@ -25,7 +25,6 @@ class ModalModel extends Component {
   }
 
   handleOpen() {
-    console.log("HI")
     this.setState({ show: true });
   }
 

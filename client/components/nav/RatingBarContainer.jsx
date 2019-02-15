@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import RatingBar from './RatingBar';
+import RatingBar from '../util/RatingBar';
 
 const getScale = (count, total) => (
   Math.floor((count / total * 100))

@@ -1,6 +1,6 @@
 import React from 'react';
 import AveragesStars from './AveragesStars';
-import AveragesFit from './AveragesFit';
+import FitBarContainer from '../util/FitBarContainer';
 
 const Averages = (props) => {
   const classes = { ...props };
@@ -8,7 +8,7 @@ const Averages = (props) => {
     <div>
       <h1>Average Customer Rating</h1>
       <AveragesStars average={Number.isNaN(classes.average) ? 0 : classes.average} />
-      <AveragesFit average={classes.average} />
+      <FitBarContainer average={classes.average} />
     </div>
   );
 };

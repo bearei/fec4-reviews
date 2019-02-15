@@ -5,12 +5,12 @@ import {
   faTimesCircle, faCheckCircle, faStar, faQuestionCircle, faStarHalf,
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import ReviewList from './components/ReviewList';
-import ModalModel from './components/ModalModel';
-import RatingSnapshot from './components/RatingSnapshot';
-import Averages from './components/Averages';
-import ReviewIndex from './components/ReviewIndex';
-import SortSelector from './components/SortSelector';
+import ReviewList from './components/review/ReviewList';
+import ModalModel from './components/modal/ModalModel';
+import RatingSnapshot from './components/nav/RatingSnapshot';
+import Averages from './components/nav/Averages';
+import ReviewIndex from './components/nav/ReviewIndex';
+import SortSelector from './components/nav/SortSelector';
 
 library.add(faTimesCircle);
 library.add(faStar);

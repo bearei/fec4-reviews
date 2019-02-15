@@ -1,7 +1,7 @@
 import React from 'react';
-import FitBar from '../FitBar';
+import FitBar from './FitBar';
 
-const AveragesFit = (props) => {
+const FitBarContainer = (props) => {
   const classes = { ...props };
   return (
     <div>
@@ -12,4 +12,4 @@ const AveragesFit = (props) => {
   );
 };
 
-export default AveragesFit;
+export default FitBarContainer;

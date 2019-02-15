@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Stars from './Stars';
-import AveragesFit from './AveragesFit';
+import Stars from '../util/Stars';
+import FitBarContainer from '../util/FitBarContainer';
 import ReviewListItemFooter from './ReviewListItemFooter';
 
 const ReviewListItem = (props) => {
@@ -34,7 +34,7 @@ const ReviewListItem = (props) => {
           />
         </div>
         <div>
-          <AveragesFit className={classes.review.fit === 0 ? 'hidden' : ''} average={classes.review.fit} />
+          <FitBarContainer className={classes.review.fit === 0 ? 'hidden' : ''} average={classes.review.fit} />
         </div>
       </div>
     </div>
