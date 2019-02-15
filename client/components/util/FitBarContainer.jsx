@@ -4,7 +4,7 @@ import FitBar from './FitBar';
 const FitBarContainer = (props) => {
   const classes = { ...props };
   return (
-    <div>
+    <div id="fit-bar-container">
       <span>Fit</span>
       <FitBar average={classes.average} />
       <p>Runs Small    Runs Large</p>

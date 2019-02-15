@@ -20,7 +20,7 @@ const FitBar = (props) => {
   const classes = { ...props };
   const numbers = Array.from({ length: 100 }, (v, k) => k + 1);
   return (
-    <span>
+    <span id="fit-bar">
       {numbers.map((number, index) => <div key={numbers[index]} className={getClass(number, classes.average)} />)}
     </span>
   );

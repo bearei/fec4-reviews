@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import RatingBar from '../util/RatingBar';
+import RatingBar from './RatingBar';
 
 const getScale = (count, total) => (
   Math.floor((count / total * 100))
@@ -9,7 +9,7 @@ const getScale = (count, total) => (
 const RatingBarContainer = (props) => {
   const classes = { ...props };
   return (
-    <div>
+    <div id="rating-bar-container">
       <span>
         {classes.star}
       </span>

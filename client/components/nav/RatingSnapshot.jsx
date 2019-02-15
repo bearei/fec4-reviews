@@ -1,5 +1,5 @@
 import React from 'react';
-import RatingBarContainer from './RatingBarContainer';
+import RatingBarContainer from '../util/RatingBarContainer';
 
 const STARS = [5, 4, 3, 2, 1];
 

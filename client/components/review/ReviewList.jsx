@@ -5,7 +5,7 @@ import ReviewListItem from './ReviewListItem';
 const ReviewList = (props) => {
   const classes = { ...props };
   return (
-    <div>
+    <div id="review-list">
       <div id="reviews">
         {classes.reviews.map(review => <ReviewListItem key={review._id} review={review} />)}
         <div

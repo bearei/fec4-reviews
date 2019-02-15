@@ -3,7 +3,7 @@ import React from 'react';
 const ReviewListItemFooter = (props) => {
   const classes = { ...props };
   return (
-    <div>
+    <div id="review-list-item-footer">
       <span>Helpful?</span>
       <span className="button-helpful">
         <span>Yes · </span>
