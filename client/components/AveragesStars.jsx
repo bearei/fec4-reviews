@@ -6,7 +6,7 @@ const AveragesStars = (props) => {
   return (
     <span>
       <span>Overall</span>
-      <Stars average={classes.average} />
+      <Stars average={classes.average === NaN ? 0 : classes.average} />
       <span>{classes.average}</span>
     </span>
   );

@@ -18,10 +18,11 @@ const Stars = (props) => {
   const numbers = Array.from({ length: 5 }, (v, k) => k + 1);
   return (
     <span>
-      {numbers.map(number => (
+      {numbers.map((number, index) => (
         <FontAwesomeIcon
           icon={getIcon(number, classes.average)}
           size="lg"
+          key={numbers[index]}
           className={number > Math.ceil(classes.average) ? 'background-star' : 'foreground-star'}
         />
       ))
