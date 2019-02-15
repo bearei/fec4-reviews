@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');
 var db = 'mongodb://127.0.0.1/test_reviews';
 mongoose.connect(db, { useNewUrlParser: true });
-const Review = require('../Review');
-import regeneratorRuntime from "regenerator-runtime";
+const Review = require('../../server/db/Review');
 
 describe('Review model test', () => {
   beforeAll(async () => {
@@ -13,16 +12,16 @@ describe('Review model test', () => {
     await Review.deleteMany({});
   });
 
-  afterAll (async () => {
-    await mongoose.connection.close();
+  afterAll (async (done) => {
+    await mongoose.disconnect(done);
   });
 
-  it('has a module', ()  => {
+  test('has a module', ()  => {
     expect(Review).toBeDefined();
   });
 
   describe('Get review', () => {
-    it('should get a review', async () => {
+    test('should get a review', async () => {
       const review = new Review({
         rating: 4,
         title: 'This title',
@@ -32,11 +31,10 @@ describe('Review model test', () => {
         itemId: 1,
       });
       await review.save();
-
       const foundReview = await Review.findOne({ name: 'Name' });
       const expected = 'Name';
       const actual = foundReview.name;
       expect(actual).toEqual(expected);
     });
   });
-});
+}, 2000);

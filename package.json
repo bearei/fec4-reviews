@@ -11,7 +11,7 @@
     "start": "nodemon server/index.js",
     "build": "webpack --mode production",
     "db:setup": "node server/db/seed.js",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --forceExit"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
@@ -26,8 +26,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.3.1",
     "@material-ui/icons": "^3.0.2",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
@@ -50,7 +52,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "jest": {
-    "setupFilesAfterEnv": [
+    "setupFiles": [
       "<rootDir>/test/enzyme.setup.js"
     ]
   },
