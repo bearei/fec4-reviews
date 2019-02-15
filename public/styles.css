@@ -182,6 +182,11 @@
   line-height: 24px;
 }
 
+.review-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
 img {
   padding: 10px;
 }
