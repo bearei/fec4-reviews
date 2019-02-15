@@ -17,12 +17,12 @@ const SortSelector = (props) => {
       <FontAwesomeIcon className={classes.selector > 0 ? 'hidden' : ''} icon="question-circle" size="sm" />
       <span>
         <div className="dropdown">
-          <button type="button" tabIndex={0} className="dropbtn">
+          <div type="button" className="dropbtn">
           Sort by:
             {` ${LABEL[classes.selector]}`}
-          </button>
+          </div>
           <div className="dropdown-content">
-            {numbers.map(number => <div>{LABEL[number]}</div>)}
+            {numbers.map((number, index) => <div key={numbers[index]}>{LABEL[number]}</div>)}
           </div>
         </div>
       </span>

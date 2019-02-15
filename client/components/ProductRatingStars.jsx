@@ -40,7 +40,7 @@ class ProductRatingStars extends Component {
     this.setState({ hover: star.star });
   }
 
-  handleLeave(star) {
+  handleLeave() {
     this.setState({ hover: 0 });
   }
 
@@ -54,15 +54,15 @@ class ProductRatingStars extends Component {
       <div className="modal-right-el">
         <span id="stars">
           <h1 className="review-header same-line">Product Rating*</h1>
-          {STARS.map(star => (
+          {STARS.map((star, index) => (
             <FontAwesomeIcon
               className={this.getClass(Number(star))}
               color="white"
               onMouseEnter={() => this.handleEnter({ star })}
-              onMouseLeave={() => this.handleLeave({ star })}
+              onMouseLeave={() => this.handleLeave()}
               onClick={() => this.handleClick({ star })}
               prefix="fas"
-              key={classes.key}
+              key={TEXT[index]}
               icon="star"
               size="2x"
               id={star}

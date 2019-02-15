@@ -1,7 +1,6 @@
 import React from 'react';
 
 const getClass = (number, average) => {
-  console.log(average)
   let result = 'fit-border ';
   if (number <= 11 && (average - 1) * 25 <= 11) {
     result = 'fit-slider';
@@ -22,7 +21,7 @@ const AveragesFitBar = (props) => {
   const numbers = Array.from({ length: 100 }, (v, k) => k + 1);
   return (
     <span>
-      {numbers.map(number => <div className={getClass(number, classes.average)} />)}
+      {numbers.map((number, index) => <div key={numbers[index]} className={getClass(number, classes.average)} />)}
     </span>
   );
 };

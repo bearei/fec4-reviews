@@ -26,7 +26,9 @@ class App extends Component {
       itemId: Math.ceil(Math.random() * 100),
       selector: 0,
       filter: 0,
+      showing: 8,
     };
+    this.handleMore = this.handleMore.bind(this);
   }
 
   componentDidMount() {
@@ -59,6 +61,12 @@ class App extends Component {
     this.setState({ filter: 0 });
   }
 
+  handleMore() {
+    this.setState(prevState => (
+      { showing: prevState.showing + 8 }
+    ));
+  }
+
   filteredTotal() {
     const classes = { ...this.state };
     let total = 0;
@@ -75,19 +83,22 @@ class App extends Component {
     return (
       <div>
         <h1>HREI Reviews</h1>
-        <ModalModel />
-        <div className="nav">
+        <ModalModel empty={classes.reviews.length === 0} />
+        <div className={classes.reviews.length === 0 ? 'hidden' : 'nav'}>
           <RatingSnapshot
             setFilter={this.setFilter}
             clearFilter={this.clearFilter}
             reviews={classes.reviews}
           />
           <Averages average={this.getAverageFit()} />
-          <ReviewIndex total={this.filteredTotal()} />
+          <ReviewIndex total={this.filteredTotal()} showing={classes.showing} />
           <SortSelector selector={classes.selector} />
         </div>
-        <hr />
-        <ReviewList reviews={classes.reviews} />
+        <ReviewList
+          reviews={classes.reviews.slice(0, classes.showing)}
+          hasMore={classes.showing < classes.reviews.length}
+          handleMore={this.handleMore}
+        />
       </div>
     );
   }
