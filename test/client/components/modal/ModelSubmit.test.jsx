@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import ModalSubmit from '../../../../client/components/modal/ModalSubmit'
+import ModalSubmit from '../../../../client/components/modal/ModalSubmit';
 
 describe('<ModalSubmit />', () => {
   test('Should have 4 children', () => {
