@@ -16,7 +16,7 @@ const getClass = (number, average) => {
   return result;
 };
 
-const AveragesFitBar = (props) => {
+const FitBar = (props) => {
   const classes = { ...props };
   const numbers = Array.from({ length: 100 }, (v, k) => k + 1);
   return (
@@ -26,4 +26,4 @@ const AveragesFitBar = (props) => {
   );
 };
 
-export default AveragesFitBar;
+export default FitBar;
