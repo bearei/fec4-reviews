@@ -1,6 +1,6 @@
 const getIcon = require('../../../../client/components/util/Stars.jsx').__get__('getIcon');
 
-xdescribe('GetIcon Test', () => {
+describe('GetIcon Test', () => {
   describe('getIcon', () => {
     it('should return star', () => {
       const expected = 'star';

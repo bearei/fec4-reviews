@@ -58,7 +58,7 @@ const sampleReviews = [{
 },
 
 ];
-xdescribe('GetCount Test', () => {
+describe('GetCount Test', () => {
   describe('getCount', () => {
     test('should return a count', () => {
       const expected = 1;

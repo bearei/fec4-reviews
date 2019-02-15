@@ -8,6 +8,6 @@
     "extends": "airbnb",
     "rules": {
         "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-        "no-underscore-dangle": [2, { "allow": "__get__" }]
+        "no-underscore-dangle": [2, { "allow": ["__get__"] }]
     }
 }

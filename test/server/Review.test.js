@@ -37,4 +37,4 @@ describe('Review model test', () => {
       expect(actual).toEqual(expected);
     });
   });
-}, 2000);
+});
