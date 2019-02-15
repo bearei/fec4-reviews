@@ -25,7 +25,7 @@ const ReviewListItem = (props) => {
           <FontAwesomeIcon icon={classes.review.recommend ? 'check-circle' : 'times-circle'} />
           <span>{classes.review.recommend ? 'Yes, ' : 'No, '}</span>
           <span>I </span>
-          <span>{classes.review.recommend ? '' : 'don\'t'}</span>
+          <span>{classes.review.recommend ? '' : 'don\'t '}</span>
           <span>recommend this product.</span>
           <ReviewListItemFooter
             helpful={classes.review.helpful}
