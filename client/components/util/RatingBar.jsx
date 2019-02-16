@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const RatingBar = ({ size }) => (
-  <div id="rating-bar" className="rating-bar" />
+  <span id="rating-bar">
+    <div className="rating-bar">
+      <div className="rating-bar-top" style={{ width: `${size}%` }} />
+      <div className="rating-bar-bottom" />
+    </div>
+  </span>
 );
 
 RatingBar.propTypes = {
