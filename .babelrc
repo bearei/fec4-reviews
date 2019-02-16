@@ -1,4 +1,4 @@
 {
   "presets": ["@babel/env", "@babel/react"],
-  "plugins": ["babel-plugin-rewire"]
+  "plugins": ["@babel/transform-runtime", "babel-plugin-rewire"]
 }
