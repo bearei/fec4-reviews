@@ -11,8 +11,8 @@ const RatingSnapshot = (props) => {
   const classes = { ...props };
   return (
     <div>
-      <h1>Rating Snapshot</h1>
-      <h2>Select a row below to filter</h2>
+      <h3 className="content-title">Rating Snapshot</h3>
+      <span className="hist-title">Select a row below to filter</span>
       {STARS.map((star, index) => (
         <RatingBarContainer
           setFilter={() => classes.setFilter(star)}

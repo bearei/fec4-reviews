@@ -222,6 +222,23 @@ img {
   float: right;
 }
 
+.content-title {
+  padding: 0 20px 0 12px;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+.hist-title {
+  padding: 5px;
+  margin: 5px;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+}
 
 .button-write:hover {
   background-color: rgb(43, 69, 92);
