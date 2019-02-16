@@ -18,6 +18,15 @@ library.add(faCheckCircle);
 library.add(faQuestionCircle);
 library.add(faStarHalf);
 
+const SORT = {
+  // eslint-disable-next-line no-underscore-dangle
+  0: (a, b) => a._id - b._id,
+  1: (a, b) => a.helpful - b.helpful,
+  2: (a, b) => a.rating - b.rating,
+  3: (a, b) => b.rating - a.rating,
+  4: (a, b) => b.createdAt - a.createdAt,
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +39,7 @@ class App extends Component {
     };
     this.handleMore = this.handleMore.bind(this);
     this.setFilter = this.setFilter.bind(this);
+    this.changeSort = this.changeSort.bind(this);
   }
 
   componentDidMount() {
@@ -88,6 +98,12 @@ class App extends Component {
     return total;
   }
 
+  changeSort(type) {
+    this.setState(prevState => (
+      { selector: type, reviews: prevState.reviews.sort(SORT[type]) }
+    ));
+  }
+
   render() {
     const classes = { ...this.state };
     return (
@@ -102,7 +118,7 @@ class App extends Component {
           />
           <Averages average={this.getAverageFit()} />
           <ReviewIndex total={this.filteredTotal()} showing={classes.showing} />
-          <SortSelector selector={classes.selector} />
+          <SortSelector changeSort={this.changeSort} selector={classes.selector} />
         </div>
         <ReviewList
           reviews={this.filter(classes.reviews).slice(0, classes.showing)}

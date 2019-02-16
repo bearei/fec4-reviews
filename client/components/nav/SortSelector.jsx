@@ -22,7 +22,12 @@ const SortSelector = (props) => {
             {` ${LABEL[classes.selector]}`}
           </div>
           <div className="dropdown-content">
-            {numbers.map((number, index) => <div key={numbers[index]}>{LABEL[number]}</div>)}
+            {numbers.map((number, index) => (
+              <div key={numbers[index]} tabIndex={0} role="button" onKeyPress={() => {}} onClick={() => classes.changeSort(number)}>
+                {LABEL[number]}
+              </div>
+            ))
+          }
           </div>
         </div>
       </span>
