@@ -11,7 +11,7 @@ const RatingBarContainer = (props) => {
   return (
     <div id="rating-bar-container" role="button" tabIndex={0} onKeyPress={() => {}} onClick={classes.setFilter}>
       <span className="rating-bar-num">
-        {classes.star}
+        {classes.star} ★ 
       </span>
       <FontAwesomeIcon icon="star" size="xs" />
       <span className="rating-bar">
