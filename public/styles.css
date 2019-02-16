@@ -229,6 +229,7 @@ img {
   font-size: 16px;
   line-height: 28px;
   font-weight: 400;
+  font-stretch: 100%;
 }
 
 .hist-title {
@@ -359,4 +360,12 @@ img {
 .button-load-more {
   width: 50%;
   margin: 0 auto;
+}
+
+.rating-bar-num {
+  padding: 5px 2px 3px 5px;
+}
+
+.rating-bar {
+  padding: 5px 10px 3px 10px;
 }

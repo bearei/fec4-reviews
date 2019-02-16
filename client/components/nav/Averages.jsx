@@ -6,7 +6,7 @@ const Averages = (props) => {
   const classes = { ...props };
   return (
     <div id="averages">
-      <h1>Average Customer Rating</h1>
+      <h3 className="content-title">Average Customer Rating</h3>
       <AveragesStars average={Number.isNaN(classes.average) ? 0 : classes.average} />
       <FitBarContainer average={classes.average} />
     </div>

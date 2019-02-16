@@ -9,12 +9,12 @@ const getScale = (count, total) => (
 const RatingBarContainer = (props) => {
   const classes = { ...props };
   return (
-    <div id="rating-bar-container">
-      <span>
+    <div id="rating-bar-container" role="button" tabIndex={0} onKeyPress={() => {}} onClick={classes.setFilter}>
+      <span className="rating-bar-num">
         {classes.star}
       </span>
-      <FontAwesomeIcon icon="star" size="sm" />
-      <span role="button" tabIndex={0} onKeyPress={() => {}} onClick={classes.setFilter}>
+      <FontAwesomeIcon icon="star" size="xs" />
+      <span className="rating-bar">
         <RatingBar size={getScale(classes.count, classes.total)} />
       </span>
       <span>
