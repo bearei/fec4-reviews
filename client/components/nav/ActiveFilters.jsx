@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ActiveFilters = ({ star, clear }) => (
   <div id="active-filters" className={star > 0 ? '' : 'hidden'}>
-    <div>Active Filters</div>
+    <div id="filters-title">Active Filters</div>
     <div onClick={clear} role="button" tabIndex={0} onKeyPress={() => {}} className="button-filter">
       {star > 1 ? `${star} stars ` : '1 star '}
       <FontAwesomeIcon icon="times-circle" color="white" />

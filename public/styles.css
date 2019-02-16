@@ -183,7 +183,6 @@ img {
   margin: 0;
   padding: 8px 16px 8px 16px;
   text-align: center;
-  width: 131.438px;
 }
 .button-clear-filter {
   background-color: #ededed;
@@ -191,6 +190,7 @@ img {
   border-style: solid;
   border-width: 1px;
   color: black;
+  margin-left: 5px;
 }
 .f-right {
   float: right;
@@ -360,4 +360,11 @@ img {
   padding: 0;
   display: block;
   z-index: -1;
+}
+#active-filters {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+#filters-title {
+  margin-bottom: 5px;
 }
