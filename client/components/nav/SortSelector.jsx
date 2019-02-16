@@ -13,23 +13,25 @@ const numbers = Array.from({ length: 5 }, (v, k) => k);
 
 const SortSelector = ({ selector, changeSort }) => (
   <div id="sort-selector">
-    <FontAwesomeIcon className={selector > 0 ? 'hidden' : ''} icon="question-circle" size="sm" />
-    <span>
-      <div className="dropdown">
-        <div type="button" className="dropbtn">
-        Sort by:
-          {` ${LABEL[selector]}`}
+    <div className="f-right">
+      <FontAwesomeIcon className={selector > 0 ? 'hidden' : ''} icon="question-circle" size="sm" />
+      <span>
+        <div className="dropdown">
+          <div type="button" className="dropbtn">
+          Sort by:
+            {` ${LABEL[selector]} ▼`}
+          </div>
+          <div className="dropdown-content f-right">
+            {numbers.map((number, index) => (
+              <div key={numbers[index]} tabIndex={0} role="button" onKeyPress={() => {}} onClick={() => changeSort(number)}>
+                {LABEL[number]}
+              </div>
+            ))
+          }
+          </div>
         </div>
-        <div className="dropdown-content">
-          {numbers.map((number, index) => (
-            <div key={numbers[index]} tabIndex={0} role="button" onKeyPress={() => {}} onClick={() => changeSort(number)}>
-              {LABEL[number]}
-            </div>
-          ))
-        }
-        </div>
-      </div>
-    </span>
+      </span>
+    </div>
   </div>
 );
 
