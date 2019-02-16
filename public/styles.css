@@ -383,5 +383,11 @@ img {
 .fit-slider {
   width: 10px;
   height: 12px;
-  background-color: #bd5b0d;
+  top: 3px;
+  background-color: rgb(189, 91, 13);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3) 0px, rgba(255, 255, 255, 0) 100%);
+  position: absolute;
+}
+#fit-bar {
+  position: relative;
 }

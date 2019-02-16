@@ -13,7 +13,7 @@ const Averages = ({ average }) => (
     </div>
     <div className="fit-body pad-top">
       <div className="content-title inline-top">Fit</div>
-      <FitBarContainer average={average} />
+      <FitBarContainer average={Number.isNaN(average) ? 0 : average} />
     </div>
   </div>
 );

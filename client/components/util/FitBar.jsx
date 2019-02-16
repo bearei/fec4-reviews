@@ -27,13 +27,14 @@ const numbers = Array.from({ length: 100 }, (v, k) => k + 1);
 // ))
 // }
 const FitBar = ({ average }) => (
-  <span id="fit-bar">
+  <div id="fit-bar">
     <div className="fit-bar-block" />
     <div className="fit-bar-block" />
     <div className="divider" />
     <div className="fit-bar-block" />
     <div className="fit-bar-block" />
-  </span>
+    <div className="fit-slider" style={{ left: `${average * 20}%` }} />
+  </div>
 );
 
 FitBar.propTypes = {
