@@ -11,6 +11,7 @@ import RatingSnapshot from './components/nav/RatingSnapshot';
 import Averages from './components/nav/Averages';
 import ReviewIndex from './components/nav/ReviewIndex';
 import SortSelector from './components/nav/SortSelector';
+import _ from 'underscore';
 
 library.add(faTimesCircle);
 library.add(faStar);
@@ -19,13 +20,12 @@ library.add(faQuestionCircle);
 library.add(faStarHalf);
 
 const SORT = {
-  // eslint-disable-next-line no-underscore-dangle
-  0: (a, b) => a._id - b._id,
-  1: (a, b) => a.helpful - b.helpful,
-  2: (a, b) => a.rating - b.rating,
-  3: (a, b) => b.rating - a.rating,
+  0: (a, b) => b.text.length - a.text.length,
+  1: (a, b) => b.helpful - a.helpful,
+  2: (a, b) => b.rating - a.rating,
+  3: (a, b) => a.rating - b.rating,
   4: (a, b) => b.createdAt - a.createdAt,
-}
+};
 
 class App extends Component {
   constructor(props) {
@@ -51,6 +51,7 @@ class App extends Component {
       success: (results) => {
         this.setState({
           reviews: results,
+          indexes: Array.from({ length: results.length }, (v, k) => k + 1),
         });
       },
       error: err => console.log(err),
@@ -82,7 +83,7 @@ class App extends Component {
     const classes = { ...this.state };
     let result = classes.reviews;
     if (classes.filter > 0) {
-      result = classes.reviews.filter(review => review.rating === classes.filter)
+      result = classes.reviews.filter(review => review.rating === classes.filter);
     }
     return result;
   }
@@ -99,9 +100,9 @@ class App extends Component {
   }
 
   changeSort(type) {
-    this.setState(prevState => (
-      { selector: type, reviews: prevState.reviews.sort(SORT[type]) }
-    ));
+    const classes = { ...this.state };
+    classes.reviews.sort(SORT[type]);
+    this.setState({ selector: type, showing: 8 });
   }
 
   render() {
