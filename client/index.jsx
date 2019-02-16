@@ -29,6 +29,7 @@ class App extends Component {
       showing: 8,
     };
     this.handleMore = this.handleMore.bind(this);
+    this.setFilter = this.setFilter.bind(this);
   }
 
   componentDidMount() {
@@ -54,7 +55,7 @@ class App extends Component {
   }
 
   setFilter(id) {
-    this.setState({ filter: id });
+    this.setState({ filter: id, showing: 8 });
   }
 
   clearFilter() {
@@ -65,6 +66,15 @@ class App extends Component {
     this.setState(prevState => (
       { showing: prevState.showing + 8 }
     ));
+  }
+
+  filter() {
+    const classes = { ...this.state };
+    let result = classes.reviews;
+    if (classes.filter > 0) {
+      result = classes.reviews.filter(review => review.rating === classes.filter)
+    }
+    return result;
   }
 
   filteredTotal() {
@@ -95,8 +105,8 @@ class App extends Component {
           <SortSelector selector={classes.selector} />
         </div>
         <ReviewList
-          reviews={classes.reviews.slice(0, classes.showing)}
-          hasMore={classes.showing < classes.reviews.length}
+          reviews={this.filter(classes.reviews).slice(0, classes.showing)}
+          hasMore={classes.showing < this.filter(classes.reviews).length}
           handleMore={this.handleMore}
         />
       </div>

@@ -15,11 +15,11 @@ const RatingSnapshot = (props) => {
       <h2>Select a row below to filter</h2>
       {STARS.map((star, index) => (
         <RatingBarContainer
+          setFilter={() => classes.setFilter(star)}
           star={star}
           key={STARS[index]}
           count={getCount(star, classes.reviews)}
           total={classes.reviews.length}
-          onClick={() => classes.setFilter(star)}
         />
       ))
       }

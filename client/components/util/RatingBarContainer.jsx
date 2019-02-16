@@ -14,7 +14,7 @@ const RatingBarContainer = (props) => {
         {classes.star}
       </span>
       <FontAwesomeIcon icon="star" size="sm" />
-      <span>
+      <span role="button" tabIndex={0} onKeyPress={() => {}} onClick={classes.setFilter}>
         <RatingBar size={getScale(classes.count, classes.total)} />
       </span>
       <span>
