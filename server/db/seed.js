@@ -1004,7 +1004,7 @@ const sampleReviews = [{"rating":0,"title":"ac enim in tempor","text":"nulla sus
 
 const insertSampleReviews = function() {
   Review.create(sampleReviews)
-    .then(() => db.disconnect());
+    .then(() => db.close());
 };
 
 insertSampleReviews();
