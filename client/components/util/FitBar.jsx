@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const getClass = (number, average) => {
   let result = 'fit-border ';
@@ -16,20 +17,26 @@ const getClass = (number, average) => {
   return result;
 };
 
-const FitBar = (props) => {
-  const classes = { ...props };
-  const numbers = Array.from({ length: 100 }, (v, k) => k + 1);
-  return (
-    <span id="fit-bar">
-      {numbers.map((number, index) => (
-        <div
-          key={numbers[index]}
-          className={getClass(number, classes.average)}
-        />
-      ))
-      }
-    </span>
-  );
+const numbers = Array.from({ length: 100 }, (v, k) => k + 1);
+
+const FitBar = ({ average }) => (
+  <span id="fit-bar">
+    {numbers.map((number, index) => (
+      <div
+        key={numbers[index]}
+        className={getClass(number, average)}
+      />
+    ))
+    }
+  </span>
+);
+
+FitBar.propTypes = {
+  average: PropTypes.number,
+};
+
+FitBar.defaultProps = {
+  average: 0,
 };
 
 export default FitBar;

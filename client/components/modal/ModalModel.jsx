@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import Stars from '../util/Stars';
 import ProductInfo from './ProductInfo';
 import ModalHeader from './ModalHeader';
@@ -18,33 +19,33 @@ class ModalModel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false,
+      visible: false,
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
 
   handleOpen() {
-    this.setState({ show: true });
+    this.setState({ visible: true });
   }
 
   handleClose() {
-    this.setState({ show: false });
+    this.setState({ visible: false });
   }
 
   render() {
-    const visible = { ...this.state };
-    const classes = { ...this.props };
+    const { visible } = this.state;
+    const { empty } = this.props;
     return (
       <div>
-        <div className={classes.empty ? '' : 'hidden'}>
+        <div className={empty ? '' : 'hidden'}>
           <Stars average={0} />
           <div role="button" tabIndex={0} onKeyPress={() => {}} onClick={this.handleOpen}>Be the first to review this product</div>
         </div>
-        <div className={classes.empty && !(classes.empty && visible.show) ? 'hidden' : ''}>
-          <div role="button" tabIndex={0} className={classes.empty ? 'hidden' : 'button-write f-right'} onKeyPress={() => {}} onClick={this.handleOpen}>Write Post</div>
-          <div className={visible.show ? 'modal-background' : 'hidden'} />
-          <div className={visible.show ? 'modal' : 'hidden'}>
+        <div className={empty && !(empty && visible) ? 'hidden' : ''}>
+          <div role="button" tabIndex={0} className={empty ? 'hidden' : 'button-write f-right'} onKeyPress={() => {}} onClick={this.handleOpen}>Write Post</div>
+          <div className={visible ? 'modal-background' : 'hidden'} />
+          <div className={visible ? 'modal' : 'hidden'}>
             <div id="modal-left">
               <ProductInfo />
             </div>
@@ -68,5 +69,13 @@ class ModalModel extends Component {
     );
   }
 }
+
+ModalModel.propTypes = {
+  empty: PropTypes.bool,
+};
+
+ModalModel.defaultProps = {
+  empty: true,
+};
 
 export default ModalModel;

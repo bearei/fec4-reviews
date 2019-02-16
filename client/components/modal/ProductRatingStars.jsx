@@ -24,14 +24,14 @@ class ProductRatingStars extends Component {
   }
 
   getClass(star) {
-    const classes = { ...this.state };
+    const { selected, hover } = this.state;
     let result = 'star';
-    if (classes.hover > 0) {
-      if (classes.hover >= star) {
-        result = `star-${TEXT[classes.hover]}`;
+    if (hover > 0) {
+      if (hover >= star) {
+        result = `star-${TEXT[hover]}`;
       }
-    } else if (classes.selected >= star) {
-      result = `star-${TEXT[classes.selected]}`;
+    } else if (selected >= star) {
+      result = `star-${TEXT[selected]}`;
     }
     return result;
   }
@@ -44,12 +44,12 @@ class ProductRatingStars extends Component {
     this.setState({ hover: 0 });
   }
 
-  handleClick(star) {
-    this.setState({ selected: star.star });
+  handleClick({ star }) {
+    this.setState({ selected: star });
   }
 
   render() {
-    const classes = { ...this.state };
+    const { selected, hover } = this.state;
     return (
       <div className="modal-right-el">
         <span id="stars">
@@ -69,8 +69,8 @@ class ProductRatingStars extends Component {
             />
           ))
             }
-          <span id="rating-text">{classes.hover > 0 ? TEXT[classes.hover] : TEXT[classes.selected]}</span>
-          <FontAwesomeIcon className={classes.selected > 0 ? 'check-complete' : 'check-default'} icon="check-circle" size="lg" />
+          <span id="rating-text">{hover > 0 ? TEXT[hover] : TEXT[selected]}</span>
+          <FontAwesomeIcon className={selected > 0 ? 'check-complete' : 'check-default'} icon="check-circle" size="lg" />
         </span>
       </div>
     );

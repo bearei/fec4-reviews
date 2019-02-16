@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RatingBar from './RatingBar';
 
@@ -6,22 +7,33 @@ const getScale = (count, total) => (
   Math.floor((count / total * 100))
 );
 
-const RatingBarContainer = (props) => {
-  const classes = { ...props };
-  return (
-    <div id="rating-bar-container" role="button" tabIndex={0} onKeyPress={() => {}} onClick={classes.setFilter}>
-      <span className="rating-bar-num">
-        {classes.star} ★ 
-      </span>
-      <FontAwesomeIcon icon="star" size="xs" />
-      <span className="rating-bar">
-        <RatingBar size={getScale(classes.count, classes.total)} />
-      </span>
-      <span>
-        {classes.count}
-      </span>
-    </div>
-  );
+const RatingBarContainer = ({ setFilter, star, count, total }) => (
+  <div id="rating-bar-container" role="button" tabIndex={0} onKeyPress={() => {}} onClick={setFilter}>
+    <span className="rating-bar-num">
+      {star} ★ 
+    </span>
+    <FontAwesomeIcon icon="star" size="xs" />
+    <span className="rating-bar">
+      <RatingBar size={getScale(count, total)} />
+    </span>
+    <span>
+      {count}
+    </span>
+  </div>
+);
+
+RatingBarContainer.propTypes = {
+  setFilter: PropTypes.func,
+  star: PropTypes.number,
+  count: PropTypes.number,
+  total: PropTypes.number,
+};
+
+RatingBarContainer.defaultProps = {
+  setFilter: () => {},
+  star: 0,
+  count: 0,
+  total: 0,
 };
 
 export default RatingBarContainer;

@@ -1,16 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ReviewIndex = (props) => {
-  const classes = { ...props };
-  return (
-    <div id="review-index">
-      <span> 1 of </span>
-      {classes.showing < classes.total ? classes.showing : classes.total}
-      <span> out of </span>
-      {classes.total}
-      <span> Reviews</span>
-    </div>
-  );
+const ReviewIndex = ({ showing, total }) => (
+  <div id="review-index">
+    <span> 1 of </span>
+    {showing < total ? showing : total}
+    <span> out of </span>
+    {total}
+    <span> Reviews</span>
+  </div>
+);
+
+ReviewIndex.propTypes = {
+  showing: PropTypes.number,
+  total: PropTypes.number,
+};
+
+ReviewIndex.defaultProps = {
+  showing: 0,
+  total: 0,
 };
 
 export default ReviewIndex;
