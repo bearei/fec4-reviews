@@ -5,7 +5,6 @@ const RatingBar = ({ size }) => (
   <span id="rating-bar">
     <div className="rating-bar">
       <div className="rating-bar-top" style={{ width: `${size}%` }} />
-      <div className="rating-bar-bottom" />
     </div>
   </span>
 );
