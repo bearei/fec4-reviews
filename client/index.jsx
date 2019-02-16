@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import {
-  faTimesCircle, faCheckCircle, faStar, faQuestionCircle, faStarHalf,
+  faTimesCircle, faCheckCircle, faStar, faQuestionCircle, faStarHalfAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import ReviewList from './components/review/ReviewList';
@@ -17,7 +17,7 @@ library.add(faTimesCircle);
 library.add(faStar);
 library.add(faCheckCircle);
 library.add(faQuestionCircle);
-library.add(faStarHalf);
+library.add(faStarHalfAlt);
 
 const SORT = {
   0: (a, b) => b.text.length - a.text.length,
