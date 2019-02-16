@@ -7,7 +7,9 @@ import FitBarContainer from '../util/FitBarContainer';
 import ReviewListItemFooter from './ReviewListItemFooter';
 
 const ReviewListItem = ({
-  rating, name, createdAt, title, text, recommend, helpful, notHelpful, flag, fit,
+  review: {
+    rating, name, createdAt, title, text, recommend, helpful, notHelpful, flag, fit,
+  },
 }) => (
   <div>
     <hr />
@@ -42,29 +44,11 @@ const ReviewListItem = ({
 );
 
 ReviewListItem.propTypes = {
-  rating: PropTypes.number,
-  name: PropTypes.string,
-  createdAt: PropTypes.instanceOf(Date),
-  title: PropTypes.string,
-  text: PropTypes.string,
-  recommend: PropTypes.bool,
-  helpful: PropTypes.number,
-  notHelpful: PropTypes.number,
-  flag: PropTypes.bool,
-  fit: PropTypes.number,
+  review: PropTypes.instanceOf(Object),
 };
 
 ReviewListItem.defaultProps = {
-  rating: 0,
-  name: '',
-  createdAt: new Date(),
-  title: '',
-  text: '',
-  recommend: false,
-  helpful: 0,
-  notHelpful: 0,
-  flag: false,
-  fit: 0,
+  review: {},
 };
 
 export default ReviewListItem;
