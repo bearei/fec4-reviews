@@ -19,15 +19,20 @@ const getClass = (number, average) => {
 
 const numbers = Array.from({ length: 100 }, (v, k) => k + 1);
 
+// {numbers.map((number, index) => (
+//   <div
+//     key={numbers[index]}
+//     className={getClass(number, average)}
+//   />
+// ))
+// }
 const FitBar = ({ average }) => (
   <span id="fit-bar">
-    {numbers.map((number, index) => (
-      <div
-        key={numbers[index]}
-        className={getClass(number, average)}
-      />
-    ))
-    }
+    <div className="fit-bar-block" />
+    <div className="fit-bar-block" />
+    <div className="divider" />
+    <div className="fit-bar-block" />
+    <div className="fit-bar-block" />
   </span>
 );
 

@@ -4,9 +4,9 @@ import FitBar from './FitBar';
 
 const FitBarContainer = ({ average }) => (
   <div id="fit-bar-container">
-    <span>Fit</span>
     <FitBar average={average} />
-    <p>Runs Small    Runs Large</p>
+    <span className="fit-bar-label">Runs Small</span>
+    <span className="fit-bar-label f-right">Runs Large</span>
   </div>
 );
 
