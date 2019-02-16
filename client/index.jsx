@@ -11,7 +11,7 @@ import RatingSnapshot from './components/nav/RatingSnapshot';
 import Averages from './components/nav/Averages';
 import ReviewIndex from './components/nav/ReviewIndex';
 import SortSelector from './components/nav/SortSelector';
-import _ from 'underscore';
+import ActiveFilters from './components/nav/ActiveFilters';
 
 library.add(faTimesCircle);
 library.add(faStar);
@@ -39,6 +39,7 @@ class App extends Component {
     };
     this.handleMore = this.handleMore.bind(this);
     this.setFilter = this.setFilter.bind(this);
+    this.clearFilter = this.clearFilter.bind(this);
     this.changeSort = this.changeSort.bind(this);
   }
 
@@ -120,6 +121,7 @@ class App extends Component {
           <Averages average={this.getAverageFit()} />
           <ReviewIndex total={this.filteredTotal()} showing={classes.showing} />
           <SortSelector changeSort={this.changeSort} selector={classes.selector} />
+          <ActiveFilters star={classes.filter} clear={this.clearFilter} />
         </div>
         <ReviewList
           reviews={this.filter(classes.reviews).slice(0, classes.showing)}

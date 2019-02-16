@@ -191,7 +191,7 @@ img {
   padding: 10px;
 }
 
-.button-write {
+.button-write, .button-filter {
   float: right;
   display: block;
   clear: both;
@@ -305,7 +305,7 @@ img {
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.button-helpful {
+.button-helpful, .button-clear-filter {
   background-color: rgb(237, 237, 237);
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0) 100%);
   border-color: rgb(204, 204, 204);
