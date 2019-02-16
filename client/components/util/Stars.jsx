@@ -1,19 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
-
-const getIcon = (number, average) => {
-  let result;
-  if (number <= Math.floor(average)) {
-    result = 'star';
-  } else if (number <= Math.ceil(average)) {
-    result = faStarHalfAlt;
-  } else {
-    result = 'star';
-  }
-  return result;
-};
 
 const numbers = Array.from({ length: 5 }, (v, k) => k + 1);
 
