@@ -42,7 +42,7 @@ class ModalModel extends Component {
           <div role="button" tabIndex={0} onKeyPress={() => {}} onClick={this.handleOpen}>Be the first to review this product</div>
         </div>
         <div className={classes.empty && !(classes.empty && visible.show) ? 'hidden' : ''}>
-          <div role="button" tabIndex={0} className={classes.empty ? 'hidden' : 'button-write'} onKeyPress={() => {}} onClick={this.handleOpen}>Write Post</div>
+          <div role="button" tabIndex={0} className={classes.empty ? 'hidden' : 'button-write f-right'} onKeyPress={() => {}} onClick={this.handleOpen}>Write Post</div>
           <div className={visible.show ? 'modal-background' : 'hidden'} />
           <div className={visible.show ? 'modal' : 'hidden'}>
             <div id="modal-left">
