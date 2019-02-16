@@ -30,7 +30,7 @@ const ReviewListItem = (props) => {
           <ReviewListItemFooter
             helpful={classes.review.helpful}
             not={classes.review.notHelpful}
-            flag={classes.review.inappropriate}
+            flag={classes.review.flag}
           />
         </div>
         <div>
