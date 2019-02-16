@@ -245,21 +245,6 @@ img {
   background-color: rgb(43, 69, 92);
 }
 
-.rating-empty {
-  background-color: rgb(197, 197, 197);
-  width: 1.2px;
-  height: 10px;
-  display: inline-block;
-
-}
-
-.rating-full {
-  background-color: rgb(189, 91, 13);
-  width: 1.2px;
-  height: 10px;
-  display: inline-block;
-}
-
 .background-star {
   color: rgb(197, 197, 197);
 }
@@ -367,5 +352,23 @@ img {
 }
 
 .rating-bar {
-  padding: 5px 10px 3px 10px;
+  width:50%;
+  min-width: 150px;
+  height:10px;
+  border-radius: 2px;
+  position:relative;
+  display: inline-block;
+  background-color: rgb(197, 197, 197);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3) 0px, rgba(255, 255, 255, 0) 100%);
+  margin: 5px 10px 3px 10px;
+}
+.rating-bar:after {
+  content:'\A';
+  position:absolute;
+  background-color: rgb(189, 91, 13);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3) 0px, rgba(255, 255, 255, 0) 100%);
+  top:0; 
+  bottom:0;
+  left:0; 
+  width:70%;
 }

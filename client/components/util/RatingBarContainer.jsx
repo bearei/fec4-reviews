@@ -14,9 +14,7 @@ const RatingBarContainer = ({
       <span className="rating-bar-num">
         {`${star} ★ `}
       </span>
-      <span className="rating-bar">
-        <RatingBar size={getScale(count, total)} />
-      </span>
+      <RatingBar size={getScale(count, total)} />
       <span>
         {count}
       </span>
