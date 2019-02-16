@@ -3,7 +3,6 @@
   grid-template-columns: 1fr 1fr;
   clear: both;
 }
-
 .modal {
   position: absolute;
   width: 80%;
@@ -15,7 +14,6 @@
   overflow-y: visible;
   grid-template-columns: 1fr 3fr;
 }
-
 .modal-background {
   position: fixed;
   top: 0;
@@ -24,108 +22,90 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 }
-
 .cancel {
-  color: rgb(118, 118, 118);
+  color: #767676;
   float: right;
   margin-top: 5px;
   margin-right: 5px;
 }
-
 .cancel:hover {
-  color: rgb(80, 80, 80);
+  color: #505050;
 }
-
 .star {
-  background-color: rgb(118, 118, 118);
+  background-color: #767676;
 }
-
 #stars {
   padding-left: 20px;
 }
-
 #rating-text {
   padding-left: 20px;
 }
-
 .check-default {
   float: right;
   padding-right: 15px;
-  color: rgb(118, 118, 118);
+  color: #767676;
 }
-
-.check-hidden, .hidden {
+.check-hidden,
+.hidden {
   display: none;
 }
-
 .check-complete {
   float: right;
   padding-right: 15px;
-  color: rgb(51, 139, 43);
+  color: #338b2b;
 }
-
 .star-Poor {
-  background-color: rgb(180, 48, 52);
+  background-color: #b43034;
 }
-
 .star-Fair {
-  background-color: rgb(222, 149, 0);
+  background-color: #de9500;
 }
-
 .star-Average {
-  background-color: rgb(236, 219, 0);
+  background-color: #ecdb00;
 }
-
 .star-Good {
-  background-color: rgb(138, 193, 0);
+  background-color: #8ac100;
 }
-
 .star-Excellent {
-  background-color: rgb(51, 139, 43);
+  background-color: #338b2b;
 }
-
 .same-line {
   display: inline;
 }
-
 #modal-left {
-  background-color: rgb(229, 229, 229);
+  background-color: #e5e5e5;
   height: auto;
 }
-
 #modal-right {
   height: auto;
 }
-
 .modal-right-el {
   background-color: white;
   border-bottom: 2px;
-  border-color: rgb(118, 118, 118);
+  border-color: #767676;
   height: auto;
   display: block;
 }
-
 .modal-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-
 .button-recommend {
-  background-color:rgb(237, 237, 237);
+  background-color: #ededed;
   border-width: 1px;
   border-style: solid;
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0) 100%);
-  border-bottom-color: rgb(170, 170, 170);
+  border-bottom-color: #aaaaaa;
   border-bottom-left-radius: 4px;
-  border-left-color: rgb(208, 208, 208);
-  border-right-color: rgb(204, 204, 204);
-  border-top-color: rgb(204, 204, 204);
+  border-left-color: #d0d0d0;
+  border-right-color: #cccccc;
+  border-top-color: #cccccc;
   border-top-left-radius: 4px;
-  box-shadow: rgb(255, 255, 255) 0px 1px 0px 0px, rgb(255, 255, 255) 0px 1px 0px 0px inset;
+  box-shadow: #ffffff 0px 1px 0px 0px, #ffffff 0px 1px 0px 0px inset;
   box-sizing: content-box;
   clear: both;
   clip: auto;
-  color: rgb(102, 102, 102);
+  color: #666666;
   cursor: pointer;
   display: inline-block;
   font-family: Arial, Helvetica, sans-serif;
@@ -137,23 +117,20 @@
   padding: 8px 0px 8px 0px;
   position: relative;
   text-align: center;
-  text-decoration-color:rgb(102, 102, 102);
+  text-decoration-color: #666666;
   transition-duration: 0.2s;
   width: 68.4062px;
   z-index: auto;
 }
-
 .button-recommend:hover {
-  color: rgb(80, 80, 80);
+  color: #505050;
 }
-
 .input-field {
   padding: 0 0 0 10px;
   margin: 0 0 10px 12px;
   width: 90%;
   height: auto;
 }
-
 .review-title {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -161,9 +138,8 @@
   font-family: Sentinel, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 21px;
   font-weight: 400px;
-  line-height: 30px  
+  line-height: 30px;
 }
-
 .required {
   font-family: Arial, Helvetica, sans-serif;
   padding: 0px 20px 0px 20px;
@@ -172,7 +148,6 @@
   font-weight: 400px;
   font-size: 11.7px;
 }
-
 .review-header {
   margin: 0px;
   padding: 10px 12px 10px ;
@@ -181,24 +156,23 @@
   font-weight: 700px;
   line-height: 24px;
 }
-
 .review-body {
   display: grid;
   grid-template-columns: 2fr 1fr;
 }
-
 img {
   padding: 10px;
 }
-
-.button-write, .button-filter, .button-clear-filter {
+.button-write,
+.button-filter,
+.button-clear-filter {
   display: inline-block;
   clear: both;
-  background-color:rgb(66, 108, 144);
+  background-color: #426c90;
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0) 100%);
   box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset;
   box-sizing: border-box;
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -209,19 +183,16 @@ img {
   text-align: center;
   width: 131.438px;
 }
-
-.button-clear-filter{
-  background-color: rgb(237, 237, 237);
-  border-color: rgb(204, 204, 204);
+.button-clear-filter {
+  background-color: #ededed;
+  border-color: #cccccc;
   border-style: solid;
   border-width: 1px;
   color: black;
 }
-
 .f-right {
   float: right;
 }
-
 .content-title {
   padding: 0 20px 0 12px;
   margin: 0;
@@ -231,7 +202,6 @@ img {
   font-weight: 400;
   font-stretch: 100%;
 }
-
 .hist-title {
   padding: 5px;
   margin: 5px;
@@ -240,95 +210,78 @@ img {
   line-height: 28px;
   font-weight: 400;
 }
-
 .button-write:hover {
-  background-color: rgb(43, 69, 92);
+  background-color: #2b455c;
 }
-
 .background-star {
-  color: rgb(197, 197, 197);
+  color: #c5c5c5;
 }
-
 .foreground-star {
-  color: rgb(189, 91, 13);
+  color: #bd5b0d;
 }
-
 .fit-border {
   border-top: 1px solid;
   border-bottom: 1px solid;
   display: inline-block;
   width: 1.2px;
   height: 10px;
-  border-color: rgb(197, 197, 197);
+  border-color: #c5c5c5;
 }
-
 .fit-border-left {
   border-left: 1px solid;
 }
-
 .fit-border-right {
   border-right: 1px solid;
 }
-
 .fit-border-left-mid {
   border-left: 2px solid;
 }
-
 .fit-border-right-mid {
   border-right: 2px solid;
 }
-
 .fit-slider {
   display: inline-block;
   width: 1.2px;
   height: 12px;
-  background-color: rgb(189, 91, 13);
+  background-color: #bd5b0d;
 }
-
 .dropbtn {
   background: white;
   padding: 16px;
   font-size: 16px;
   border: none;
 }
-
 .dropdown {
   display: inline-block;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: white;
   min-width: 160px;
-  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.1);
-  
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
-
 .dropdown-content div {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
-
 .dropdown-content div:hover {
-  background-color: rgb(43, 69, 92);
+  background-color: #2b455c;
   color: white;
 }
-
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 .button-helpful {
-  background-color: rgb(237, 237, 237);
+  background-color: #ededed;
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0) 100%);
-  border-color: rgb(204, 204, 204);
+  border-color: #cccccc;
   border-style: solid;
   border-width: 1px;
   box-sizing: border-box;
-  color: rgb(0, 0, 0);
+  color: #000000;
   font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -341,38 +294,61 @@ img {
 .button-helpful:hover {
   box-shadow: inset 0 0 0 50px rgba(0, 0, 0, 0.1);
 }
-
 .button-load-more {
   width: 50%;
   margin: 0 auto;
 }
-
 .rating-bar-num {
   padding: 5px 2px 3px 5px;
 }
-
 .rating-bar {
-  width:50%;
+  width: 50%;
   min-width: 150px;
-  height:10px;
+  height: 10px;
   border-radius: 2px;
-  position:relative;
+  position: relative;
   display: inline-block;
-  background-color: rgb(197, 197, 197);
+  background-color: #c5c5c5;
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3) 0px, rgba(255, 255, 255, 0) 100%);
   margin: 5px 10px 3px 10px;
 }
 .rating-bar:after {
-  content:'\A';
-  position:absolute;
-  background-color: rgb(189, 91, 13);
+  content: '\A';
+  position: absolute;
+  background-color: #bd5b0d;
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3) 0px, rgba(255, 255, 255, 0) 100%);
-  top:0; 
-  bottom:0;
-  left:0; 
-  width:70%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 70%;
 }
-
 #review-index {
   padding: 16px 16px 16px 12px;
+}
+.star-ratings-css {
+  unicode-bidi: bidi-override;
+  display: inline-block;
+  color: #c5c5c5;
+  font-size: 25px;
+  height: 25px;
+  width: auto;
+  margin: 0 auto;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+}
+.star-ratings-css-top {
+  color: #e7711b;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.star-ratings-css-bottom {
+  padding: 0;
+  display: block;
+  z-index: 0;
 }

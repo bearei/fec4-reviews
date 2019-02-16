@@ -19,15 +19,14 @@ const numbers = Array.from({ length: 5 }, (v, k) => k + 1);
 
 const Stars = ({ average }) => (
   <span>
-    {numbers.map((number, index) => (
-      <FontAwesomeIcon
-        icon={getIcon(number, average)}
-        size="lg"
-        key={numbers[index]}
-        className={number > Math.ceil(average) ? 'background-star' : 'foreground-star'}
-      />
-    ))
-    }
+    <div className="star-ratings-css">
+      <div className="star-ratings-css-top" style={{ width: `${average * 20}%` }}>
+        {numbers.map((number, index) => <span key={numbers[index]} style={{ width: '20%' }}>★</span>)}
+      </div>
+      <div className="star-ratings-css-bottom">
+        {numbers.map((number, index) => <span key={numbers[index]} style={{ width: '20%' }}>★</span>)}
+      </div>
+    </div>
   </span>
 );
 
