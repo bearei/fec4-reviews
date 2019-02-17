@@ -6,7 +6,7 @@ const ModalHeader = ({ handleClose }) => {
   return (
     <div className="modal-right-el">
       <FontAwesomeIcon onClick={handleClose} className="cancel" icon="times-circle" size="lg" />
-      <h1 className="review-title">My Review for COMPANY PRODUCT-NAME</h1>
+      <div className="review-title">My Review for COMPANY PRODUCT-NAME</div>
       <p className="required">Required fields are marked with *</p>
     </div>
   );

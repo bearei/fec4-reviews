@@ -4,7 +4,7 @@ import Stars from '../util/Stars';
 import ProductInfo from './ProductInfo';
 import ModalHeader from './ModalHeader';
 import ProductRatingStars from './ProductRatingStars';
-import UserProductRating from './UserProductRating';
+import UserReviewTitle from './UserReviewTitle';
 import UserReview from './UserReview';
 import UserRecommend from './UserRecommend';
 import UserNameAndLoc from './UserNameAndLoc';
@@ -52,7 +52,7 @@ class ModalModel extends Component {
             <div id="modal-right">
               <ModalHeader handleClose={this.handleClose} />
               <ProductRatingStars />
-              <UserProductRating />
+              <UserReviewTitle />
               <UserReview />
               <UserRecommend />
               <UserNameAndLoc />

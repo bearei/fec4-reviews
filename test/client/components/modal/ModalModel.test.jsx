@@ -5,7 +5,7 @@ import Stars from '../../../../client/components/util/Stars';
 import ProductInfo from '../../../../client/components/modal/ProductInfo';
 import ModalHeader from '../../../../client/components/modal/ModalHeader';
 import ProductRatingStars from '../../../../client/components/modal/ProductRatingStars';
-import UserProductRating from '../../../../client/components/modal/UserProductRating';
+import UserReviewTitle from '../../../../client/components/modal/UserReviewTitle';
 import UserReview from '../../../../client/components/modal/UserReview';
 import UserRecommend from '../../../../client/components/modal/UserRecommend';
 import UserNameAndLoc from '../../../../client/components/modal/UserNameAndLoc';
@@ -22,7 +22,7 @@ describe('<ModalModel />', () => {
     expect(ProductInfo).toBeDefined();
     expect(ModalHeader).toBeDefined();
     expect(ProductRatingStars).toBeDefined();
-    expect(UserProductRating).toBeDefined();
+    expect(UserReviewTitle).toBeDefined();
     expect(UserReview).toBeDefined();
     expect(UserRecommend).toBeDefined();
     expect(UserNameAndLoc).toBeDefined();
