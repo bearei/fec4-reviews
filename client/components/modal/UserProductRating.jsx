@@ -25,13 +25,13 @@ class UserProductRating extends Component {
 
   getClass(star) {
     const { selected, hover } = this.state;
-    let result = 'rating-star';
+    let result = `rating-star rating-star-${star}`;
     if (hover > 0) {
       if (hover >= star) {
-        result = `rating-star star-${TEXT[hover]}`;
+        result = `rating-star rating-star-${star} star-${TEXT[hover]}`;
       }
     } else if (selected >= star) {
-      result = `rating-star star-${TEXT[selected]}`;
+      result = `rating-star rating-${star}-star star-${TEXT[selected]}`;
     }
     return result;
   }

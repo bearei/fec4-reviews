@@ -4,16 +4,15 @@ import Stars from '../util/Stars';
 import ProductInfo from './ProductInfo';
 import ModalHeader from './ModalHeader';
 import UserProductRating from './UserProductRating';
-import UserReviewTitle from './UserReviewTitle';
 import UserReview from './UserReview';
 import UserRecommend from './UserRecommend';
-import UserNameAndLoc from './UserNameAndLoc';
-import UserEmail from './UserEmail';
+
 import UserFit from './UserFit';
 import UserReadReview from './UserReadReview';
 import UserPurchase from './UserPurchase';
 import UserFeedback from './UserFeedback';
 import ModalSubmit from './ModalSubmit';
+import UserTextInput from './UserTextInput';
 
 class ModalModel extends Component {
   constructor(props) {
@@ -52,11 +51,12 @@ class ModalModel extends Component {
             <div id="modal-right">
               <ModalHeader handleClose={this.handleClose} />
               <UserProductRating />
-              <UserReviewTitle />
+              <UserTextInput title="Review title" placeholder="Makes hiking even easier" required />
               <UserReview />
               <UserRecommend />
-              <UserNameAndLoc />
-              <UserEmail />
+              <UserTextInput title="Nickname" placeholder="jackie27" required />
+              <UserTextInput title="Location" placeholder="Seattle, WA" required={false} />
+              <UserTextInput title="Email" placeholder="youremail@example.com" required />
               <UserFit />
               <UserReadReview />
               <UserPurchase />
