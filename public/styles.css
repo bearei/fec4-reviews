@@ -33,9 +33,6 @@
 .cancel:hover {
   color: #505050;
 }
-.star {
-  background-color: #767676;
-}
 #stars {
   padding-left: 20px;
 }
@@ -56,21 +53,6 @@
   padding-right: 15px;
   color: #338b2b;
 }
-.star-Poor {
-  background-color: #b43034;
-}
-.star-Fair {
-  background-color: #de9500;
-}
-.star-Average {
-  background-color: #ecdb00;
-}
-.star-Good {
-  background-color: #8ac100;
-}
-.star-Excellent {
-  background-color: #338b2b;
-}
 .same-line {
   display: inline;
 }
@@ -87,6 +69,8 @@
   border-color: rgb(229, 229, 229);
   height: auto;
   display: block;
+  padding: 10px 0;
+  min-width: 525px;
 }
 .modal-grid {
   display: grid;
@@ -121,8 +105,6 @@
   text-align: center;
   text-decoration-color: #666666;
   transition-duration: 0.2s;
-  width: 68.4062px;
-  z-index: auto;
 }
 .button-recommend:hover {
   color: #505050;
@@ -412,4 +394,45 @@ img {
 .center {
   margin: auto 0;
   padding: 0 10px;
+}
+.rating-star {
+  background-color: #ededed;
+  border-width: 1px;
+  border-style: solid;
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0) 100%);
+  border-bottom-color: #aaaaaa;
+  border-radius: 4px;
+  border-left-color: #d0d0d0;
+  border-right-color: #cccccc;
+  border-top-color: #cccccc;
+  box-shadow: #ffffff 0px 1px 0px 0px, #ffffff 0px 1px 0px 0px inset;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  height: 16px;
+  line-height: 16px;
+  margin: 0px;
+  padding: 8px;
+  position: relative;
+  text-align: center;
+  text-decoration-color: #666666;
+  text-shadow: 1px 1px rgb(153, 153, 153);
+  transition-duration: 0.2s;
+}
+.star-Poor {
+  background-color: #b43034;
+}
+.star-Fair {
+  background-color: #de9500;
+}
+.star-Average {
+  background-color: #ecdb00;
+}
+.star-Good {
+  background-color: #8ac100;
+}
+.star-Excellent {
+  background-color: #338b2b;
 }

@@ -25,13 +25,13 @@ class UserProductRating extends Component {
 
   getClass(star) {
     const { selected, hover } = this.state;
-    let result = 'star';
+    let result = 'rating-star';
     if (hover > 0) {
       if (hover >= star) {
-        result = `star-${TEXT[hover]}`;
+        result = `rating-star star-${TEXT[hover]}`;
       }
     } else if (selected >= star) {
-      result = `star-${TEXT[selected]}`;
+      result = `rating-star star-${TEXT[selected]}`;
     }
     return result;
   }
@@ -55,18 +55,19 @@ class UserProductRating extends Component {
         <span id="stars">
           <h1 className="review-header same-line">Product Rating*</h1>
           {STARS.map((star, index) => (
-            <FontAwesomeIcon
-              className={this.getClass(Number(star))}
-              color="white"
+            <div
+              className={this.getClass(star)}
+              role="button"
               onMouseEnter={() => this.handleEnter({ star })}
               onMouseLeave={() => this.handleLeave()}
               onClick={() => this.handleClick({ star })}
-              prefix="fas"
               key={TEXT[index]}
-              icon="star"
-              size="2x"
+              tabIndex={0}
+              onKeyPress={() => {}}
               id={star}
-            />
+            >
+              ★
+            </div>
           ))
             }
           <span id="rating-text">{hover > 0 ? TEXT[hover] : TEXT[selected]}</span>
