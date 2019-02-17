@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import StatusCheck from '../util/StatusCheck';
 
 const TEXT = {
   0: 'Click to rate',
@@ -71,7 +71,14 @@ class UserProductRating extends Component {
           ))
             }
           <span id="rating-text">{hover > 0 ? TEXT[hover] : TEXT[selected]}</span>
-          <FontAwesomeIcon className={selected > 0 ? 'check-complete' : 'check-default'} icon="check-circle" size="lg" />
+          <StatusCheck
+            selected={selected}
+            active
+            required
+            submit={false}
+            hasValue={false}
+            visited
+          />
         </span>
       </div>
     );
