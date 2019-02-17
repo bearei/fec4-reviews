@@ -72,10 +72,10 @@ const getButton = (title) => {
 
 const UserButton = ({ title }) => {
   return (
-    <div className="modal-right-el modal-grid">
-      <div>
+    <div className="modal-grid">
+      <span>
         <h1 className="review-header ">{title}</h1>
-      </div>
+      </span>
       {getButton(title)}
     </div>
   );

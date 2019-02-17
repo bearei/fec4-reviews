@@ -7,6 +7,7 @@ import UserProductRating from './UserProductRating';
 import ModalSubmit from './ModalSubmit';
 import UserText from './UserText';
 import UserButton from './UserButton';
+import ModalContainer from './ModalContainer';
 
 const TITLES = [
   'Would you recommend this product to a friend?',
@@ -58,7 +59,9 @@ class ModalModel extends Component {
               <UserText title="Review" required>
                 <textarea className="input-field" rows="4" />
               </UserText>
-              <UserButton title={TITLES[0]} />
+              <ModalContainer active required submit hasValue visited>
+                <UserButton title={TITLES[0]} />
+              </ModalContainer>
               <UserText title="Nickname" required>
                 <input className="input-field" type="text" placeholder="Example: jackie27" />
               </UserText>
@@ -68,9 +71,15 @@ class ModalModel extends Component {
               <UserText title="Email" required>
                 <input className="input-field" type="text" placeholder="Example: youremail@example.com" />
               </UserText>
-              <UserButton title={TITLES[1]} />
-              <UserButton title={TITLES[2]} />
-              <UserButton title={TITLES[3]} />
+              <ModalContainer active required submit hasValue visited>
+                <UserButton title={TITLES[1]} />
+              </ModalContainer>
+              <ModalContainer active required submit hasValue visited>
+                <UserButton title={TITLES[2]} />
+              </ModalContainer>
+              <ModalContainer active required submit hasValue visited>
+                <UserButton title={TITLES[3]} />
+              </ModalContainer>
               <UserText title="What feedback do you have for the people who designed and manufactured this product?" required={false}>
                 <textarea className="input-field" rows="4" />
               </UserText>

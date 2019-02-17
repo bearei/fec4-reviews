@@ -57,7 +57,10 @@
   height: auto;
   display: block;
   padding: 10px 0;
-  
+}
+.modal-container {
+  display: grid;
+  grid-template-columns: 1fr 40fr 4fr;
 }
 .modal-grid {
   display: grid;
@@ -127,7 +130,7 @@
 }
 .review-header {
   margin: 0px;
-  padding: 10px 12px 10px ;
+  padding: 0 ;
   font-family: Sentinel, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 700px;
@@ -544,9 +547,7 @@ input[type=checkbox] {
 }
 .status-check {
   position: relative;
-  float: right;
-  margin-right: 15px;
-  padding-right: 5px;
+  margin: auto auto;
 }
 .check-gray {
   color: #767676;
@@ -570,4 +571,18 @@ input[type=checkbox] {
 .required-text {
   display: inline-block;
   padding: 5px;
+}
+.arrow {
+  width: 0; 
+  height: 0; 
+  float: left;
+  margin: auto 0;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 11px solid rgb(229, 229, 229);
+  display: block;
+}
+.arrow-container {
+  width: 20px;
+  height: auto;
 }
