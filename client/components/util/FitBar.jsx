@@ -8,7 +8,7 @@ const FitBar = ({ average }) => (
     <div className="divider" />
     <div className="fit-bar-block" />
     <div className="fit-bar-block" />
-    <div className="fit-slider" style={{ left: `${average * 20}%` }} />
+    <div className="fit-slider" style={{ left: `${Math.min(average * 20, 95)}%` }} />
   </div>
 );
 

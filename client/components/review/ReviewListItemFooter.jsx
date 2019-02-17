@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ReviewListItemFooter = ({ helpful, not, flag }) => (
   <div id="review-list-item-footer">
-    <span>Helpful?</span>
+    <span className="pad-right">Helpful?</span>
     <span className="button-helpful">
       <span>Yes · </span>
       <span>{helpful}</span>

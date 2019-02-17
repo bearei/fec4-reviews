@@ -16,17 +16,15 @@ const ReviewListItem = ({
     <div className="review-body">
       <div>
         <Stars average={rating} />
-        <span>
-          {name}
-        </span>
+        <span className="bold">{name}</span>
         <span> - </span>
         <span>
           {moment(createdAt).fromNow()}
         </span>
-        <h2>{title}</h2>
-        <h3>{text}</h3>
+        <div className="title-review">{title}</div>
+        <div className="text-review">{text}</div>
         <FontAwesomeIcon icon={recommend ? 'check-circle' : 'times-circle'} />
-        <span>{recommend ? 'Yes, ' : 'No, '}</span>
+        <span className="bold">{recommend ? 'Yes, ' : 'No, '}</span>
         <span>I </span>
         <span>{recommend ? '' : 'don\'t '}</span>
         <span>recommend this product.</span>
@@ -36,7 +34,7 @@ const ReviewListItem = ({
           flag={flag}
         />
       </div>
-      <div>
+      <div className="center">
         <FitBarContainer className={fit === 0 ? 'hidden' : ''} average={fit} />
       </div>
     </div>
