@@ -1,24 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const UserReview = ({ title, required }) => {
+const UserTextInput = ({ title, required, children }) => {
   return (
     <div className="modal-right-el">
       <h1 className="review-header ">{required ? `${title}*` : `${title}`}</h1>
-      <textarea className="input-field" rows="4" />
+      {children}
     </div>
   );
 };
 
-UserReview.propTypes = {
+UserTextInput.propTypes = {
   title: PropTypes.string,
   required: PropTypes.bool,
+  children: PropTypes.node,
 };
 
-UserReview.defaultProps = {
+UserTextInput.defaultProps = {
   title: '',
   required: false,
+  children: '',
 };
 
-
-export default UserReview;
+export default UserTextInput;

@@ -9,8 +9,7 @@ import UserFit from './UserFit';
 import UserReadReview from './UserReadReview';
 import UserPurchase from './UserPurchase';
 import ModalSubmit from './ModalSubmit';
-import UserTextInput from './UserTextInput';
-import UserTextAreaInput from './UserTextAreaInput';
+import UserText from './UserText';
 
 class ModalModel extends Component {
   constructor(props) {
@@ -49,16 +48,29 @@ class ModalModel extends Component {
             <div id="modal-right">
               <ModalHeader handleClose={this.handleClose} />
               <UserProductRating />
-              <UserTextInput title="Review title" placeholder="Makes hiking even easier" required />
-              <UserTextAreaInput title="Review" required />
+              <UserText title="Review" required>
+                <input className="input-field" type="text" placeholder="Makes hiking even easier" />
+              </UserText>
+              <UserText title="Review" required>
+                <textarea className="input-field" rows="4" />
+              </UserText>
               <UserRecommend />
-              <UserTextInput title="Nickname" placeholder="jackie27" required />
+              <UserText title="Nickname" required>
+                <input className="input-field" type="text" placeholder="jackie27" />
+              </UserText>
               <UserTextInput title="Location" placeholder="Seattle, WA" required={false} />
-              <UserTextInput title="Email" placeholder="youremail@example.com" required />
+              <UserText title="Review" required>
+                <input className="input-field" type="text" placeholder="Seattle, WA" />
+              </UserText>
+              <UserText title="Email" required>
+                <input className="input-field" type="text" placeholder="youremail@example.com" />
+              </UserText>
               <UserFit />
               <UserReadReview />
               <UserPurchase />
-              <UserTextAreaInput title="Review" required={false} />
+              <UserText title="What feedback do you have for the people who designed and manufactured this product?" required={false}>
+                <textarea className="input-field" rows="4" />
+              </UserText>
               <ModalSubmit />
             </div>
           </div>

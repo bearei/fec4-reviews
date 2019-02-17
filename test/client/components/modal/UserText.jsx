@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import UserTextInput from '../../../../client/components/modal/UserTextInput';
+import UserText from '../../../../client/components/modal/UserText';
 
-describe('<UserTextInput />', () => {
+describe('<UserText />', () => {
   test('Should have 2 children', () => {
     const expected = 2;
-    const wrapper = shallow(<UserTextInput />);
+    const wrapper = shallow(<UserText />);
     expect(wrapper.find('.modal-right-el').children().length).toBe(expected);
   });
 });
