@@ -12,14 +12,14 @@ const getButton = (title) => {
   let result;
   if (title === TITLES[0]) {
     result = (
-      <div>
+      <div className="margin-left">
         <div className="button-recommend button-yes">Yes</div>
         <div className="button-recommend button-no">No</div>
       </div>
     );
   } else if (title === TITLES[1]) {
     result = (
-      <div>
+      <div className="margin-left">
         <label htmlFor="1" className="container">
           <input type="radio" name="radio" />
           <span className="checkmark" />
@@ -48,7 +48,7 @@ const getButton = (title) => {
     );
   } else if (title === TITLES[2]) {
     result = (
-      <div>
+      <div className="margin-left">
         <select className="select-button">
           <option value="select">Select</option>
           <option value="online">Yes</option>
@@ -58,7 +58,7 @@ const getButton = (title) => {
     );
   } else if (title === TITLES[3]) {
     return (
-      <div>
+      <div className="margin-left">
         <select className="select-button">
           <option value="select">Select</option>
           <option value="online">Online</option>
