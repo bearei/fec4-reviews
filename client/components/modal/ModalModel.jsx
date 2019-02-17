@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import Stars from '../util/Stars';
 import ProductInfo from './ProductInfo';
 import ModalHeader from './ModalHeader';
-import ProductRatingStars from './ProductRatingStars';
+import UserProductRating from './UserProductRating';
 import UserReviewTitle from './UserReviewTitle';
 import UserReview from './UserReview';
 import UserRecommend from './UserRecommend';
@@ -51,7 +51,7 @@ class ModalModel extends Component {
             </div>
             <div id="modal-right">
               <ModalHeader handleClose={this.handleClose} />
-              <ProductRatingStars />
+              <UserProductRating />
               <UserReviewTitle />
               <UserReview />
               <UserRecommend />

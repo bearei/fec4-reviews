@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import ProductRatingStars from '../../../../client/components/modal/ProductRatingStars';
+import UserProductRating from '../../../../client/components/modal/UserProductRating';
 
-describe('<ProductRatingStars />', () => {
+describe('<UserProductRating />', () => {
   test('Should have 1 child', () => {
     const expected = 1;
-    const wrapper = shallow(<ProductRatingStars />);
+    const wrapper = shallow(<UserProductRating />);
     expect(wrapper.find('.modal-right-el').children().length).toBe(expected);
   });
 });

@@ -11,7 +11,7 @@ const TEXT = {
 };
 const STARS = ['1', '2', '3', '4', '5'];
 
-class ProductRatingStars extends Component {
+class UserProductRating extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,4 +77,4 @@ class ProductRatingStars extends Component {
   }
 }
 
-export default ProductRatingStars;
+export default UserProductRating;
