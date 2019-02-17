@@ -1,16 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const TITLES = [
+  'Would you recommend this product to a friend?',
+  'Fit',
+  'Did you read product reviews online before first purchasing this item?',
+  'Where did you purchase this item?',
+];
+
 const getButton = (title) => {
   let result;
-  if (title === 'Would you recommend this product to a friend?') {
+  if (title === TITLES[0]) {
     result = (
       <div>
         <div className="button-recommend button-yes">Yes</div>
         <div className="button-recommend button-no">No</div>
       </div>
     );
-  } else if (title === 'Fit') {
+  } else if (title === TITLES[1]) {
     result = (
       <div>
         <label htmlFor="1" className="container">
@@ -39,7 +46,7 @@ const getButton = (title) => {
         </div>
       </div>
     );
-  } else if (title === 'Did you read product reviews online before first purchasing this item?') {
+  } else if (title === TITLES[2]) {
     result = (
       <div>
         <select className="select-button">
@@ -49,7 +56,7 @@ const getButton = (title) => {
         </select>
       </div>
     );
-  } else if (title === 'Where did you purchase this item?') {
+  } else if (title === TITLES[3]) {
     return (
       <div>
         <select className="select-button">

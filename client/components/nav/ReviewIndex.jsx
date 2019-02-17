@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ReviewIndex = ({ showing, total }) => (
   <div id="review-index">
-    <span> 1 of </span>
+    <span>{total > 0 ? ' 1 of ' : ' 0 of '}</span>
     {showing < total ? showing : total}
     <span> out of </span>
     {total}
