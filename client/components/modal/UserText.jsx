@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const UserTextInput = ({ title, required, children }) => {
+const UserText = ({ title, required, children }) => {
   return (
     <div className="modal-right-el">
       <h1 className="review-header ">{required ? `${title}*` : `${title}`}</h1>
@@ -10,16 +10,16 @@ const UserTextInput = ({ title, required, children }) => {
   );
 };
 
-UserTextInput.propTypes = {
+UserText.propTypes = {
   title: PropTypes.string,
   required: PropTypes.bool,
   children: PropTypes.node,
 };
 
-UserTextInput.defaultProps = {
+UserText.defaultProps = {
   title: '',
   required: false,
   children: '',
 };
 
-export default UserTextInput;
+export default UserText;
