@@ -267,7 +267,7 @@ img {
 }
 .button-load-more {
   width: 50%;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 .rating-bar-num {
   margin-left: 10px;
@@ -374,14 +374,6 @@ img {
 .pad-top {
   padding-top: 5px;
 }
-.fit-border {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  display: inline-block;
-  width: 1.2px;
-  height: 10px;
-  border-color: #c5c5c5;
-}
 .fit-slider {
   width: 10px;
   height: 12px;
@@ -419,4 +411,5 @@ img {
 }
 .center {
   margin: auto 0;
+  padding: 0 10px;
 }
