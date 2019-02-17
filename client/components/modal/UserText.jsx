@@ -9,19 +9,19 @@ const getTextArea = () => (
   <textarea className="input-field" rows="4" />
 );
 
-const UserText = ({ title, required, text, placeholder }) => {
-  return (
-    <div>
-      <h1 className="review-header ">{required ? `${title}*` : `${title}`}</h1>
-      {text ? getText(placeholder) : getTextArea()}
-    </div>
-  );
-};
+const UserText = ({
+  title, required, text, placeholder,
+}) => (
+  <div>
+    <h1 className="review-header ">{required ? `${title}*` : `${title}`}</h1>
+    {text ? getText(placeholder) : getTextArea()}
+  </div>
+);
 
 UserText.propTypes = {
   title: PropTypes.string,
   required: PropTypes.bool,
-  text: PropTypes.string,
+  text: PropTypes.bool,
   placeholder: PropTypes.string,
 };
 

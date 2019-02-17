@@ -19,7 +19,7 @@ const ModalContainer = ({
 );
 
 ModalContainer.propTypes = {
-  active: PropTypes.number,
+  active: PropTypes.bool,
   required: PropTypes.bool,
   submit: PropTypes.bool,
   hasValue: PropTypes.bool,
@@ -28,7 +28,7 @@ ModalContainer.propTypes = {
 };
 
 ModalContainer.defaultProps = {
-  active: 0,
+  active: false,
   required: false,
   submit: false,
   hasValue: false,

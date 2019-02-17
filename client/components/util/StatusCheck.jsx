@@ -28,7 +28,7 @@ const StatusCheck = ({
 );
 
 StatusCheck.propTypes = {
-  active: PropTypes.number,
+  active: PropTypes.bool,
   required: PropTypes.bool,
   submit: PropTypes.bool,
   hasValue: PropTypes.bool,
@@ -36,7 +36,7 @@ StatusCheck.propTypes = {
 };
 
 StatusCheck.defaultProps = {
-  active: 0,
+  active: false,
   required: false,
   submit: false,
   hasValue: false,
