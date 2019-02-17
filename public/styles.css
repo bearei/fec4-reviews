@@ -221,6 +221,7 @@ img {
 .dropdown-content {
   display: none;
   position: absolute;
+  right: 0;
   cursor: pointer;
   background-color: white;
   min-width: 160px;
