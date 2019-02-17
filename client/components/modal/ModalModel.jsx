@@ -77,7 +77,15 @@ class ModalModel extends Component {
             </div>
             <div id="modal-right">
               <ModalHeader handleClose={this.handleClose} />
-              <UserProductRating />
+              <ModalContainer
+                active={active === 0}
+                required
+                submit={submit}
+                hasValue={false}
+                visited={visited[0]}
+              >
+                <UserProductRating />
+              </ModalContainer>
               <ModalContainer
                 active={active === 1}
                 required

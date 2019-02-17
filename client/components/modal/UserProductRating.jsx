@@ -51,35 +51,25 @@ class UserProductRating extends Component {
   render() {
     const { selected, hover } = this.state;
     return (
-      <div className="modal-right-el">
-        <span id="stars">
-          <h1 className="review-header same-line">Product Rating*</h1>
-          {STARS.map((star, index) => (
-            <div
-              className={this.getClass(star)}
-              role="button"
-              onMouseEnter={() => this.handleEnter({ star })}
-              onMouseLeave={() => this.handleLeave()}
-              onClick={() => this.handleClick({ star })}
-              key={TEXT[index]}
-              tabIndex={0}
-              onKeyPress={() => {}}
-              id={star}
-            >
-              ★
-            </div>
-          ))
-            }
-          <span id="rating-text">{hover > 0 ? TEXT[hover] : TEXT[selected]}</span>
-          <StatusCheck
-            selected={selected}
-            active
-            required
-            submit={false}
-            hasValue={false}
-            visited
-          />
-        </span>
+      <div>
+        <h1 className="review-header same-line pad-right">Product Rating*</h1>
+        {STARS.map((star, index) => (
+          <div
+            className={this.getClass(star)}
+            role="button"
+            onMouseEnter={() => this.handleEnter({ star })}
+            onMouseLeave={() => this.handleLeave()}
+            onClick={() => this.handleClick({ star })}
+            key={TEXT[index]}
+            tabIndex={0}
+            onKeyPress={() => {}}
+            id={star}
+          >
+            ★
+          </div>
+        ))
+          }
+        <span id="rating-text">{hover > 0 ? TEXT[hover] : TEXT[selected]}</span>
       </div>
     );
   }
