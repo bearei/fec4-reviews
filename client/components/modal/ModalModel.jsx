@@ -16,6 +16,13 @@ const TITLES = [
   'Where did you purchase this item?',
 ];
 
+const SAMPLES = [
+  'Makes hiking even easier',
+  'jackie27',
+  'Seattle, WA',
+  'youremail@example.com',
+];
+
 class ModalModel extends Component {
   constructor(props) {
     super(props);
@@ -53,24 +60,14 @@ class ModalModel extends Component {
             <div id="modal-right">
               <ModalHeader handleClose={this.handleClose} />
               <UserProductRating />
-              <UserText title="Review" required>
-                <input className="input-field" type="text" placeholder="Example: Makes hiking even easier" />
-              </UserText>
-              <UserText title="Review" required>
-                <textarea className="input-field" rows="4" />
-              </UserText>
+              <UserText title="Review" required text placeholder={SAMPLES[0]} />
+              <UserText title="Review" required text={false} placeholder />
               <ModalContainer active required submit hasValue visited>
                 <UserButton title={TITLES[0]} />
               </ModalContainer>
-              <UserText title="Nickname" required>
-                <input className="input-field" type="text" placeholder="Example: jackie27" />
-              </UserText>
-              <UserText title="Location" required={false}>
-                <input className="input-field" type="text" placeholder="Example: Seattle, WA" />
-              </UserText>
-              <UserText title="Email" required>
-                <input className="input-field" type="text" placeholder="Example: youremail@example.com" />
-              </UserText>
+              <UserText title="Review" required text placeholder={SAMPLES[1]} />
+              <UserText title="Review" required text placeholder={SAMPLES[2]} />
+              <UserText title="Review" required text placeholder={SAMPLES[3]} />
               <ModalContainer active required submit hasValue visited>
                 <UserButton title={TITLES[1]} />
               </ModalContainer>
@@ -80,9 +77,7 @@ class ModalModel extends Component {
               <ModalContainer active required submit hasValue visited>
                 <UserButton title={TITLES[3]} />
               </ModalContainer>
-              <UserText title="What feedback do you have for the people who designed and manufactured this product?" required={false}>
-                <textarea className="input-field" rows="4" />
-              </UserText>
+              <UserText title="Review" required text={false} placeholder />
               <ModalSubmit />
             </div>
           </div>
