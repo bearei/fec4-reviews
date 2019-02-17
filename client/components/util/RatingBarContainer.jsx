@@ -10,7 +10,7 @@ const RatingBarContainer = ({
   setFilter, star, count, total,
 }) => (
   <div id="rating-bar-container">
-    <span role="button" tabIndex={0} onKeyPress={() => {}} onClick={setFilter}>
+    <span role="button" tabIndex={0} onKeyPress={() => {}} onClick={count > 0 ? setFilter : () => {}}>
       <span className="rating-bar-num">
         {`${star} ★ `}
       </span>
