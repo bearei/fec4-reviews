@@ -10,10 +10,17 @@ import UserButton from './UserButton';
 import ModalContainer from './ModalContainer';
 
 const TITLES = [
+  'Product Rating',
+  'Review title',
+  'Review',
   'Would you recommend this product to a friend?',
+  'Nickname',
+  'Location',
+  'Email',
   'Fit',
   'Did you read product reviews online before first purchasing this item?',
   'Where did you purchase this item?',
+  'What feedback do you have for the people who designed and manufactured this product?',
 ];
 
 const SAMPLES = [
@@ -29,9 +36,9 @@ class ModalModel extends Component {
     this.state = {
       visible: false,
       active: 0,
-      visited: Array.from({ length: 1 }, () => false),
+      visited: Array.from({ length: 11 }, () => false),
       submit: false,
-      values: Array.from({ length: 1 }, () => ''),
+      values: Array.from({ length: 11 }, () => ''),
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -72,23 +79,13 @@ class ModalModel extends Component {
               <ModalHeader handleClose={this.handleClose} />
               <UserProductRating />
               <ModalContainer
-                active={active === 0}
-                required
-                submit={submit}
-                hasValue={false}
-                visited={visited[0]}
-              >
-                <UserText title="Review title" required text placeholder={SAMPLES[0]} />
-              </ModalContainer>
-              <ModalContainer
                 active={active === 1}
                 required
                 submit={submit}
                 hasValue={false}
                 visited={visited[1]}
-                
               >
-                <UserText title="Review" required text={false} placeholder="" />
+                <UserText title={TITLES[1]} required text placeholder={SAMPLES[0]} />
               </ModalContainer>
               <ModalContainer
                 active={active === 2}
@@ -96,8 +93,9 @@ class ModalModel extends Component {
                 submit={submit}
                 hasValue={false}
                 visited={visited[2]}
+                
               >
-                <UserButton title={TITLES[0]} />
+                <UserText title={TITLES[2]} required text={false} placeholder="" />
               </ModalContainer>
               <ModalContainer
                 active={active === 3}
@@ -106,7 +104,7 @@ class ModalModel extends Component {
                 hasValue={false}
                 visited={visited[3]}
               >
-                <UserText title="Nickname" required text placeholder={SAMPLES[1]} />
+                <UserButton title={TITLES[3]} />
               </ModalContainer>
               <ModalContainer
                 active={active === 4}
@@ -115,7 +113,7 @@ class ModalModel extends Component {
                 hasValue={false}
                 visited={visited[4]}
               >
-                <UserText title="Location" required text placeholder={SAMPLES[2]} />
+                <UserText title={TITLES[4]} required text placeholder={SAMPLES[1]} />
               </ModalContainer>
               <ModalContainer
                 active={active === 5}
@@ -124,7 +122,7 @@ class ModalModel extends Component {
                 hasValue={false}
                 visited={visited[5]}
               >
-                <UserText title="Email" required text placeholder={SAMPLES[3]} />
+                <UserText title={TITLES[5]} required text placeholder={SAMPLES[2]} />
               </ModalContainer>
               <ModalContainer
                 active={active === 6}
@@ -133,7 +131,7 @@ class ModalModel extends Component {
                 hasValue={false}
                 visited={visited[6]}
               >
-                <UserButton title={TITLES[1]} />
+                <UserText title={TITLES[6]} required text placeholder={SAMPLES[3]} />
               </ModalContainer>
               <ModalContainer
                 active={active === 7}
@@ -142,7 +140,7 @@ class ModalModel extends Component {
                 hasValue={false}
                 visited={visited[7]}
               >
-                <UserButton title={TITLES[2]} />
+                <UserButton title={TITLES[7]} />
               </ModalContainer>
               <ModalContainer
                 active={active === 8}
@@ -151,7 +149,7 @@ class ModalModel extends Component {
                 hasValue={false}
                 visited={visited[8]}
               >
-                <UserButton title={TITLES[3]} />
+                <UserButton title={TITLES[8]} />
               </ModalContainer>
               <ModalContainer
                 active={active === 9}
@@ -160,7 +158,16 @@ class ModalModel extends Component {
                 hasValue={false}
                 visited={visited[9]}
               >
-                <UserText title="What feedback do you have for the people who designed and manufactured this product?" required text={false} placeholder="" />
+                <UserButton title={TITLES[9]} />
+              </ModalContainer>
+              <ModalContainer
+                active={active === 10}
+                required
+                submit={submit}
+                hasValue={false}
+                visited={visited[10]}
+              >
+                <UserText title={TITLES[10]} required text={false} placeholder="" />
               </ModalContainer>
               <ModalSubmit />
             </div>
