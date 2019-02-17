@@ -11,7 +11,7 @@ const getTextArea = () => (
 
 const UserText = ({ title, required, text, placeholder }) => {
   return (
-    <div className="modal-right-el">
+    <div>
       <h1 className="review-header ">{required ? `${title}*` : `${title}`}</h1>
       {text ? getText(placeholder) : getTextArea()}
     </div>

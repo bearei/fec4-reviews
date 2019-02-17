@@ -60,14 +60,24 @@ class ModalModel extends Component {
             <div id="modal-right">
               <ModalHeader handleClose={this.handleClose} />
               <UserProductRating />
-              <UserText title="Review" required text placeholder={SAMPLES[0]} />
-              <UserText title="Review" required text={false} placeholder />
+              <ModalContainer active required submit hasValue visited>
+                <UserText title="Review" required text placeholder={SAMPLES[0]} />
+              </ModalContainer>
+              <ModalContainer active required submit hasValue visited>
+                <UserText title="Review" required text={false} placeholder />
+              </ModalContainer>
               <ModalContainer active required submit hasValue visited>
                 <UserButton title={TITLES[0]} />
               </ModalContainer>
-              <UserText title="Review" required text placeholder={SAMPLES[1]} />
-              <UserText title="Review" required text placeholder={SAMPLES[2]} />
-              <UserText title="Review" required text placeholder={SAMPLES[3]} />
+              <ModalContainer active required submit hasValue visited>
+                <UserText title="Nickname" required text placeholder={SAMPLES[1]} />
+              </ModalContainer>
+              <ModalContainer active required submit hasValue visited>
+                <UserText title="Location" required text placeholder={SAMPLES[2]} />
+              </ModalContainer>
+              <ModalContainer active required submit hasValue visited>
+                <UserText title="Email" required text placeholder={SAMPLES[3]} />
+              </ModalContainer>
               <ModalContainer active required submit hasValue visited>
                 <UserButton title={TITLES[1]} />
               </ModalContainer>
@@ -77,7 +87,9 @@ class ModalModel extends Component {
               <ModalContainer active required submit hasValue visited>
                 <UserButton title={TITLES[3]} />
               </ModalContainer>
-              <UserText title="Review" required text={false} placeholder />
+              <ModalContainer active required submit hasValue visited>
+                <UserText title="What feedback do you have for the people who designed and manufactured this product?" required text={false} placeholder />
+              </ModalContainer>
               <ModalSubmit />
             </div>
           </div>

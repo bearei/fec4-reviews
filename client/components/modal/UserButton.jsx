@@ -70,17 +70,14 @@ const getButton = (title) => {
   return result;
 };
 
-const UserButton = ({ title }) => {
-  return (
-    <div className="modal-grid">
-      <span>
-        <h1 className="review-header ">{title}</h1>
-      </span>
-      {getButton(title)}
-    </div>
-  );
-};
-
+const UserButton = ({ title }) => (
+  <div className="modal-grid">
+    <span>
+      <h1 className="review-header ">{title}</h1>
+    </span>
+    {getButton(title)}
+  </div>
+);
 
 UserButton.propTypes = {
   title: PropTypes.string,
