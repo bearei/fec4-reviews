@@ -13,7 +13,7 @@ const ModalSubmit = (props) => {
         You may recieve emails regarding this submission.  Any
         emails will include the ability to opt out of future communications.
       </div>
-      <div role="button" tabIndex={0} className="button-write" onKeyPress={() => {}}>Post review</div>
+      <div role="button" tabIndex={0} className="button-write post-review" onKeyPress={() => {}}>Post review</div>
     </div>
   );
 };
