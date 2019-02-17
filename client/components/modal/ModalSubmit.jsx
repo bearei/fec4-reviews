@@ -9,8 +9,11 @@ const ModalSubmit = (props) => {
         <span> Terms of Use & Privacy Policy</span>
         *
       </span>
-      <p>You may recieve emails regarding this submission.  Any emails will include the ability to opt out of future communications.</p>
-      <button>Post review</button>
+      <p>
+        You may recieve emails regarding this submission.  Any
+        emails will include the ability to opt out of future communications.
+      </p>
+      <div role="button" tabIndex={0} className="button-write pad-left" onKeyPress={() => {}}>Post review</div>
     </div>
   );
 };

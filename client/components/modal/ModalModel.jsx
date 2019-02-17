@@ -46,54 +46,24 @@ class ModalModel extends Component {
               <ModalHeader handleClose={this.handleClose} />
               <UserProductRating />
               <UserText title="Review" required>
-                <input className="input-field" type="text" placeholder="Makes hiking even easier" />
+                <input className="input-field" type="text" placeholder="Example: Makes hiking even easier" />
               </UserText>
               <UserText title="Review" required>
                 <textarea className="input-field" rows="4" />
               </UserText>
-              <UserButton title="Would you recommend this product to a friend">
-                <ul>
-                  <li className="button-recommend">Yes</li>
-                  <li className="button-recommend">No</li>
-                </ul>
-              </UserButton>
+              <UserButton title="Would you recommend this product to a friend?" />
               <UserText title="Nickname" required>
-                <input className="input-field" type="text" placeholder="jackie27" />
+                <input className="input-field" type="text" placeholder="Example: jackie27" />
               </UserText>
               <UserText title="Location" required={false}>
-                <input className="input-field" type="text" placeholder="Seattle, WA" />
+                <input className="input-field" type="text" placeholder="Example: Seattle, WA" />
               </UserText>
               <UserText title="Email" required>
-                <input className="input-field" type="text" placeholder="youremail@example.com" />
+                <input className="input-field" type="text" placeholder="Example: youremail@example.com" />
               </UserText>
-              <UserButton title="Fit">
-                <div>
-                  <input type="radio" name="fitbuttons" id="1" value="1" />
-                  <input type="radio" name="fitbuttons" id="2" value="2" />
-                  <input type="radio" name="fitbuttons" id="3" value="3" />
-                  <input type="radio" name="fitbuttons" id="4" value="4" />
-                  <input type="radio" name="fitbuttons" id="5" value="5" />
-                  <p>Runs Small   Too Large</p>
-                </div>
-              </UserButton>
-              <UserButton title="Did you read product reviews online before first purchasing this item?">
-                <div>
-                  <select>
-                    <option value="select">Select</option>
-                    <option value="online">Yes</option>
-                    <option value="in-store">No</option>
-                  </select>
-                </div>
-              </UserButton>
-              <UserButton title="Where did you purchase this item?">
-                <div>
-                  <select>
-                    <option value="select">Select</option>
-                    <option value="online">Online</option>
-                    <option value="in-store">In-Store</option>
-                  </select>
-                </div>
-              </UserButton>
+              <UserButton title="Fit" />
+              <UserButton title="Did you read product reviews online before first purchasing this item?" />
+              <UserButton title="Where did you purchase this item?" />
               <UserText title="What feedback do you have for the people who designed and manufactured this product?" required={false}>
                 <textarea className="input-field" rows="4" />
               </UserText>
