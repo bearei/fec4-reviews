@@ -35,7 +35,7 @@ const ReviewListItem = ({
         />
       </div>
       <div className="center">
-        <div className="bold">Fit</div>
+        <div className={fit === 0 ? 'hidden' : 'bold'}>Fit</div>
         <FitBarContainer className={fit === 0 ? 'hidden' : ''} average={fit} />
       </div>
     </div>

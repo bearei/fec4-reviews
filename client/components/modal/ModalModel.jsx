@@ -9,6 +9,10 @@ const REQ = [
   true, true, true, false, true, false, true, false, false, false, false, true,
 ];
 
+const REQINDEX = [
+  0, 1, 2, 4, 6, 11,
+];
+
 const numbers = Array.from({ length: 12 }, (v, k) => k);
 
 
@@ -22,6 +26,7 @@ class ModalModel extends Component {
       submit: false,
       values: Array.from({ length: 12 }, () => ''),
       hover: 0,
+      itemId: props.itemId,
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -41,20 +46,34 @@ class ModalModel extends Component {
   }
 
   onSubmit() {
-    const { values, visited } = this.state;
-    console.log(visited, visited.map(() => true))
-    console.log('v2', visited)
+    const { values, visited, itemId } = this.state;
+    const { submit } = this.props;
     let req = -1;
-    for (let i = 0; i < values.length; i++) {
-      if (values[i] === '') {
+    for (let i = 0; i < REQINDEX.length; i++) {
+      if (values[REQINDEX[i]] === '') {
         req = i;
         break;
       }
     }
-    const temp = visited.map(() => true);
     if (req >= 0) {
       this.setState({ submit: true },
-        () => this.setState({ visited: temp }));
+        () => this.setState({ visited: visited.map(() => true) },
+          () => this.setState({ active: req })));
+    } else {
+      const data = {
+        rating: Number(values[0]),
+        title: values[1],
+        text: values[2],
+        name: values[4],
+        itemId,
+      };
+      if (values[3] !== '') {
+        data.recommend = values[3] === 'yes';
+      }
+      if (values[7] !== '') {
+        data.fit = Number(values[7]);
+      }
+      submit(data, this.handleClose);
     }
   }
 
@@ -134,10 +153,14 @@ class ModalModel extends Component {
 
 ModalModel.propTypes = {
   empty: PropTypes.bool,
+  itemId: PropTypes.number,
+  submit: PropTypes.func,
 };
 
 ModalModel.defaultProps = {
   empty: true,
+  itemId: 0,
+  submit: () => {},
 };
 
 export default ModalModel;

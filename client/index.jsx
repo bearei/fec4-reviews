@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import path from 'path';
 import $ from 'jquery';
 import {
   faTimesCircle, faCheckCircle, faStar, faQuestionCircle, faStarHalfAlt,
@@ -13,6 +14,7 @@ import ReviewIndex from './components/nav/ReviewIndex';
 import SortSelector from './components/nav/SortSelector';
 import ActiveFilters from './components/nav/ActiveFilters';
 
+
 library.add(faTimesCircle);
 library.add(faStar);
 library.add(faCheckCircle);
@@ -24,7 +26,7 @@ const SORT = {
   1: (a, b) => b.helpful - a.helpful,
   2: (a, b) => b.rating - a.rating,
   3: (a, b) => a.rating - b.rating,
-  4: (a, b) => b.createdAt - a.createdAt,
+  4: (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
 };
 
 class App extends Component {
@@ -32,7 +34,7 @@ class App extends Component {
     super(props);
     this.state = {
       reviews: [],
-      itemId: Math.ceil(Math.random() * 100),
+      itemId: 1,
       selector: 0,
       filter: 0,
       showing: 8,
@@ -41,22 +43,12 @@ class App extends Component {
     this.setFilter = this.setFilter.bind(this);
     this.clearFilter = this.clearFilter.bind(this);
     this.changeSort = this.changeSort.bind(this);
+    this.fetch = this.fetch.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
-  componentDidMount() {
-    const classes = { ...this.state };
-    $.ajax({
-      url: `/reviews/${classes.itemId}`,
-      type: 'GET',
-      contentType: 'application/json',
-      success: (results) => {
-        this.setState({
-          reviews: results,
-          indexes: Array.from({ length: results.length }, (v, k) => k + 1),
-        });
-      },
-      error: err => console.log(err),
-    });
+  componentWillMount() {
+    this.fetch();
   }
 
   getAverageFit() {
@@ -72,6 +64,36 @@ class App extends Component {
 
   setFilter(id) {
     this.setState({ filter: id, showing: 8 });
+  }
+
+  fetch() {
+    const classes = { ...this.state };
+    $.ajax({
+      url: path.join('reviews', classes.itemId.toString()),
+      type: 'GET',
+      contentType: 'application/json',
+      success: (results) => {
+        this.setState({
+          reviews: results,
+          indexes: Array.from({ length: results.length }, (v, k) => k + 1),
+        });
+      },
+      error: err => console.log('.GET', err),
+    });
+  }
+
+  submit(data, callback) {
+    $.ajax({
+      url: 'reviews',
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'application/json',
+      success: () => {
+        callback();
+        this.setState({ selector: 0 }, this.fetch());
+      },
+      error: err => console.log('POST', err),
+    });
   }
 
   clearFilter() {
@@ -115,7 +137,11 @@ class App extends Component {
     return (
       <div>
         <h1>HREI Reviews</h1>
-        <ModalModel empty={classes.reviews.length === 0} />
+        <ModalModel
+          empty={classes.reviews.length === 0}
+          itemId={classes.itemId}
+          submit={this.submit}
+        />
         <div className={classes.reviews.length === 0 ? 'hidden' : 'nav'}>
           <RatingSnapshot
             setFilter={this.setFilter}
