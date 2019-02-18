@@ -8,6 +8,8 @@ const TITLES = [
   'Where did you purchase this item?',
 ];
 
+const numbers = Array.from({ length: 5 }, (v, k) => (k + 1).toString());
+
 const getButton = (title) => {
   let result;
   if (title === TITLES[0]) {
@@ -20,26 +22,13 @@ const getButton = (title) => {
   } else if (title === TITLES[1]) {
     result = (
       <div className="margin-left">
-        <label htmlFor="1" className="container">
-          <input type="radio" name="radio" />
-          <span className="checkmark" />
-        </label>
-        <label htmlFor="2" className="container">
-          <input type="radio" name="radio" />
-          <span className="checkmark" />
-        </label>
-        <label htmlFor="3" className="container">
-          <input type="radio" name="radio" />
-          <span className="checkmark" />
-        </label>
-        <label htmlFor="4" className="container">
-          <input type="radio" name="radio" />
-          <span className="checkmark" />
-        </label>
-        <label htmlFor="5" className="container">
-          <input type="radio" name="radio" />
-          <span className="checkmark" />
-        </label>
+        {numbers.map((number, index) => (
+          <label htmlFor={number} className="container" key={numbers[index]}>
+            <input type="radio" name="radio" />
+            <span className="checkmark" />
+          </label>
+        ))
+        }
         <div>
           <span>Too Small</span>
           <span>Too Large</span>

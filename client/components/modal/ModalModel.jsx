@@ -39,17 +39,19 @@ class ModalModel extends Component {
   changeFocus(id) {
     const { active, visited } = this.state;
     this.setState({ active: id });
-    this.setState({ visited: visited.map((element, index) => {
-      return index === active ? true : element;
-    }),
+    this.setState({
+      visited: visited.map((element, index) => {
+        return index === active ? true : element;
+      }),
     });
   }
 
   changeValue(id, value) {
     const { active, values } = this.state;
-    this.setState({ values: values.map((element, index) => {
-      return index === active ? value : element;
-    }),
+    this.setState({
+      values: values.map((element, index) => {
+        return index === active ? value : element;
+      }),
     });
   }
 

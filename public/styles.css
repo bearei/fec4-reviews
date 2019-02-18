@@ -27,7 +27,7 @@
 .cancel {
   color: #767676;
   float: right;
-  margin-top: 5px;
+  position: relative;
   margin-right: 5px;
 }
 .cancel:hover {
