@@ -7,8 +7,8 @@ import FitBarContainer from '../util/FitBarContainer';
 import ReviewListItemFooter from './ReviewListItemFooter';
 
 const ReviewListItem = ({
-  review: {
-    rating, name, createdAt, title, text, recommend, helpful, notHelpful, flag, fit,
+  patch, review: {
+    rating, name, createdAt, title, text, recommend, helpful, notHelpful, flag, fit, _id,
   },
 }) => (
   <div>
@@ -32,9 +32,11 @@ const ReviewListItem = ({
           helpful={helpful}
           not={notHelpful}
           flag={flag}
+          id={_id}
+          patch={patch}
         />
       </div>
-      <div className="center">
+      <div className="review-fit-bar">
         <div className={fit === 0 ? 'hidden' : 'bold'}>Fit</div>
         <FitBarContainer className={fit === 0 ? 'hidden' : ''} average={fit} />
       </div>
@@ -44,10 +46,12 @@ const ReviewListItem = ({
 
 ReviewListItem.propTypes = {
   review: PropTypes.instanceOf(Object),
+  patch: PropTypes.func,
 };
 
 ReviewListItem.defaultProps = {
   review: {},
+  patch: () => {},
 };
 
 export default ReviewListItem;

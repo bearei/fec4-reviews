@@ -38,6 +38,7 @@ class App extends Component {
       selector: 0,
       filter: 0,
       showing: 8,
+
     };
     this.handleMore = this.handleMore.bind(this);
     this.setFilter = this.setFilter.bind(this);
@@ -45,6 +46,7 @@ class App extends Component {
     this.changeSort = this.changeSort.bind(this);
     this.fetch = this.fetch.bind(this);
     this.submit = this.submit.bind(this);
+    this.patch = this.patch.bind(this);
   }
 
   componentWillMount() {
@@ -79,6 +81,18 @@ class App extends Component {
         });
       },
       error: err => console.log('.GET', err),
+    });
+  }
+
+  patch(id, key) {
+    $.ajax({
+      url: path.join('reviews', key, id),
+      type: 'PATCH',
+      contentType: 'application/json',
+      success: () => {
+        const a = this;
+      },
+      error: err => console.log('Patch', err),
     });
   }
 
@@ -157,6 +171,7 @@ class App extends Component {
           reviews={this.filter(classes.reviews).slice(0, classes.showing)}
           hasMore={classes.showing < this.filter(classes.reviews).length}
           handleMore={this.handleMore}
+          patch={this.patch}
         />
       </div>
     );
