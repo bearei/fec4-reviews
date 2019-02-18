@@ -16,16 +16,19 @@ const getClass = (active, required, submit, hasValue, visited) => {
 
 const StatusCheck = ({
   active, required, submit, hasValue, visited,
-}) => (
-  <div className={`status-check ${getClass(active, required, submit, hasValue, visited)}`}>
-    <div className={getClass(active, required, submit, hasValue, visited) === 'check-red' ? 'required-text' : 'hidden'}>Required</div>
-    <FontAwesomeIcon
-      className={`icon ${getClass(active, required, submit, hasValue, visited)}`}
-      icon="check-circle"
-      size="lg"
-    />
-  </div>
-);
+}) => {
+  const name = getClass(active, required, submit, hasValue, visited);
+  return (
+    <div className={`status-check ${name}`}>
+      <div className={name === 'check-red' ? 'required-text' : 'hidden'}>Required</div>
+      <FontAwesomeIcon
+        className={`icon ${name}`}
+        icon="check-circle"
+        size="lg"
+      />
+    </div>
+  );
+};
 
 StatusCheck.propTypes = {
   active: PropTypes.bool,

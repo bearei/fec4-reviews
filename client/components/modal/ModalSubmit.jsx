@@ -2,7 +2,7 @@ import React from 'react';
 
 const ModalSubmit = (props) => {
   return (
-    <div className="modal-right-el">
+    <div>
       <input className="same-line" type="checkbox" />
       <span>
         I agree to the Bazaarvoice

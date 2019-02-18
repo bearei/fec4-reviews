@@ -30,6 +30,25 @@ const SAMPLES = [
   'youremail@example.com',
 ];
 
+const REQ = [
+  true, true, true, false, true, false, true, false, false, false,
+];
+
+const MODALS = [
+  (<UserProductRating />),
+  (<UserText title={TITLES[1]} required text placeholder={SAMPLES[0]} />),
+  (<UserText title={TITLES[2]} required text={false} placeholder="" />),
+  (<UserButton title={TITLES[3]} />),
+  (<UserText title={TITLES[4]} required text placeholder={SAMPLES[1]} />),
+  (<UserText title={TITLES[5]} required text placeholder={SAMPLES[2]} />),
+  (<UserText title={TITLES[6]} required text placeholder={SAMPLES[3]} />),
+  (<UserButton title={TITLES[7]} />),
+  (<UserButton title={TITLES[8]} />),
+  (<UserButton title={TITLES[9]} />),
+  (<UserText title={TITLES[10]} required text={false} placeholder="" />),
+  (<ModalSubmit />),
+];
+
 class ModalModel extends Component {
   constructor(props) {
     super(props);
@@ -38,11 +57,11 @@ class ModalModel extends Component {
       active: 0,
       visited: Array.from({ length: 11 }, () => false),
       submit: false,
-      values: Array.from({ length: 11 }, () => ''),
+      values: Array.from({ length: 12 }, () => ''),
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.change = this.change.bind(this);
+    this.changeFocus = this.changeFocus.bind(this);
   }
 
   handleOpen() {
@@ -53,8 +72,21 @@ class ModalModel extends Component {
     this.setState({ visible: false });
   }
 
-  change(id) {
+  changeFocus(id) {
+    const { active, visited } = this.state;
     this.setState({ active: id });
+    this.setState({ visited: visited.map((element, index) => {
+      return index === active ? true : element;
+    }),
+    });
+  }
+
+  changeValue(id, value) {
+    const { active, values } = this.state;
+    this.setState({ values: values.map((element, index) => {
+      return index === active ? value : element;
+    }),
+    });
   }
 
   render() {
@@ -77,107 +109,20 @@ class ModalModel extends Component {
             </div>
             <div id="modal-right">
               <ModalHeader handleClose={this.handleClose} />
-              <ModalContainer
-                active={active === 0}
-                required
-                submit={submit}
-                hasValue={false}
-                visited={visited[0]}
-              >
-                <UserProductRating />
-              </ModalContainer>
-              <ModalContainer
-                active={active === 1}
-                required
-                submit={submit}
-                hasValue={false}
-                visited={visited[1]}
-              >
-                <UserText title={TITLES[1]} required text placeholder={SAMPLES[0]} />
-              </ModalContainer>
-              <ModalContainer
-                active={active === 2}
-                required
-                submit={submit}
-                hasValue={false}
-                visited={visited[2]}
-                
-              >
-                <UserText title={TITLES[2]} required text={false} placeholder="" />
-              </ModalContainer>
-              <ModalContainer
-                active={active === 3}
-                required
-                submit={submit}
-                hasValue={false}
-                visited={visited[3]}
-              >
-                <UserButton title={TITLES[3]} />
-              </ModalContainer>
-              <ModalContainer
-                active={active === 4}
-                required
-                submit={submit}
-                hasValue={false}
-                visited={visited[4]}
-              >
-                <UserText title={TITLES[4]} required text placeholder={SAMPLES[1]} />
-              </ModalContainer>
-              <ModalContainer
-                active={active === 5}
-                required
-                submit={submit}
-                hasValue={false}
-                visited={visited[5]}
-              >
-                <UserText title={TITLES[5]} required text placeholder={SAMPLES[2]} />
-              </ModalContainer>
-              <ModalContainer
-                active={active === 6}
-                required
-                submit={submit}
-                hasValue={false}
-                visited={visited[6]}
-              >
-                <UserText title={TITLES[6]} required text placeholder={SAMPLES[3]} />
-              </ModalContainer>
-              <ModalContainer
-                active={active === 7}
-                required
-                submit={submit}
-                hasValue={false}
-                visited={visited[7]}
-              >
-                <UserButton title={TITLES[7]} />
-              </ModalContainer>
-              <ModalContainer
-                active={active === 8}
-                required
-                submit={submit}
-                hasValue={false}
-                visited={visited[8]}
-              >
-                <UserButton title={TITLES[8]} />
-              </ModalContainer>
-              <ModalContainer
-                active={active === 9}
-                required
-                submit={submit}
-                hasValue={false}
-                visited={visited[9]}
-              >
-                <UserButton title={TITLES[9]} />
-              </ModalContainer>
-              <ModalContainer
-                active={active === 10}
-                required
-                submit={submit}
-                hasValue={false}
-                visited={visited[10]}
-              >
-                <UserText title={TITLES[10]} required text={false} placeholder="" />
-              </ModalContainer>
-              <ModalSubmit />
+              {MODALS.map((modal, index) => (
+                <ModalContainer
+                  active={active === index}
+                  key={TITLES[index]}
+                  required={REQ[index]}
+                  submit={submit}
+                  hasValue={values[index] !== ''}
+                  visited={visited[index]}
+                  onClick={() => this.changeFocus(index)}
+                  changeValue={this.changeValue}
+                >
+                  {modal}
+                </ModalContainer>
+              ))}
             </div>
           </div>
         </div>

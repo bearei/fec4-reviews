@@ -3,17 +3,23 @@ import PropTypes from 'prop-types';
 import StatusCheck from '../util/StatusCheck';
 
 const ModalContainer = ({
-  active, required, submit, hasValue, visited, children,
+  active, required, submit, hasValue, visited, children, onClick, changeValue,
 }) => (
-  <div className="modal-right-el modal-container">
+  <div
+    className="modal-right-el modal-container"
+    onClick={onClick}
+    onKeyPress={() => {}}
+    role="button"
+    tabIndex={0}
+  >
     <div className={active ? 'arrow-container arrow' : 'arrow-container'} />
     {children}
     <StatusCheck
       active={active}
+      visited={visited}
       required={required}
       submit={submit}
       hasValue={hasValue}
-      visited={visited}
     />
   </div>
 );
@@ -25,6 +31,8 @@ ModalContainer.propTypes = {
   hasValue: PropTypes.bool,
   visited: PropTypes.bool,
   children: PropTypes.node,
+  onClick: PropTypes.func,
+  changeValue: PropTypes.func,
 };
 
 ModalContainer.defaultProps = {
@@ -34,6 +42,8 @@ ModalContainer.defaultProps = {
   hasValue: false,
   visited: false,
   children: '',
+  onClick: () => {},
+  changeValue: () => {},
 };
 
 export default ModalContainer;
