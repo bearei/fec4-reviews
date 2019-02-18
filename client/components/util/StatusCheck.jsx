@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const getClass = (active, required, submit, hasValue, visited) => {
   let result = 'hidden';
-  if (active || (visited && required)) {
-    result = 'check-gray';
-  } else if (hasValue || (submit && !required)) {
+  if (hasValue || (submit && !required)) {
     result = 'check-green';
   } else if ((submit && required) || (visited && required)) {
     result = 'check-red';
+  } else if (active || (visited && required)) {
+    result = 'check-gray';
   }
   return result;
 };

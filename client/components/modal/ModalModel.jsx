@@ -4,13 +4,12 @@ import Stars from '../util/Stars';
 import ProductInfo from './ProductInfo';
 import ModalHeader from './ModalHeader';
 import ModalContainer from './ModalContainer';
-import MODALS from './ModalConstants';
 
 const REQ = [
-  true, true, true, false, true, false, true, false, false, false, true,
+  true, true, true, false, true, false, true, false, false, false, false, true,
 ];
 
-const numbers = Array.from({ length: 12 }, (v, k) => k + 1);
+const numbers = Array.from({ length: 12 }, (v, k) => k);
 
 
 class ModalModel extends Component {
@@ -19,13 +18,14 @@ class ModalModel extends Component {
     this.state = {
       visible: false,
       active: 0,
-      visited: Array.from({ length: 11 }, () => false),
+      visited: Array.from({ length: 12 }, () => false),
       submit: false,
       values: Array.from({ length: 12 }, () => ''),
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.changeFocus = this.changeFocus.bind(this);
+    this.changeValue = this.changeValue.bind(this);
   }
 
   handleOpen() {
@@ -40,18 +40,14 @@ class ModalModel extends Component {
     const { active, visited } = this.state;
     this.setState({ active: id });
     this.setState({
-      visited: visited.map((element, index) => {
-        return index === active ? true : element;
-      }),
+      visited: visited.map((element, index) => (index === active ? true : element)),
     });
   }
 
   changeValue(id, value) {
-    const { active, values } = this.state;
+    const { values } = this.state;
     this.setState({
-      values: values.map((element, index) => {
-        return index === active ? value : element;
-      }),
+      values: values.map((element, index) => (index === id ? value : element)),
     });
   }
 
@@ -75,19 +71,19 @@ class ModalModel extends Component {
             </div>
             <div id="modal-right">
               <ModalHeader handleClose={this.handleClose} />
-              {MODALS.map((modal, index) => (
+              {numbers.map((number, index) => (
                 <ModalContainer
                   active={active === index}
                   key={numbers[index]}
                   required={REQ[index]}
                   submit={submit}
+                  value={values[index]}
                   hasValue={values[index] !== ''}
                   visited={visited[index]}
                   onClick={() => this.changeFocus(index)}
                   changeValue={this.changeValue}
-                >
-                  {modal}
-                </ModalContainer>
+                  index={index}
+                />
               ))}
             </div>
           </div>
