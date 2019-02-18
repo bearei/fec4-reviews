@@ -10,6 +10,9 @@ const REQ = [
   true, true, true, false, true, false, true, false, false, false, true,
 ];
 
+const numbers = Array.from({ length: 12 }, (v, k) => k + 1);
+
+
 class ModalModel extends Component {
   constructor(props) {
     super(props);
@@ -73,7 +76,7 @@ class ModalModel extends Component {
               {MODALS.map((modal, index) => (
                 <ModalContainer
                   active={active === index}
-                  key={modal.toString() + index}
+                  key={numbers[index]}
                   required={REQ[index]}
                   submit={submit}
                   hasValue={values[index] !== ''}
