@@ -32,12 +32,10 @@ class ModalModel extends Component {
   }
 
   onHover(id) {
-    console.log('hover', id)
     this.setState({ hover: +id });
   }
 
   onLeave() {
-    console.log('leve')
     this.setState({ hover: 0 });
   }
 

@@ -12,7 +12,6 @@ const TEXT = {
 const STARS = ['1', '2', '3', '4', '5'];
 
 const getClass = (star, selected, hover) => {
-  console.log('a',star, 'b',selected, 'c',hover)
   let result = `rating-star rating-star-${star}`;
   if (hover > 0) {
     if (hover >= star) {
