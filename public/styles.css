@@ -550,15 +550,15 @@ input[type=checkbox] {
   top: 0;
   right: 0;
   width: 100px;
-  margin-right: 5px;
+  margin-right: 5%;
 }
 .modal-wrapper {
   position: relative;
 }
 .check-gray {
   color: #767676;
-  float:right;
-  margin-right: 8px;
+  margin-right: 6%;
+  float: right;
 }
 .check-hidden,
 .hidden {
@@ -567,7 +567,7 @@ input[type=checkbox] {
 .check-green {
   color: #338b2b;
   float: right;
-  margin-right: 8px;
+  margin-right: 6%;
 }
 .check-red {
   color: rgb(180, 48, 52);
