@@ -55,7 +55,17 @@ const getModal = (
         handleChange={changeValue}
         value={value}
       />),
-    2: (<UserText value={value} title={TITLES[2]} required={required} visited={visited} text={false} placeholder="" index={index} handleChange={changeValue} />),
+    2: (
+      <UserText
+        value={value}
+        title={TITLES[2]}
+        required={required}
+        visited={visited}
+        text={false}
+        placeholder=""
+        index={index}
+        handleChange={changeValue}
+      />),
     3: (
       <UserButton
         required={required}
@@ -161,14 +171,16 @@ const ModalContainer = ({
     tabIndex={0}
   >
     <div className={active ? 'arrow-container arrow' : 'arrow-container'} />
-    {getModal(index, value, required, visited, changeValue, onHover, onLeave, hover, onSubmit)}
-    <StatusCheck
-      active={active}
-      visited={visited}
-      required={required}
-      submit={submit}
-      hasValue={hasValue}
-    />
+    <div className="modal-wrapper">
+      {getModal(index, value, required, visited, changeValue, onHover, onLeave, hover, onSubmit)}
+      <StatusCheck
+        active={active}
+        visited={visited}
+        required={required}
+        submit={submit}
+        hasValue={hasValue}
+      />
+    </div>
   </div>
 );
 

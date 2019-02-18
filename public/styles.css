@@ -64,7 +64,7 @@
 }
 .modal-container {
   display: grid;
-  grid-template-columns: 1fr 30fr 3fr;
+  grid-template-columns: 1fr 30fr;
 }
 .modal-container:focus {
   border: 0;
@@ -546,12 +546,19 @@ input[type=checkbox] {
   margin: 10px 0;
 }
 .status-check {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  margin-right: 5px;
+}
+.modal-wrapper {
   position: relative;
-  margin: 0 auto;
-  margin-top: 5px;
 }
 .check-gray {
   color: #767676;
+  float:right;
+  margin-right: 8px;
 }
 .check-hidden,
 .hidden {
@@ -559,6 +566,8 @@ input[type=checkbox] {
 }
 .check-green {
   color: #338b2b;
+  float: right;
+  margin-right: 8px;
 }
 .check-red {
   color: rgb(180, 48, 52);
