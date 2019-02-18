@@ -21,6 +21,7 @@ const TITLES = [
   'Did you read product reviews online before first purchasing this item?',
   'Where did you purchase this item?',
   'What feedback do you have for the people who designed and manufactured this product?',
+  'Submit',
 ];
 
 const SAMPLES = [
@@ -31,7 +32,7 @@ const SAMPLES = [
 ];
 
 const REQ = [
-  true, true, true, false, true, false, true, false, false, false,
+  true, true, true, false, true, false, true, false, false, false, true,
 ];
 
 const MODALS = [
