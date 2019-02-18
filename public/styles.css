@@ -24,6 +24,10 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 }
+.button-select {
+  background-color: rgb(102, 102, 102);
+  color: white;
+}
 .cancel {
   color: #767676;
   float: right;
@@ -70,7 +74,6 @@
   grid-template-columns: 1fr 1fr;
 }
 .button-recommend {
-  background-color: #ededed;
   border-width: 1px;
   border-style: solid;
   background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0) 100%);
@@ -82,7 +85,7 @@
   box-sizing: content-box;
   clear: both;
   clip: auto;
-  color: #666666;
+  
   cursor: pointer;
   display: inline-block;
   font-family: Arial, Helvetica, sans-serif;
@@ -96,6 +99,10 @@
   text-align: center;
   text-decoration-color: #666666;
   transition-duration: 0.2s;
+}
+.button-normal {
+  background-color: #ededed;
+  color: #666666;
 }
 .button-yes {
   border-bottom-left-radius: 4px;
