@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ModalSubmit = () => (
+const ModalSubmit = ({ handleChange, id, value }) => (
   <div>
-    <input className="same-line" type="checkbox" />
+    <input onChange={() => (value === '' ? handleChange(id, 'check') : handleChange(id, ''))} className="same-line" type="checkbox" />
     <span>
       I agree to the Bazaarvoice
       <span> Terms of Use & Privacy Policy</span>
@@ -15,5 +16,17 @@ const ModalSubmit = () => (
     <div role="button" tabIndex={0} className="button-write post-review" onKeyPress={() => {}}>Post review</div>
   </div>
 );
+
+ModalSubmit.propTypes = {
+  handleChange: PropTypes.func,
+  id: PropTypes.number,
+  value: PropTypes.node,
+};
+
+ModalSubmit.defaultProps = {
+  handleChange: () => {},
+  id: 0,
+  value: '',
+};
 
 export default ModalSubmit;
