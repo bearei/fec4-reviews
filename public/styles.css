@@ -530,7 +530,6 @@ input[type=checkbox] {
 .container input:checked ~ .checkmark:after {
   display: block;
 }
-
 .container .checkmark:after {
  	top: 12px;
 	left: 11px;

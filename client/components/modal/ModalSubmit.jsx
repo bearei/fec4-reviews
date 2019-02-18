@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ModalSubmit = ({
-  handleChange, index, value, onSubmit, required, visited,
+  handleChange, index, value, onSubmit, required, visited, hasValue,
 }) => (
   <div>
     <input value={value} onChange={() => (value === 'check' ? handleChange(index, '') : handleChange(index, 'check'))} className="same-line" type="checkbox" />
-    <span className={required && visited ? 'required-header ' : ''}>
+    <span className={required && visited && !hasValue ? 'required-header ' : ''}>
        I agree to the Bazaarvoice
     </span>
     <span> Terms of Use & Privacy Policy</span>
@@ -28,6 +28,7 @@ ModalSubmit.propTypes = {
   onSubmit: PropTypes.func,
   required: PropTypes.bool,
   visited: PropTypes.bool,
+  hasValue: PropTypes.bool,
 };
 
 ModalSubmit.defaultProps = {
@@ -37,6 +38,7 @@ ModalSubmit.defaultProps = {
   onSubmit: () => {},
   required: false,
   visited: false,
+  hasValue: false,
 };
 
 export default ModalSubmit;

@@ -42,13 +42,19 @@ class ModalModel extends Component {
 
   onSubmit() {
     const { values, visited } = this.state;
+    console.log(visited, visited.map(() => true))
+    console.log('v2', visited)
     let req = -1;
     for (let i = 0; i < values.length; i++) {
       if (values[i] === '') {
         req = i;
-        this.setState({ active: i, submit: true, visited: visited.map(() => true) });
         break;
       }
+    }
+    const temp = visited.map(() => true);
+    if (req >= 0) {
+      this.setState({ submit: true },
+        () => this.setState({ visited: temp }));
     }
   }
 

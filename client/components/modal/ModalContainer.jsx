@@ -29,7 +29,7 @@ const SAMPLES = [
 ];
 const getModal = (
   index, value, required, visited, changeValue, onHover,
-  onLeave, hover, onSubmit,
+  onLeave, hover, onSubmit, hasValue,
 ) => {
   const modals = {
     0: (
@@ -40,6 +40,7 @@ const getModal = (
         visited={visited}
         hover={hover}
         handleChange={changeValue}
+        hasValue={hasValue}
         onHover={onHover}
         onLeave={onLeave}
       />
@@ -53,6 +54,7 @@ const getModal = (
         placeholder={SAMPLES[0]}
         index={index}
         handleChange={changeValue}
+        hasValue={hasValue}
         value={value}
       />),
     2: (
@@ -65,6 +67,7 @@ const getModal = (
         placeholder=""
         index={index}
         handleChange={changeValue}
+        hasValue={hasValue}
       />),
     3: (
       <UserButton
@@ -74,6 +77,7 @@ const getModal = (
         title={TITLES[3]}
         index={index}
         handleChange={changeValue}
+        hasValue={hasValue}
       />),
     4: (
       <UserText
@@ -84,6 +88,7 @@ const getModal = (
         placeholder={SAMPLES[1]}
         index={index}
         handleChange={changeValue}
+        hasValue={hasValue}
         value={value}
       />),
     5: (
@@ -95,6 +100,7 @@ const getModal = (
         placeholder={SAMPLES[2]}
         index={index}
         handleChange={changeValue}
+        hasValue={hasValue}
         value={value}
       />),
     6: (
@@ -106,6 +112,7 @@ const getModal = (
         placeholder={SAMPLES[3]}
         index={index}
         handleChange={changeValue}
+        hasValue={hasValue}
         value={value}
       />),
     7: (
@@ -116,6 +123,7 @@ const getModal = (
         title={TITLES[7]}
         index={index}
         handleChange={changeValue}
+        hasValue={hasValue}
       />),
     8: (
       <UserButton
@@ -125,6 +133,7 @@ const getModal = (
         title={TITLES[8]}
         index={index}
         handleChange={changeValue}
+        hasValue={hasValue}
       />),
     9: (
       <UserButton
@@ -134,6 +143,7 @@ const getModal = (
         visited={visited}
         index={index}
         handleChange={changeValue}
+        hasValue={hasValue}
       />),
     10: (
       <UserText
@@ -145,6 +155,7 @@ const getModal = (
         placeholder=""
         index={index}
         handleChange={changeValue}
+        hasValue={hasValue}
       />),
     11: (
       <ModalSubmit
@@ -154,6 +165,7 @@ const getModal = (
         value={value}
         index={index}
         handleChange={changeValue}
+        hasValue={hasValue}
       />),
   };
   return modals[index];
@@ -172,7 +184,10 @@ const ModalContainer = ({
   >
     <div className={active ? 'arrow-container arrow' : 'arrow-container'} />
     <div className="modal-wrapper">
-      {getModal(index, value, required, visited, changeValue, onHover, onLeave, hover, onSubmit)}
+      {
+        getModal(index, value, required, visited,
+          changeValue, onHover, onLeave, hover, onSubmit, hasValue)
+      }
       <StatusCheck
         active={active}
         visited={visited}

@@ -24,10 +24,10 @@ const getClass = (star, selected, hover) => {
 };
 
 const UserProductRating = ({
-  value, hover, handleChange, id, onHover, onLeave, required, visited,
+  value, hover, handleChange, id, onHover, onLeave, required, visited, hasValue,
 }) => (
   <div>
-    <h1 className={required && visited ? 'required-header review-header same-line pad-right' : 'review-header same-line pad-right'}>Product Rating*</h1>
+    <h1 className={required && visited && !hasValue ? 'required-header review-header same-line pad-right' : 'review-header same-line pad-right'}>Product Rating*</h1>
     {STARS.map((star, index) => (
       <div
         className={getClass(star, value, hover)}
@@ -60,6 +60,7 @@ UserProductRating.propTypes = {
   onLeave: PropTypes.func,
   required: PropTypes.bool,
   visited: PropTypes.bool,
+  hasValue: PropTypes.bool,
 };
 
 UserProductRating.defaultProps = {
@@ -71,6 +72,7 @@ UserProductRating.defaultProps = {
   onLeave: () => {},
   required: false,
   visited: false,
+  hasValue: false,
 };
 
 
