@@ -29,6 +29,7 @@ class ModalModel extends Component {
     this.changeValue = this.changeValue.bind(this);
     this.onHover = this.onHover.bind(this);
     this.onLeave = this.onLeave.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onHover(id) {
@@ -60,6 +61,13 @@ class ModalModel extends Component {
     this.setState({
       values: values.map((element, index) => (index === id ? value : element)),
     });
+  }
+
+  onSubmit() {
+    const { values } = this.state;
+    for (let i = 0; i < values; i++) {
+      continue;
+    }
   }
 
   render() {

@@ -27,84 +27,73 @@ const SAMPLES = [
   'Seattle, WA',
   'youremail@example.com',
 ];
-
-const getModal = (id, value, callback, cb2, cb3, hover) => {
-  let result;
-  if (id === 0) {
-    result = (
+const getModal = (index, value, required, visited, changeValue, onHover, onLeave, hover) => {
+  const modals = {
+    0: (
       <UserProductRating
-        id={id}
+        index={index}
         value={value}
+        required={required}
+        visited={visited}
         hover={hover}
-        handleChange={callback}
-        onHover={cb2}
-        onLeave={cb3}
+        handleChange={changeValue}
+        onHover={onHover}
+        onLeave={onLeave}
       />
-    );
-  } else if (id === 1) {
-    result = (
+    ),
+    1: (
       <UserText
         title={TITLES[1]}
         required
         text
         placeholder={SAMPLES[0]}
-        id={id}
-        handleChange={callback}
+        index={index}
+        handleChange={changeValue}
         value={value}
       />
-    );
-  } else if (id === 2) {
-    result = (<UserText value={value} title={TITLES[2]} required text={false} placeholder="" id={id} handleChange={callback} />);
-  } else if (id === 3) {
-    result = (<UserButton value={value} title={TITLES[3]} id={id} handleChange={callback} />);
-  } else if (id === 4) {
-    result = (
+    ),
+    2: (<UserText value={value} title={TITLES[2]} required text={false} placeholder="" index={index} handleChange={changeValue} />),
+    3: (<UserButton value={value} title={TITLES[3]} index={index} handleChange={changeValue} />),
+    4: (
       <UserText
         title={TITLES[4]}
         required
         text
         placeholder={SAMPLES[1]}
-        id={id}
-        handleChange={callback}
+        index={index}
+        handleChange={changeValue}
         value={value}
       />
-    );
-  } else if (id === 5) {
-    result = (
+    ),
+    5: (
       <UserText
         title={TITLES[5]}
         required
         text
         placeholder={SAMPLES[2]}
-        id={id}
-        handleChange={callback}
+        index={index}
+        handleChange={changeValue}
         value={value}
       />
-    );
-  } else if (id === 6) {
-    result = (
+    ),
+    6: (
       <UserText
         title={TITLES[6]}
         required
         text
         placeholder={SAMPLES[3]}
-        id={id}
-        handleChange={callback}
+        index={index}
+        handleChange={changeValue}
         value={value}
       />
-    );
-  } else if (id === 7) {
-    result = (<UserButton value={value} title={TITLES[7]} id={id} handleChange={callback} />);
-  } else if (id === 8) {
-    result = (<UserButton value={value} title={TITLES[8]} id={id} handleChange={callback} />);
-  } else if (id === 9) {
-    result = (<UserButton value={value} title={TITLES[9]} id={id} handleChange={callback} />);
-  } else if (id === 10) {
-    result = (<UserText value={value} title={TITLES[10]} required text={false} placeholder="" id={id} handleChange={callback} />);
-  } else if (id === 11) {
-    result = (<ModalSubmit value={value} id={id} handleChange={callback} />);
-  }
-  return result;
+    ),
+    7: (<UserButton value={value} title={TITLES[7]} index={index} handleChange={changeValue} />),
+    8: (<UserButton value={value} title={TITLES[8]} index={index} handleChange={changeValue} />),
+    9: (<UserButton value={value} title={TITLES[9]} index={index} handleChange={changeValue} />),
+    10: (<UserText value={value} title={TITLES[10]} required text={false} placeholder="" index={index} handleChange={changeValue} />),
+    11: (<ModalSubmit value={value} index={index} handleChange={changeValue} />),
+  };
+  return modals[index];
 };
 
 const ModalContainer = ({
@@ -119,7 +108,7 @@ const ModalContainer = ({
     tabIndex={0}
   >
     <div className={active ? 'arrow-container arrow' : 'arrow-container'} />
-    {getModal(index, value, changeValue, onHover, onLeave, hover)}
+    {getModal(index, value, required, visited, changeValue, onHover, onLeave, hover)}
     <StatusCheck
       active={active}
       visited={visited}
