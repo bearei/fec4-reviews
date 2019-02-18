@@ -2,28 +2,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const getText = (placeholder, handleChange, index, value) => (
-  <input className="input-field" onChange={() => handleChange(index, event.target.value)} value={value} type="text" placeholder={`Example: ${placeholder}`} />
+const getText = (placeholder, handleChange, index, value, required, visited) => (
+  <input className={required && visited ? 'required-border input-field' : 'input-field'} onChange={() => handleChange(index, event.target.value)} value={value} type="text" placeholder={`Example: ${placeholder}`} />
 );
 
-const getTextArea = (handleChange, index, value) => (
-  <textarea className="input-field" rows="4" onChange={() => handleChange(index, event.target.value)} value={value} />
+const getTextArea = (handleChange, index, value, required, visited) => (
+  <textarea className={required && visited ? 'required-border input-field' : 'input-field'} rows="4" onChange={() => handleChange(index, event.target.value)} value={value} />
 );
 
 const UserText = ({
-  title, required, text, placeholder, handleChange, index, value,
+  title, required, text, placeholder, handleChange, index, value, visited,
 }) => (
   <div>
-    <h1 className="review-header ">{required ? `${title}*` : `${title}`}</h1>
+    <h1 className={required && visited ? 'required-header review-header' : 'review-header'}>{required ? `${title}*` : `${title}`}</h1>
     {text
-      ? getText(placeholder, handleChange, index, value)
-      : getTextArea(handleChange, index, value)}
+      ? getText(placeholder, handleChange, index, value, required, visited)
+      : getTextArea(handleChange, index, value, required, visited)}
   </div>
 );
 
 UserText.propTypes = {
   title: PropTypes.string,
   required: PropTypes.bool,
+  visited: PropTypes.bool,
   text: PropTypes.bool,
   placeholder: PropTypes.string,
   handleChange: PropTypes.func,
@@ -34,6 +35,7 @@ UserText.propTypes = {
 UserText.defaultProps = {
   title: '',
   required: false,
+  visited: false,
   text: '',
   placeholder: '',
   handleChange: () => {},

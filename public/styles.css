@@ -565,6 +565,12 @@ input[type=checkbox] {
   border: solid 1px rgb(180, 48, 52);
   border-radius: 13px;
 }
+.required-header {
+  color: rgb(180, 48, 52);
+}
+.required-border {
+  border-color : rgb(180, 48, 52);
+}
 .icon {
   border: 0px;
   display: inline-block;
