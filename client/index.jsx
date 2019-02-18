@@ -62,7 +62,7 @@ class App extends Component {
   getAverageFit() {
     const classes = { ...this.state };
     const total = classes.reviews.reduce((res, review) => res + review.fit, 0);
-    const count = classes.reviews.reduce((res, review) => review.fit > 0 ? res + 1 : res, 0);
+    const count = classes.reviews.reduce((res, review) => (review.fit > 0 ? res + 1 : res), 0);
     let result = 0;
     if (count > 0 && total > 0) {
       result = Math.ceil((total / count) * 10) / 10;

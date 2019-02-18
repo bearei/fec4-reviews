@@ -40,12 +40,29 @@ class ModalModel extends Component {
     this.setState({ hover: 0 });
   }
 
+  onSubmit() {
+    const { values, visited } = this.state;
+    let req = -1;
+    for (let i = 0; i < values.length; i++) {
+      if (values[i] === '') {
+        req = i;
+        this.setState({ active: i, submit: true, visited: visited.map(() => true) });
+        break;
+      }
+    }
+  }
+
   handleOpen() {
     this.setState({ visible: true });
   }
 
   handleClose() {
-    this.setState({ visible: false });
+    this.setState({ visible: false }, () => this.setState({
+      active: 0,
+      visited: Array.from({ length: 12 }, () => false),
+      submit: false,
+      values: Array.from({ length: 12 }, () => ''),
+    }));
   }
 
   changeFocus(id) {
@@ -61,13 +78,6 @@ class ModalModel extends Component {
     this.setState({
       values: values.map((element, index) => (index === id ? value : element)),
     });
-  }
-
-  onSubmit() {
-    const { values } = this.state;
-    for (let i = 0; i < values; i++) {
-      continue;
-    }
   }
 
   render() {
@@ -105,6 +115,7 @@ class ModalModel extends Component {
                   onHover={this.onHover}
                   hover={hover}
                   onLeave={() => this.onLeave()}
+                  onSubmit={() => this.onSubmit()}
                 />
               ))}
             </div>

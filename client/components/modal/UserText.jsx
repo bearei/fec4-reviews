@@ -2,20 +2,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const getText = (placeholder, handleChange, id, value) => (
-  <input className="input-field" onChange={() => handleChange(id, event.target.value)} value={value} type="text" placeholder={`Example: ${placeholder}`} />
+const getText = (placeholder, handleChange, index, value) => (
+  <input className="input-field" onChange={() => handleChange(index, event.target.value)} value={value} type="text" placeholder={`Example: ${placeholder}`} />
 );
 
-const getTextArea = (handleChange, id, value) => (
-  <textarea className="input-field" rows="4" onChange={() => handleChange(id, event.target.value)} value={value} />
+const getTextArea = (handleChange, index, value) => (
+  <textarea className="input-field" rows="4" onChange={() => handleChange(index, event.target.value)} value={value} />
 );
 
 const UserText = ({
-  title, required, text, placeholder, handleChange, id, value,
+  title, required, text, placeholder, handleChange, index, value,
 }) => (
   <div>
     <h1 className="review-header ">{required ? `${title}*` : `${title}`}</h1>
-    {text ? getText(placeholder, handleChange, id, value) : getTextArea(handleChange, id, value)}
+    {text
+      ? getText(placeholder, handleChange, index, value)
+      : getTextArea(handleChange, index, value)}
   </div>
 );
 
@@ -25,7 +27,7 @@ UserText.propTypes = {
   text: PropTypes.bool,
   placeholder: PropTypes.string,
   handleChange: PropTypes.func,
-  id: PropTypes.number,
+  index: PropTypes.number,
   value: PropTypes.node,
 };
 
@@ -35,7 +37,7 @@ UserText.defaultProps = {
   text: '',
   placeholder: '',
   handleChange: () => {},
-  id: 0,
+  index: 0,
   value: '',
 };
 
