@@ -28,10 +28,19 @@ const SAMPLES = [
   'youremail@example.com',
 ];
 
-const getModal = (id, value, callback) => {
+const getModal = (id, value, callback, cb2, cb3, hover) => {
   let result;
   if (id === 0) {
-    result = (<UserProductRating value={value} id={id} handleChange={callback} />);
+    result = (
+      <UserProductRating
+        id={id}
+        value={value}
+        hover={hover}
+        handleChange={callback}
+        onHover={cb2}
+        onLeave={cb3}
+      />
+    );
   } else if (id === 1) {
     result = (
       <UserText
@@ -99,7 +108,8 @@ const getModal = (id, value, callback) => {
 };
 
 const ModalContainer = ({
-  active, required, submit, hasValue, visited, index, onClick, changeValue, value,
+  active, required, submit, hasValue, visited,
+  index, onClick, changeValue, value, onHover, onLeave, hover,
 }) => (
   <div
     className="modal-right-el modal-container"
@@ -109,7 +119,7 @@ const ModalContainer = ({
     tabIndex={0}
   >
     <div className={active ? 'arrow-container arrow' : 'arrow-container'} />
-    {getModal(index, value, changeValue)}
+    {getModal(index, value, changeValue, onHover, onLeave, hover)}
     <StatusCheck
       active={active}
       visited={visited}
@@ -130,6 +140,9 @@ ModalContainer.propTypes = {
   onClick: PropTypes.func,
   changeValue: PropTypes.func,
   value: PropTypes.node,
+  onHover: PropTypes.func,
+  onLeave: PropTypes.func,
+  hover: PropTypes.number,
 };
 
 ModalContainer.defaultProps = {
@@ -142,6 +155,9 @@ ModalContainer.defaultProps = {
   onClick: () => {},
   changeValue: () => {},
   value: '',
+  onHover: () => {},
+  onLeave: () => {},
+  hover: 0,
 };
 
 export default ModalContainer;

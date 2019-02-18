@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import StatusCheck from '../util/StatusCheck';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const TEXT = {
   0: 'Click to rate',
@@ -11,68 +11,64 @@ const TEXT = {
 };
 const STARS = ['1', '2', '3', '4', '5'];
 
-class UserProductRating extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: 0,
-      hover: 0,
-    };
-    this.getClass = this.getClass.bind(this);
-    this.handleEnter = this.handleEnter.bind(this);
-    this.handleLeave = this.handleLeave.bind(this);
-  }
-
-  getClass(star) {
-    const { selected, hover } = this.state;
-    let result = `rating-star rating-star-${star}`;
-    if (hover > 0) {
-      if (hover >= star) {
-        result = `rating-star rating-star-${star} star-${TEXT[hover]}`;
-      }
-    } else if (selected >= star) {
-      result = `rating-star rating-${star}-star star-${TEXT[selected]}`;
+const getClass = (star, selected, hover) => {
+  console.log('a',star, 'b',selected, 'c',hover)
+  let result = `rating-star rating-star-${star}`;
+  if (hover > 0) {
+    if (hover >= star) {
+      result = `rating-star rating-star-${star} star-${TEXT[hover]}`;
     }
-    return result;
+  } else if (selected >= star) {
+    result = `rating-star rating-${star}-star star-${TEXT[selected]}`;
   }
+  return result;
+};
 
-  handleEnter(star) {
-    this.setState({ hover: star.star });
-  }
-
-  handleLeave() {
-    this.setState({ hover: 0 });
-  }
-
-  handleClick({ star }) {
-    this.setState({ selected: star });
-  }
-
-  render() {
-    const { selected, hover } = this.state;
-    return (
-      <div>
-        <h1 className="review-header same-line pad-right">Product Rating*</h1>
-        {STARS.map((star, index) => (
-          <div
-            className={this.getClass(star)}
-            role="button"
-            onMouseEnter={() => this.handleEnter({ star })}
-            onMouseLeave={() => this.handleLeave()}
-            onClick={() => this.handleClick({ star })}
-            key={TEXT[index]}
-            tabIndex={0}
-            onKeyPress={() => {}}
-            id={star}
-          >
-            ★
-          </div>
-        ))
-          }
-        <span id="rating-text">{hover > 0 ? TEXT[hover] : TEXT[selected]}</span>
+const UserProductRating = ({
+  value, hover, handleChange, id, onHover, onLeave,
+}) => (
+  <div>
+    <h1 className="review-header same-line pad-right">Product Rating*</h1>
+    {STARS.map((star, index) => (
+      <div
+        className={getClass(star, value, hover)}
+        role="button"
+        onMouseEnter={() => onHover(star)}
+        onMouseLeave={onLeave}
+        onClick={() => handleChange(id, star)}
+        key={TEXT[index]}
+        tabIndex={0}
+        onKeyPress={() => {}}
+        id={star}
+      >
+        ★
       </div>
-    );
-  }
-}
+    ))
+      }
+    <span id="rating-text">
+      {hover === 0 && value === '' ? TEXT[0] : ''}
+      {hover > 0 ? TEXT[hover] : TEXT[value]}
+    </span>
+  </div>
+);
+
+UserProductRating.propTypes = {
+  handleChange: PropTypes.func,
+  id: PropTypes.number,
+  hover: PropTypes.number,
+  value: PropTypes.node,
+  onHover: PropTypes.func,
+  onLeave: PropTypes.func,
+};
+
+UserProductRating.defaultProps = {
+  handleChange: () => {},
+  id: 0,
+  value: '',
+  hover: 0,
+  onHover: () => {},
+  onLeave: () => {},
+};
+
 
 export default UserProductRating;

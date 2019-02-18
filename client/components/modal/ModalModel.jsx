@@ -21,11 +21,24 @@ class ModalModel extends Component {
       visited: Array.from({ length: 12 }, () => false),
       submit: false,
       values: Array.from({ length: 12 }, () => ''),
+      hover: 0,
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.changeFocus = this.changeFocus.bind(this);
     this.changeValue = this.changeValue.bind(this);
+    this.onHover = this.onHover.bind(this);
+    this.onLeave = this.onLeave.bind(this);
+  }
+
+  onHover(id) {
+    console.log('hover', id)
+    this.setState({ hover: +id });
+  }
+
+  onLeave() {
+    console.log('leve')
+    this.setState({ hover: 0 });
   }
 
   handleOpen() {
@@ -53,7 +66,7 @@ class ModalModel extends Component {
 
   render() {
     const {
-      visible, active, submit, visited, values,
+      visible, active, submit, visited, values, hover,
     } = this.state;
     const { empty } = this.props;
     return (
@@ -83,6 +96,9 @@ class ModalModel extends Component {
                   onClick={() => this.changeFocus(index)}
                   changeValue={this.changeValue}
                   index={index}
+                  onHover={this.onHover}
+                  hover={hover}
+                  onLeave={() => this.onLeave()}
                 />
               ))}
             </div>

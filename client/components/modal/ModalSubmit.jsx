@@ -5,7 +5,7 @@ const ModalSubmit = ({ handleChange, id, value }) => (
   <div>
     <input onChange={() => (value === '' ? handleChange(id, 'check') : handleChange(id, ''))} className="same-line" type="checkbox" />
     <span>
-      I agree to the Bazaarvoice
+       I agree to the Bazaarvoice
       <span> Terms of Use & Privacy Policy</span>
       *
     </span>
