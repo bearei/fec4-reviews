@@ -73,7 +73,6 @@ const ModalContainer = ({
         text={TEXTAREA[index]}
         placeholder={SAMPLES[index]}
       />
-
       <StatusCheck
         active={active}
         visited={visited}

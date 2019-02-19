@@ -49,6 +49,7 @@
 #modal-left {
   background-color: #e5e5e5;
   height: auto;
+  max-width: 300px;
 }
 #modal-right {
   height: auto;
@@ -151,8 +152,12 @@
   grid-template-columns: 2fr 1fr;
   padding-left: 10px;
 }
-img {
-  padding: 10px;
+.image{
+  max-width: 200px;
+}
+.image img {
+  height: 100%;
+  width: 100%;
 }
 .button-write,
 .button-filter,
@@ -600,4 +605,12 @@ input[type=checkbox] {
 }
 .margin-left {
   margin-left: 20px;
+}
+.product-info-text {
+  font-family: Sentinel, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 48px;
+  font-size: 16px;
+}
+#product-info {
+  padding: 5%;
 }
