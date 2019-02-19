@@ -1,13 +1,11 @@
 # Project Name
 
-> Project description
+> This repo includes the Reviews service of Team 4's Front End Capstone project.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/hrr36-fec4/fec4-product-options
+  - https://github.com/hrr36-fec4/fec4-related-items-and-size-chart
 
 ## Table of Contents
 
@@ -17,7 +15,11 @@
 
 ## Usage
 
-> Some usage instructions
+1. Ensure that MongoDB is installed and running on your computer (`mongod`).
+2. [Install the project's dependencies](#installing-dependencies).
+3. Open three terminal tabs for each of these processes: `mongod`, `npm run dev:react`, and `npm start`.
+4. Run tests with `npm test`.
+5. Navigate to `http://localhost:3003` to view the service.
 
 ## Requirements
 
