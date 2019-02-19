@@ -11,20 +11,24 @@ const ReviewListItemFooter = ({
       role="button"
       tabIndex={0}
       onClick={helpfulClicked ? () => {} : () => patch(id, 'helpful')}
-      className={helpfulClicked ? '' : 'button-helpful'}
+      className={helpfulClicked ? 'button-helpful no-border' : 'button-helpful'}
     >
       <span>Yes · </span>
-      <span>{helpful}</span>
+      <span className={helpfulClicked ? 'button-yes-color' : ''}>
+        {helpfulClicked === 'helpful' ? helpful + 1 : helpful}
+      </span>
     </span>
     <span
       onKeyPress={() => {}}
       role="button"
       tabIndex={0}
       onClick={helpfulClicked ? () => {} : () => patch(id, 'notHelpful')}
-      className={helpfulClicked ? '' : 'button-helpful'}
+      className={helpfulClicked ? 'button-helpful no-border' : 'button-helpful'}
     >
       <span> No · </span>
-      <span>{not}</span>
+      <span className={helpfulClicked ? 'button-no-color' : ''}>
+        {helpfulClicked === 'notHelpful' ? not + 1 : not}
+      </span>
     </span>
     <span onKeyPress={() => {}} role="button" tabIndex={0} onClick={() => patch(id, 'flag')} className={flag ? 'bold' : 'button-helpful'}>
       <span>{flag ? 'Reported' : 'Report as inappropiate'}</span>
@@ -38,7 +42,7 @@ ReviewListItemFooter.propTypes = {
   flag: PropTypes.bool,
   id: PropTypes.node,
   patch: PropTypes.func,
-  helpfulClicked: PropTypes.bool,
+  helpfulClicked: PropTypes.string,
 };
 
 ReviewListItemFooter.defaultProps = {
@@ -47,7 +51,7 @@ ReviewListItemFooter.defaultProps = {
   flag: false,
   id: '',
   patch: () => {},
-  helpfulClicked: false,
+  helpfulClicked: '',
 };
 
 export default ReviewListItemFooter;

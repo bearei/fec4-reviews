@@ -48,13 +48,13 @@ const ReviewListItem = ({
 ReviewListItem.propTypes = {
   review: PropTypes.instanceOf(Object),
   patch: PropTypes.func,
-  helpfulClicked: PropTypes.bool,
+  helpfulClicked: PropTypes.string,
 };
 
 ReviewListItem.defaultProps = {
   review: {},
   patch: () => {},
-  helpfulClicked: false,
+  helpfulClicked: '',
 };
 
 export default ReviewListItem;

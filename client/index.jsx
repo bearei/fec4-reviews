@@ -78,7 +78,7 @@ class App extends Component {
       success: (results) => {
         this.setState({
           reviews: results,
-          helpful: Array.from({ length: results.length }, () => false),
+          helpful: Array.from({ length: results.length }, () => ''),
         }, callback());
       },
       error: err => console.log('.GET', err),
@@ -86,18 +86,16 @@ class App extends Component {
   }
 
   patch(id, key) {
-    const { helpful } = this.state;
+    const { reviews, helpful } = this.state;
     $.ajax({
       url: path.join('reviews', key, id),
       type: 'PATCH',
       contentType: 'application/json',
       success: () => {
         if (key !== 'flag') {
-          this.fetch(this.setState({
-            helpful: helpful.map((element, index) => (index === id ? true : element)),
-          }));
-        } else {
-          this.fetch();
+          this.setState({
+            helpful: helpful.map((element, index) => (reviews[index]._id === id ? key : element)),
+          });
         }
       },
       error: err => console.log('Patch', err),

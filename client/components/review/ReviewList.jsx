@@ -10,7 +10,7 @@ const ReviewList = ({
     <div id="reviews">
       {reviews.map((review, index) => (
         <ReviewListItem
-          helfulClicked={helpful[index]}
+          helpfulClicked={helpful[index]}
           key={review._id}
           review={review}
           patch={patch}

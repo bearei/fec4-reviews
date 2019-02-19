@@ -448,6 +448,15 @@ img {
 .star-Poor {
   background-color: #b43034;
 }
+.no-border{
+  border: 0;
+}
+.button-no-color {
+  color: #b43034;
+}
+.button-yes-color {
+  color: #338b2b;
+}
 .star-Fair {
   background-color: #de9500;
 }
