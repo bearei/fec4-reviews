@@ -30,10 +30,10 @@ const getButton = (title, handleChange, index, value) => {
             onKeyPress={() => {}}
             onClick={() => handleChange(index, number)}
             htmlFor={number}
-            className={number === value ? "container selected": "container"}
+            className={number === value ? 'container selected' : 'container'}
             key={numbers[ind]}
           >
-            <span className={number === value ? "checkmark-after" : "checkmark" } />
+            <span className={number === value ? 'checkmark-after' : 'checkmark'} />
           </div>
         ))
         }
