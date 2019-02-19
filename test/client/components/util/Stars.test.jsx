@@ -1,17 +1,10 @@
-const getIcon = require('../../../../client/components/util/Stars.jsx').__get__('getIcon');
+import React from 'react';
+import { shallow } from 'enzyme';
+import Stars from '../../../../client/components/util/Stars';
 
-describe('GetIcon Test', () => {
-  describe('getIcon', () => {
-    it('should return star', () => {
-      const expected = 'star';
-      const actual = getIcon(1, 3);
-      expect(actual).toEqual(expected);
-    });
-
-    it('should return half star', () => {
-      const expected = 'star-half';
-      const actual = getIcon(3, 2.5);
-      expect(actual).toEqual(expected);
-    });
+describe('<Stars />', () => {
+  test('should exist', () => {
+    const wrapper = shallow(<Stars />);
+    expect(wrapper.find(Stars)).toBeDefined();
   });
 });

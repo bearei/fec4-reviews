@@ -4,9 +4,9 @@ import sinon from 'sinon';
 import ModalSubmit from '../../../../client/components/modal/ModalSubmit';
 
 describe('<ModalSubmit />', () => {
-  test('Should have 4 children', () => {
-    const expected = 4;
+  test('Should have 6 children', () => {
+    const expected = 6;
     const wrapper = shallow(<ModalSubmit />);
-    expect(wrapper.find('.modal-right-el').children().length).toBe(expected);
+    expect(wrapper.find('#modal-submit').children().length).toBe(expected);
   });
 });

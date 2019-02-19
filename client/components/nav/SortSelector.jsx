@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const LABEL = {
@@ -8,26 +9,40 @@ const LABEL = {
   3: 'Lowest to Highest Rating',
   4: 'Most Recent',
 };
+const numbers = Array.from({ length: 5 }, (v, k) => k);
 
-const SortSelector = (props) => {
-  const classes = { ...props };
-  const numbers = Array.from({ length: 5 }, (v, k) => k);
-  return (
-    <div id="sort-selector">
-      <FontAwesomeIcon className={classes.selector > 0 ? 'hidden' : ''} icon="question-circle" size="sm" />
+const SortSelector = ({ selector, changeSort }) => (
+  <div id="sort-selector">
+    <div className="f-right">
+      <FontAwesomeIcon className={selector > 0 ? 'hidden' : ''} icon="question-circle" size="sm" />
       <span>
         <div className="dropdown">
           <div type="button" className="dropbtn">
           Sort by:
-            {` ${LABEL[classes.selector]}`}
+            {` ${LABEL[selector]} ▼`}
           </div>
-          <div className="dropdown-content">
-            {numbers.map((number, index) => <div key={numbers[index]}>{LABEL[number]}</div>)}
+          <div className="dropdown-content f-right">
+            {numbers.map((number, index) => (
+              <div key={numbers[index]} tabIndex={0} role="button" onKeyPress={() => {}} onClick={() => changeSort(number)}>
+                {LABEL[number]}
+              </div>
+            ))
+          }
           </div>
         </div>
       </span>
     </div>
-  );
+  </div>
+);
+
+SortSelector.propTypes = {
+  selector: PropTypes.number,
+  changeSort: PropTypes.func,
+};
+
+SortSelector.defaultProps = {
+  selector: 0,
+  changeSort: () => {},
 };
 
 export default SortSelector;

@@ -1,34 +1,27 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 
-const getIcon = (number, average) => {
-  let result;
-  if (number <= Math.floor(average)) {
-    result = 'star';
-  } else if (number <= Math.ceil(average)) {
-    result = 'star-half';
-  } else {
-    result = 'star';
-  }
-  return result;
+const numbers = Array.from({ length: 5 }, (v, k) => k + 1);
+
+const Stars = ({ average }) => (
+  <span>
+    <div className="star-ratings">
+      <div className="star-ratings-top" style={{ width: `${average * 20}%` }}>
+        {numbers.map((number, index) => <span key={numbers[index]}>★</span>)}
+      </div>
+      <div className="star-ratings-bottom">
+        {numbers.map((number, index) => <span key={numbers[index]}>★</span>)}
+      </div>
+    </div>
+  </span>
+);
+
+Stars.propTypes = {
+  average: PropTypes.number,
 };
 
-const Stars = (props) => {
-  const classes = { ...props };
-  const numbers = Array.from({ length: 5 }, (v, k) => k + 1);
-  return (
-    <span>
-      {numbers.map((number, index) => (
-        <FontAwesomeIcon
-          icon={getIcon(number, classes.average)}
-          size="lg"
-          key={numbers[index]}
-          className={number > Math.ceil(classes.average) ? 'background-star' : 'foreground-star'}
-        />
-      ))
-      }
-    </span>
-  );
+Stars.defaultProps = {
+  average: 0,
 };
 
 export default Stars;

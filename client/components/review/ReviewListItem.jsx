@@ -1,44 +1,60 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Stars from '../util/Stars';
 import FitBarContainer from '../util/FitBarContainer';
 import ReviewListItemFooter from './ReviewListItemFooter';
 
-const ReviewListItem = (props) => {
-  const classes = { ...props };
-  return (
-    <div>
-      <hr />
-      <div className="review-body">
-        <div>
-          <Stars average={classes.review.rating} />
-          <span>
-            {classes.review.name}
-          </span>
-          <span> - </span>
-          <span>
-            {moment(classes.review.createdAt).fromNow()}
-          </span>
-          <h2>{classes.review.title}</h2>
-          <h3>{classes.review.text}</h3>
-          <FontAwesomeIcon icon={classes.review.recommend ? 'check-circle' : 'times-circle'} />
-          <span>{classes.review.recommend ? 'Yes, ' : 'No, '}</span>
-          <span>I </span>
-          <span>{classes.review.recommend ? '' : 'don\'t '}</span>
-          <span>recommend this product.</span>
-          <ReviewListItemFooter
-            helpful={classes.review.helpful}
-            not={classes.review.notHelpful}
-            flag={classes.review.inappropriate}
-          />
-        </div>
-        <div>
-          <FitBarContainer className={classes.review.fit === 0 ? 'hidden' : ''} average={classes.review.fit} />
-        </div>
+const ReviewListItem = ({
+  patch, helpfulClicked, review: {
+    rating, name, createdAt, title, text, recommend, helpful, notHelpful, flag, fit, _id,
+  },
+}) => (
+  <div>
+    <hr />
+    <div className="review-body">
+      <div>
+        <Stars average={rating} />
+        <span className="bold">{name}</span>
+        <span> - </span>
+        <span>
+          {moment(createdAt).fromNow()}
+        </span>
+        <div className="title-review">{title}</div>
+        <div className="text-review">{text}</div>
+        <FontAwesomeIcon icon={recommend ? 'check-circle' : 'times-circle'} />
+        <span className="bold">{recommend ? 'Yes, ' : 'No, '}</span>
+        <span>I </span>
+        <span>{recommend ? '' : 'don\'t '}</span>
+        <span>recommend this product.</span>
+        <ReviewListItemFooter
+          helpful={helpful}
+          not={notHelpful}
+          flag={flag}
+          id={_id}
+          patch={patch}
+          helpfulClicked={helpfulClicked}
+        />
+      </div>
+      <div className="review-fit-bar">
+        <div className={fit === 0 ? 'hidden' : 'bold'}>Fit</div>
+        <FitBarContainer className={fit === 0 ? 'hidden' : ''} average={fit} />
       </div>
     </div>
-  );
+  </div>
+);
+
+ReviewListItem.propTypes = {
+  review: PropTypes.instanceOf(Object),
+  patch: PropTypes.func,
+  helpfulClicked: PropTypes.string,
+};
+
+ReviewListItem.defaultProps = {
+  review: {},
+  patch: () => {},
+  helpfulClicked: '',
 };
 
 export default ReviewListItem;

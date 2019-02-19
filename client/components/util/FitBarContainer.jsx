@@ -1,15 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FitBar from './FitBar';
 
-const FitBarContainer = (props) => {
-  const classes = { ...props };
-  return (
-    <div id="fit-bar-container">
-      <span>Fit</span>
-      <FitBar average={classes.average} />
-      <p>Runs Small    Runs Large</p>
+const FitBarContainer = ({ average }) => (
+  <div id="fit-bar-container">
+    <FitBar average={average} />
+    <div className={average === 0 ? 'hidden' : ''}>
+      <span className="fit-bar-label">Runs Small</span>
+      <span className="fit-bar-label f-right">Runs Large</span>
     </div>
-  );
+  </div>
+);
+
+FitBarContainer.propTypes = {
+  average: PropTypes.number,
+};
+
+FitBarContainer.defaultProps = {
+  average: 0,
 };
 
 export default FitBarContainer;

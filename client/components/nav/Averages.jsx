@@ -1,16 +1,29 @@
 import React from 'react';
-import AveragesStars from './AveragesStars';
+import PropTypes from 'prop-types';
+import Stars from '../util/Stars';
 import FitBarContainer from '../util/FitBarContainer';
 
-const Averages = (props) => {
-  const classes = { ...props };
-  return (
-    <div id="averages">
-      <h1>Average Customer Rating</h1>
-      <AveragesStars average={Number.isNaN(classes.average) ? 0 : classes.average} />
-      <FitBarContainer average={classes.average} />
+const Averages = ({ average }) => (
+  <div id="averages">
+    <h3 className="content-title">Average Customer Rating</h3>
+    <div className="fit-body pad-bot">
+      <span className="content-title">Overall</span>
+      <Stars average={Number.isNaN(average) ? 0 : average} />
+      <span className="content-title">{average}</span>
     </div>
-  );
+    <div className="fit-body pad-top">
+      <div className="content-title inline-top">Fit</div>
+      <FitBarContainer average={Number.isNaN(average) ? 0 : average} />
+    </div>
+  </div>
+);
+
+Averages.propTypes = {
+  average: PropTypes.number,
+};
+
+Averages.defaultProps = {
+  average: 0,
 };
 
 export default Averages;

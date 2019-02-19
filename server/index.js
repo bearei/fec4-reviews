@@ -15,18 +15,30 @@ app.get('/reviews/:itemId', (req, res) => {
     .then(data => res.status(200).send(data));
 });
 
+app.patch('/reviews/helpful/:postId', (req, res) => {
+  Reviews.update({ _id: req.params.postId }, { $inc: { helpful: 1 } })
+    .then(data => res.status(200).send(data));
+});
+
+app.patch('/reviews/notHelpful/:postId', (req, res) => {
+  Reviews.update({ _id: req.params.postId }, { $inc: { notHelpful: 1 } })
+    .then(data => res.status(200).send(data));
+});
+
+app.patch('/reviews/flag/:postId', (req, res) => {
+  Reviews.updateOne({ _id: req.params.postId }, { flag: true })
+    .then(data => res.status(200).send(data));
+});
+
 app.post('/reviews', (req, res) => {
   Reviews.create({
     rating: req.body.rating,
     title: req.body.title,
     text: req.body.text,
-    recommend: req.body.recommend,
+    recommend: req.body.recommend ? req.body.recommend : true,
     name: req.body.name,
-    fit: req.body.fit,
+    fit: req.body.fit ? req.body.fit : 0,
     itemId: req.body.itemId,
-    helpful: req.body.helpful,
-    notHelpful: req.body.notHelpful,
-    inappropriate: req.body.inappropriate,
   })
     .then(data => res.status(201).send(data));
 });
