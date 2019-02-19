@@ -26,7 +26,7 @@ const getClass = (star, selected, hover) => {
 const UserProductRating = ({
   value, hover, handleChange, id, onHover, onLeave, required, visited, hasValue,
 }) => (
-  <div>
+  <div id="user-product-rating">
     <h1 className={required && visited && !hasValue ? 'required-header review-header same-line pad-right' : 'review-header same-line pad-right'}>Product Rating*</h1>
     {STARS.map((star, index) => (
       <div
