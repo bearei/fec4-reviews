@@ -1107,15 +1107,11 @@ const sampleItems = [
   { 'itemId': 100, 'companyName': 'InnoZ', 'productName': 'Fintone' }
 ];
 
-const insertSampleReviews = function() {
+const insertSamples= function() {
   Review.create(sampleReviews)
+    .then(Item.create(sampleItems))
     .then(() => db.close());
 };
 
-const insertSampleItems = function() {
-  Item.create(sampleItems)
-    .then(() => db.close());
-};
 
-insertSampleReviews();
-insertSampleItems();
+insertSamples();
