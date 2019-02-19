@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import path from 'path';
-import $ from 'jquery';
+import axios from 'axios';
 import {
   faTimesCircle, faCheckCircle, faStar, faQuestionCircle, faStarHalfAlt,
 } from '@fortawesome/free-solid-svg-icons';
@@ -71,49 +71,36 @@ class App extends Component {
 
   fetch(callback = () => {}) {
     const classes = { ...this.state };
-    $.ajax({
-      url: path.join('reviews', classes.itemId.toString()),
-      type: 'GET',
-      contentType: 'application/json',
-      success: (results) => {
+    axios.get(path.join('reviews', classes.itemId.toString()))
+      .then((res) => {
         this.setState({
-          reviews: results,
-          helpful: Array.from({ length: results.length }, () => ''),
+          reviews: res.data,
+          helpful: Array.from({ length: res.data.length }, () => ''),
         }, callback());
-      },
-      error: err => console.log('.GET', err),
-    });
+      })
+      .catch(err => console.log(err));
   }
 
   patch(id, key) {
     const { reviews, helpful } = this.state;
-    $.ajax({
-      url: path.join('reviews', key, id),
-      type: 'PATCH',
-      contentType: 'application/json',
-      success: () => {
+    axios.patch(path.join('reviews', key, id))
+      .then(() => {
         if (key !== 'flag') {
           this.setState({
             helpful: helpful.map((element, index) => (reviews[index]._id === id ? key : element)),
           });
         }
-      },
-      error: err => console.log('Patch', err),
-    });
+      })
+      .catch(err => console.log('Patch', err));
   }
 
   submit(data, callback) {
-    $.ajax({
-      url: 'reviews',
-      type: 'POST',
-      data: JSON.stringify(data),
-      contentType: 'application/json',
-      success: () => {
+    axios.post(path.join('reviews'), data)
+      .then(() => {
         callback();
         this.setState({ selector: 0 }, this.fetch());
-      },
-      error: err => console.log('POST', err),
-    });
+      })
+      .catch(err => console.log('Post', err));
   }
 
   clearFilter() {
@@ -150,7 +137,7 @@ class App extends Component {
     const classes = { ...this.state };
     classes.reviews.sort(SORT[type]);
     this.setState({ selector: type, showing: 8 }, () => this.setState({
-      helpful: Array.from({ length: classes.reviews.length }, () => false),
+      helpful: Array.from({ length: classes.reviews.length }, () => ''),
     }));
   }
 
