@@ -1,6 +1,6 @@
 const db = require('./index.js');
 const Review = require('./Review.js');
-const Item = require('./Index.js');
+const Item = require('./Item.js');
 
 const sampleReviews = [
   { rating:0,title:'ac enim in tempor',text:'nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque',recommend:true,'name':'Ana','fit':2,'itemId':27,helpful:7,notHelpful:11,flag:false},
@@ -1112,4 +1112,10 @@ const insertSampleReviews = function() {
     .then(() => db.close());
 };
 
+const insertSampleItems = function() {
+  Item.create(sampleItems)
+    .then(() => db.close());
+};
+
 insertSampleReviews();
+insertSampleItems();
