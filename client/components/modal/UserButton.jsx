@@ -63,7 +63,7 @@ const getButton = (title, handleChange, index, value) => {
 const UserButton = ({
   title, handleChange, index, value,
 }) => (
-  <div className="modal-grindex">
+  <div className="modal-grid">
     <span>
       <h1 className="review-header ">{title}</h1>
     </span>

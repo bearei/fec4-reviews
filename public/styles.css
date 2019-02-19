@@ -485,7 +485,7 @@ textarea {
   height: 32px;
   font-family: Arial;
   box-shadow: rgb(255, 255, 255) 0px 1px 0px 0px, rgb(255, 255, 255) 0px 1px 0px 0px inset;
-  width: 90%;
+  width: 50%;
   color: rgb(102, 102, 102);
 }
 input[type=checkbox] {
