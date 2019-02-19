@@ -496,39 +496,26 @@ input[type=checkbox] {
 .container {
   display: inline-block;
   position: relative;
-  padding-left: 29px;
+  padding-left: 23px;
   margin-bottom: 12px;
+  height: 40px;
+  width: 45px;
   cursor: pointer;
   font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
 }
 .checkmark {
   position: absolute;
-  border: 1px solid;
-  border-left-color: rgb(208, 208, 208);
-  border-right-color: rgb(204, 204, 204);
-  border-bottom-color: rgb(170, 170, 170);
-  border-top-color: rgb(204, 204, 204);
   top: 0;
   left: 0;
-  height: 35px;
-  width: 30px;
-  background-color: #ccc;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
   border-radius: 4%;
-	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0) 100%);
 }
-.container:hover input ~ .checkmark {
+.container:hover {
   background-color: rgb(170, 170, 170);
 }
-.container input:checked ~ .checkmark {
+.selected {
   background-color: rgb(170, 170, 170);
 }
 .checkmark:after {
@@ -539,11 +526,11 @@ input[type=checkbox] {
 .container input:checked ~ .checkmark:after {
   display: block;
 }
-.container .checkmark:after {
- 	top: 12px;
-	left: 11px;
-	width: 9px;
-	height: 9px;
+.container .checkmark-after {
+ 	top: 19px;
+	left: 39px;
+	width: 8px;
+	height: 8px;
 	border-radius: 50%;
 	background: rgb(0, 102, 180);
 }

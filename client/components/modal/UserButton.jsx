@@ -24,10 +24,17 @@ const getButton = (title, handleChange, index, value) => {
     result = (
       <div className="margin-left">
         {numbers.map((number, ind) => (
-          <label onKeyPress={() => {}} onClick={() => handleChange(index, number)} htmlFor={number} className="container" key={numbers[ind]}>
-            <input type="radio" value={number} name="radio" />
-            <span className="checkmark" />
-          </label>
+          <div
+            role="button"
+            tabIndex={0}
+            onKeyPress={() => {}}
+            onClick={() => handleChange(index, number)}
+            htmlFor={number}
+            className={number === value ? "container selected": "container"}
+            key={numbers[ind]}
+          >
+            <span className={number === value ? "checkmark-after" : "checkmark" } />
+          </div>
         ))
         }
         <div>
