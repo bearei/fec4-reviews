@@ -19,10 +19,18 @@ const TITLES = [
 ];
 
 const SAMPLES = [
+  '',
   'Makes hiking even easier',
+  '',
+  '',
   'jackie27',
   'Seattle, WA',
   'youremail@example.com',
+  '',
+  '',
+  '',
+  '',
+  '',
 ];
 
 const TAGS = [
@@ -63,6 +71,7 @@ const ModalContainer = ({
         onSubmit={onSubmit}
         hasValue={hasValue}
         text={TEXTAREA[index]}
+        placeholder={SAMPLES[index]}
       />
 
       <StatusCheck
