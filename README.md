@@ -1,4 +1,4 @@
-# Project Name
+# HRR36 FEC Team 4 - Reviews
 
 > This repo includes the Reviews service of Team 4's Front End Capstone project.
 
