@@ -38,7 +38,8 @@ class App extends Component {
       selector: 0,
       filter: 0,
       showing: 8,
-
+      helpful: [],
+      flagged: [],
     };
     this.handleMore = this.handleMore.bind(this);
     this.setFilter = this.setFilter.bind(this);
@@ -68,7 +69,7 @@ class App extends Component {
     this.setState({ filter: id, showing: 8 });
   }
 
-  fetch() {
+  fetch(callback = () => {}) {
     const classes = { ...this.state };
     $.ajax({
       url: path.join('reviews', classes.itemId.toString()),
@@ -77,20 +78,27 @@ class App extends Component {
       success: (results) => {
         this.setState({
           reviews: results,
-          indexes: Array.from({ length: results.length }, (v, k) => k + 1),
-        });
+          helpful: Array.from({ length: results.length }, () => false),
+        }, callback());
       },
       error: err => console.log('.GET', err),
     });
   }
 
   patch(id, key) {
+    const { helpful } = this.state;
     $.ajax({
       url: path.join('reviews', key, id),
       type: 'PATCH',
       contentType: 'application/json',
       success: () => {
-        const a = this;
+        if (key !== 'flag') {
+          this.fetch(this.setState({
+            helpful: helpful.map((element, index) => (index === id ? true : element)),
+          }));
+        } else {
+          this.fetch();
+        }
       },
       error: err => console.log('Patch', err),
     });
@@ -143,7 +151,9 @@ class App extends Component {
   changeSort(type) {
     const classes = { ...this.state };
     classes.reviews.sort(SORT[type]);
-    this.setState({ selector: type, showing: 8 });
+    this.setState({ selector: type, showing: 8 }, () => this.setState({
+      helpful: Array.from({ length: classes.reviews.length }, () => false),
+    }));
   }
 
   render() {
@@ -172,6 +182,7 @@ class App extends Component {
           hasMore={classes.showing < this.filter(classes.reviews).length}
           handleMore={this.handleMore}
           patch={this.patch}
+          helpful={classes.helpful}
         />
       </div>
     );

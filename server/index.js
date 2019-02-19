@@ -26,7 +26,7 @@ app.patch('/reviews/notHelpful/:postId', (req, res) => {
 });
 
 app.patch('/reviews/flag/:postId', (req, res) => {
-  Reviews.update({ _id: req.params.postId }, { flag: true })
+  Reviews.updateOne({ _id: req.params.postId }, { flag: true })
     .then(data => res.status(200).send(data));
 });
 

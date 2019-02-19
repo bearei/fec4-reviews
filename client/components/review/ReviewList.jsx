@@ -4,11 +4,19 @@ import PropTypes from 'prop-types';
 import ReviewListItem from './ReviewListItem';
 
 const ReviewList = ({
-  reviews, hasMore, handleMore, patch,
+  reviews, hasMore, handleMore, patch, helpful,
 }) => (
   <div id="review-list">
     <div id="reviews">
-      {reviews.map(review => <ReviewListItem key={review._id} review={review} patch={patch} />)}
+      {reviews.map((review, index) => (
+        <ReviewListItem
+          helfulClicked={helpful[index]}
+          key={review._id}
+          review={review}
+          patch={patch}
+        />
+      ))
+      }
       <div
         className={hasMore ? 'button-helpful button-load-more' : 'hidden'}
         onClick={handleMore}
@@ -27,6 +35,7 @@ ReviewList.propTypes = {
   hasMore: PropTypes.bool,
   handleMore: PropTypes.func,
   patch: PropTypes.func,
+  helpful: PropTypes.instanceOf(Array),
 };
 
 ReviewList.defaultProps = {
@@ -34,6 +43,7 @@ ReviewList.defaultProps = {
   hasMore: false,
   handleMore: () => {},
   patch: () => {},
+  helpful: [],
 };
 
 export default ReviewList;
