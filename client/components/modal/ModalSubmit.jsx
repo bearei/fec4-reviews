@@ -5,7 +5,7 @@ const ModalSubmit = ({
   handleChange, index, value, onSubmit, required, visited, hasValue,
 }) => (
   <div id="modal-submit">
-    <input value={value} onChange={() => (value === 'check' ? handleChange(index, '') : handleChange(index, 'check'))} className="same-line" type="checkbox" />
+    <input checked={value !== ''} onChange={() => (value === 'check' ? handleChange(index, '') : handleChange(index, 'check'))} className="same-line" type="checkbox" />
     <span className={required && visited && !hasValue ? 'required-header ' : ''}>
        I agree to the Bazaarvoice
     </span>

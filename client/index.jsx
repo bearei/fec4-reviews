@@ -1,9 +1,10 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import path from 'path';
 import axios from 'axios';
 import {
-  faTimesCircle, faCheckCircle, faStar, faQuestionCircle, faStarHalfAlt,
+  faTimesCircle, faCheckCircle, faQuestionCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import ReviewList from './components/review/ReviewList';
@@ -16,10 +17,8 @@ import ActiveFilters from './components/nav/ActiveFilters';
 
 
 library.add(faTimesCircle);
-library.add(faStar);
 library.add(faCheckCircle);
 library.add(faQuestionCircle);
-library.add(faStarHalfAlt);
 
 const SORT = {
   0: (a, b) => b.text.length - a.text.length,
@@ -40,6 +39,7 @@ class App extends Component {
       showing: 8,
       helpful: [],
       flagged: [],
+      spinner: false,
     };
     this.handleMore = this.handleMore.bind(this);
     this.setFilter = this.setFilter.bind(this);
@@ -51,7 +51,8 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.fetch();
+    this.setState({ spinner: true });
+    this.fetch(() => this.setState({ spinner: false }));
   }
 
   getAverageFit() {
@@ -69,7 +70,7 @@ class App extends Component {
     this.setState({ filter: id, showing: 8 });
   }
 
-  fetch(callback = () => {}) {
+  fetch(callback) {
     const classes = { ...this.state };
     axios.get(path.join('reviews', classes.itemId.toString()))
       .then((res) => {
@@ -114,61 +115,68 @@ class App extends Component {
   }
 
   filter() {
-    const classes = { ...this.state };
-    let result = classes.reviews;
-    if (classes.filter > 0) {
-      result = classes.reviews.filter(review => review.rating === classes.filter);
+    const { reviews, filter } = this.state;
+    let result = reviews;
+    if (filter > 0) {
+      result = reviews.filter(review => review.rating === filter);
     }
     return result;
   }
 
   filteredTotal() {
-    const classes = { ...this.state };
+    const { reviews, filter } = this.state;
     let total = 0;
-    if (classes.filter > 0) {
-      total = classes.reviews.filter(review => review.rating === classes.filter).length;
+    if (filter > 0) {
+      total = reviews.filter(review => review.rating === filter).length;
     } else {
-      total = classes.reviews.length;
+      total = reviews.length;
     }
     return total;
   }
 
   changeSort(type) {
-    const classes = { ...this.state };
-    classes.reviews.sort(SORT[type]);
+    const { reviews } = this.state;
+    reviews.sort(SORT[type]);
     this.setState({ selector: type, showing: 8 }, () => this.setState({
-      helpful: Array.from({ length: classes.reviews.length }, () => ''),
+      helpful: Array.from({ length: reviews.length }, () => ''),
     }));
   }
 
   render() {
-    const classes = { ...this.state };
+    const {
+      spinner, reviews, itemId, showing, selector, filter, helpful,
+    } = this.state;
     return (
       <div>
         <h1>HREI Reviews</h1>
-        <ModalModel
-          empty={classes.reviews.length === 0}
-          itemId={classes.itemId}
-          submit={this.submit}
-        />
-        <div className={classes.reviews.length === 0 ? 'hidden' : 'nav'}>
-          <RatingSnapshot
-            setFilter={this.setFilter}
-            clearFilter={this.clearFilter}
-            reviews={classes.reviews}
-          />
-          <Averages average={this.getAverageFit()} />
-          <ReviewIndex total={this.filteredTotal()} showing={classes.showing} />
-          <SortSelector changeSort={this.changeSort} selector={classes.selector} />
-          <ActiveFilters star={classes.filter} clear={this.clearFilter} />
+        <div className={spinner ? 'spinner' : 'hidden'}>
+          <img alt="" src="/spinner.gif" />
         </div>
-        <ReviewList
-          reviews={this.filter(classes.reviews).slice(0, classes.showing)}
-          hasMore={classes.showing < this.filter(classes.reviews).length}
-          handleMore={this.handleMore}
-          patch={this.patch}
-          helpful={classes.helpful}
-        />
+        <div className={spinner ? 'hidden' : ''}>
+          <ModalModel
+            empty={reviews.length === 0}
+            itemId={itemId}
+            submit={this.submit}
+          />
+          <div className={reviews.length === 0 ? 'hidden' : 'nav'}>
+            <RatingSnapshot
+              setFilter={this.setFilter}
+              clearFilter={this.clearFilter}
+              reviews={reviews}
+            />
+            <Averages average={this.getAverageFit()} />
+            <ReviewIndex total={this.filteredTotal()} showing={showing} />
+            <SortSelector changeSort={this.changeSort} selector={selector} />
+            <ActiveFilters star={filter} clear={this.clearFilter} />
+          </div>
+          <ReviewList
+            reviews={this.filter(reviews).slice(0, showing)}
+            hasMore={showing < this.filter(reviews).length}
+            handleMore={this.handleMore}
+            patch={this.patch}
+            helpful={helpful}
+          />
+        </div>
       </div>
     );
   }

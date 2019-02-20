@@ -14,7 +14,16 @@ const numbers = Array.from({ length: 5 }, (v, k) => k);
 const SortSelector = ({ selector, changeSort }) => (
   <div id="sort-selector">
     <div className="f-right">
-      <FontAwesomeIcon className={selector > 0 ? 'hidden' : ''} icon="question-circle" size="sm" />
+      <div className="sort-text-container same-line">
+        <FontAwesomeIcon className={selector > 0 ? 'hidden' : ''} icon="question-circle" size="sm" />
+        <div className="sort-text hidden">
+          <b className="bold-right">Relavancy sort</b>
+          puts the best reviews at the top We
+          look at things like helpfulness votes, latest reviews,
+          pictures and other traits that readers look for in their
+          reviews.
+        </div>
+      </div>
       <span>
         <div className="dropdown">
           <div type="button" className="dropbtn">

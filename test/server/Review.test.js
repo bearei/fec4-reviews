@@ -1,22 +1,23 @@
-var mongoose = require('mongoose');
-var db = 'mongodb://127.0.0.1/test_reviews';
-mongoose.connect(db, { useNewUrlParser: true });
+const mongoose = require('mongoose');
 const Review = require('../../server/db/Review');
+
+const db = 'mongodb://127.0.0.1/test_reviews';
+mongoose.connect(db, { useNewUrlParser: true });
 
 describe('Review model test', () => {
   beforeAll(async () => {
     await Review.deleteMany({});
   });
 
-  afterEach (async () => {
+  afterEach(async () => {
     await Review.deleteMany({});
   });
 
-  afterAll (async (done) => {
+  afterAll(async (done) => {
     await mongoose.disconnect(done);
   });
 
-  test('has a module', ()  => {
+  test('has a module', () => {
     expect(Review).toBeDefined();
   });
 
