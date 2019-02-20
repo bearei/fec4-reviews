@@ -23,6 +23,7 @@ const getButton = (title, handleChange, index, value) => {
   } else if (title === TITLES[1]) {
     result = (
       <div className="margin-left">
+        {/* TODO: Fix check ma4rk */}
         {numbers.map((number, ind) => (
           <div
             role="button"
