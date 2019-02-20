@@ -40,6 +40,7 @@ class App extends Component {
       showing: 8,
       helpful: [],
       flagged: [],
+      spinner: false,
     };
     this.handleMore = this.handleMore.bind(this);
     this.setFilter = this.setFilter.bind(this);
@@ -51,7 +52,8 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.fetch();
+    this.setState({ spinner: true });
+    this.fetch(() => this.setState({ spinner: false }));
   }
 
   getAverageFit() {
@@ -69,7 +71,7 @@ class App extends Component {
     this.setState({ filter: id, showing: 8 });
   }
 
-  fetch(callback = () => {}) {
+  fetch(callback) {
     const classes = { ...this.state };
     axios.get(path.join('reviews', classes.itemId.toString()))
       .then((res) => {
@@ -146,30 +148,35 @@ class App extends Component {
     return (
       <div>
         <h1>HREI Reviews</h1>
-        <ModalModel
-          empty={classes.reviews.length === 0}
-          itemId={classes.itemId}
-          submit={this.submit}
-        />
-        <div className={classes.reviews.length === 0 ? 'hidden' : 'nav'}>
-          <RatingSnapshot
-            setFilter={this.setFilter}
-            clearFilter={this.clearFilter}
-            reviews={classes.reviews}
-          />
-          <Averages average={this.getAverageFit()} />
-          <ReviewIndex total={this.filteredTotal()} showing={classes.showing} />
-          <SortSelector changeSort={this.changeSort} selector={classes.selector} />
-          <ActiveFilters star={classes.filter} clear={this.clearFilter} />
+        <div className={this.state.spinner ? 'spinner' : 'hidden'}>
+          <img alt="" src="/spinner.gif" />
         </div>
-        <ReviewList
-          reviews={this.filter(classes.reviews).slice(0, classes.showing)}
-          hasMore={classes.showing < this.filter(classes.reviews).length}
-          handleMore={this.handleMore}
-          patch={this.patch}
-          helpful={classes.helpful}
-        />
+        <div className={this.state.spinner ? 'hidden' : ''}>
+          <ModalModel
+            empty={classes.reviews.length === 0}
+            itemId={classes.itemId}
+            submit={this.submit}
+          />
+          <div className={classes.reviews.length === 0 ? 'hidden' : 'nav'}>
+            <RatingSnapshot
+              setFilter={this.setFilter}
+              clearFilter={this.clearFilter}
+              reviews={classes.reviews}
+            />
+            <Averages average={this.getAverageFit()} />
+            <ReviewIndex total={this.filteredTotal()} showing={classes.showing} />
+            <SortSelector changeSort={this.changeSort} selector={classes.selector} />
+            <ActiveFilters star={classes.filter} clear={this.clearFilter} />
+          </div>
+          <ReviewList
+            reviews={this.filter(classes.reviews).slice(0, classes.showing)}
+            hasMore={classes.showing < this.filter(classes.reviews).length}
+            handleMore={this.handleMore}
+            patch={this.patch}
+            helpful={classes.helpful}
+          />
       </div>
+    </div>
     );
   }
 }
