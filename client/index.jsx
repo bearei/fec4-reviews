@@ -28,7 +28,7 @@ const SORT = {
   4: (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
 };
 
-class App extends Component {
+class Reviews extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -182,4 +182,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Reviews />, document.getElementById('reviews'));
