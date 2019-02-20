@@ -21,7 +21,7 @@ describe('Review model test', () => {
     expect(Review).toBeDefined();
   });
 
-  describe('Get review', () => {
+  xdescribe('Get review', () => {
     test('should get a review', async () => {
       const review = new Review({
         rating: 4,

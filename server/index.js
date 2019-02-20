@@ -49,8 +49,11 @@ app.post('/reviews', (req, res) => {
     .then(data => res.status(201).send(data));
 });
 
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
-});
+if (!module.parent) {
+  app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}`);
+  });
+}
+
 
 module.exports = app;

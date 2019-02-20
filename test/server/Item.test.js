@@ -21,7 +21,7 @@ describe('Item model test', () => {
     expect(Item).toBeDefined();
   });
 
-  describe('Get item', () => {
+  xdescribe('Get item', () => {
     test('should get a item', async () => {
       const item = new Item({
         itemId: 1,
