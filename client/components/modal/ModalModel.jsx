@@ -90,10 +90,10 @@ class ModalModel extends Component {
       this.setState({ spinner: true }, () => {
         axios.get(path.join('items', itemId.toString()))
           .then((res) => {
-            this.setState({
+            this.setState({ spinner: false }, this.setState({
               companyName: res.data[0].companyName,
               productName: res.data[0].productName,
-            }, this.setState({ spinner: false, visible: true }));
+            }, this.setState({ visible: true })));
           })
           .catch(err => console.log(err));
       });
@@ -128,7 +128,7 @@ class ModalModel extends Component {
 
   render() {
     const {
-      visible, active, submit, visited, values, hover, companyName, productName, itemId,
+      visible, active, submit, visited, values, hover, companyName, productName, itemId, spinner,
     } = this.state;
     const { empty } = this.props;
     return (
@@ -137,7 +137,10 @@ class ModalModel extends Component {
           <Stars average={0} />
           <div role="button" tabIndex={0} onKeyPress={() => {}} onClick={this.handleOpen}>Be the first to review this product</div>
         </div>
-        <div className={empty && !(empty && visible) ? 'hidden' : ''}>
+        <div className={spinner ? 'spinner' : 'hidden'}>
+          <img alt="" src="/spinner.gif" />
+        </div>
+        <div className={(empty && !(empty && visible)) || spinner ? 'hidden' : ''}>
           <div role="button" tabIndex={0} className={empty ? 'hidden' : 'button-write f-right'} onKeyPress={() => {}} onClick={this.handleOpen}>Write Post</div>
           <div className={visible ? 'modal-background' : 'hidden'} />
           <div className={visible ? 'modal' : 'hidden'}>
@@ -145,7 +148,11 @@ class ModalModel extends Component {
               <ProductInfo companyName={companyName} productName={productName} itemId={itemId} />
             </div>
             <div id="modal-right">
-              <ModalHeader handleClose={this.handleClose} companyName={companyName} productName={productName} />
+              <ModalHeader
+                handleClose={this.handleClose}
+                companyName={companyName}
+                productName={productName}
+              />
               {numbers.map((number, index) => (
                 <ModalContainer
                   active={active === index}
