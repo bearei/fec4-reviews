@@ -522,7 +522,6 @@ input[type=checkbox] {
   width: 15px;
   background-color:blue;
   border-radius: 50%;
-  
 }
 .container:hover {
   background-color: rgb(170, 170, 170);
