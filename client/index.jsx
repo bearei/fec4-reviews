@@ -144,39 +144,41 @@ class App extends Component {
   }
 
   render() {
-    const classes = { ...this.state };
+    const {
+      spinner, reviews, itemId, showing, selector, filter, helpful,
+    } = this.state;
     return (
       <div>
         <h1>HREI Reviews</h1>
-        <div className={this.state.spinner ? 'spinner' : 'hidden'}>
+        <div className={spinner ? 'spinner' : 'hidden'}>
           <img alt="" src="/spinner.gif" />
         </div>
-        <div className={this.state.spinner ? 'hidden' : ''}>
+        <div className={spinner ? 'hidden' : ''}>
           <ModalModel
-            empty={classes.reviews.length === 0}
-            itemId={classes.itemId}
+            empty={reviews.length === 0}
+            itemId={itemId}
             submit={this.submit}
           />
-          <div className={classes.reviews.length === 0 ? 'hidden' : 'nav'}>
+          <div className={reviews.length === 0 ? 'hidden' : 'nav'}>
             <RatingSnapshot
               setFilter={this.setFilter}
               clearFilter={this.clearFilter}
-              reviews={classes.reviews}
+              reviews={reviews}
             />
             <Averages average={this.getAverageFit()} />
-            <ReviewIndex total={this.filteredTotal()} showing={classes.showing} />
-            <SortSelector changeSort={this.changeSort} selector={classes.selector} />
-            <ActiveFilters star={classes.filter} clear={this.clearFilter} />
+            <ReviewIndex total={this.filteredTotal()} showing={showing} />
+            <SortSelector changeSort={this.changeSort} selector={selector} />
+            <ActiveFilters star={filter} clear={this.clearFilter} />
           </div>
           <ReviewList
-            reviews={this.filter(classes.reviews).slice(0, classes.showing)}
-            hasMore={classes.showing < this.filter(classes.reviews).length}
+            reviews={this.filter(reviews).slice(0, showing)}
+            hasMore={showing < this.filter(reviews).length}
             handleMore={this.handleMore}
             patch={this.patch}
-            helpful={classes.helpful}
+            helpful={helpful}
           />
+        </div>
       </div>
-    </div>
     );
   }
 }
