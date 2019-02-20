@@ -116,30 +116,30 @@ class App extends Component {
   }
 
   filter() {
-    const classes = { ...this.state };
-    let result = classes.reviews;
-    if (classes.filter > 0) {
-      result = classes.reviews.filter(review => review.rating === classes.filter);
+    const { reviews, filter } = this.state;
+    let result = reviews;
+    if (filter > 0) {
+      result = reviews.filter(review => review.rating === filter);
     }
     return result;
   }
 
   filteredTotal() {
-    const classes = { ...this.state };
+    const { reviews, filter } = this.state;
     let total = 0;
-    if (classes.filter > 0) {
-      total = classes.reviews.filter(review => review.rating === classes.filter).length;
+    if (filter > 0) {
+      total = reviews.filter(review => review.rating === filter).length;
     } else {
-      total = classes.reviews.length;
+      total = reviews.length;
     }
     return total;
   }
 
   changeSort(type) {
-    const classes = { ...this.state };
-    classes.reviews.sort(SORT[type]);
+    const { reviews } = this.state;
+    reviews.sort(SORT[type]);
     this.setState({ selector: type, showing: 8 }, () => this.setState({
-      helpful: Array.from({ length: classes.reviews.length }, () => ''),
+      helpful: Array.from({ length: reviews.length }, () => ''),
     }));
   }
 
