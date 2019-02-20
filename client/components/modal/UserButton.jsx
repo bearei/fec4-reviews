@@ -33,13 +33,13 @@ const getButton = (title, handleChange, index, value) => {
             className={number === value ? 'container selected' : 'container'}
             key={numbers[ind]}
           >
-            <span className={number === value ? 'checkmark-after' : 'checkmark'} />
+            <span className={number !== value ? 'checkmark-after' : 'checkmark'} />
           </div>
         ))
         }
-        <div>
+        <div className="fit-text">
           <span>Too Small</span>
-          <span>Too Large</span>
+          <span className="f-right">Too Large</span>
         </div>
       </div>
     );
