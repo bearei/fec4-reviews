@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import ReviewListItem from './ReviewListItem';
 
 const ReviewList = ({
-  reviews, hasMore, handleMore, patch, helpful,
+  reviews, hasMore, handleMore, patch, helpful, flagged,
 }) => (
   <div id="review-list">
     <div id="reviews">
       {reviews.map((review, index) => (
         <ReviewListItem
           helpfulClicked={helpful[index]}
+          flagged={flagged[index]}
           key={review._id}
           review={review}
           patch={patch}
@@ -36,6 +37,7 @@ ReviewList.propTypes = {
   handleMore: PropTypes.func,
   patch: PropTypes.func,
   helpful: PropTypes.instanceOf(Array),
+  flagged: PropTypes.instanceOf(Array),
 };
 
 ReviewList.defaultProps = {
@@ -44,6 +46,7 @@ ReviewList.defaultProps = {
   handleMore: () => {},
   patch: () => {},
   helpful: [],
+  flagged: [],
 };
 
 export default ReviewList;

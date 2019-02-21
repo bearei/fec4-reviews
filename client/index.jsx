@@ -68,19 +68,24 @@ class Reviews extends Component {
         this.setState({
           reviews: res.data,
           helpful: Array.from({ length: res.data.length }, () => ''),
+          flagged: Array.from({ length: res.data.length }, () => false),
         }, callback());
       })
       .catch(err => console.log(err));
   }
 
   patch(id, key) {
-    const { reviews, helpful } = this.state;
+    const { reviews, helpful, flagged } = this.state;
     // axios.patch(path.join('reviews', key, id))
     axios.patch(`http://localhost:3003/reviews/${key}/${id}`)
       .then(() => {
         if (key !== 'flag') {
           this.setState({
             helpful: helpful.map((element, index) => (reviews[index]._id === id ? key : element)),
+          });
+        } else {
+          this.setState({
+            flagged: flagged.map((element, index) => (reviews[index]._id === id ? true : element)),
           });
         }
       })
@@ -137,7 +142,7 @@ class Reviews extends Component {
 
   render() {
     const {
-      spinner, reviews, itemId, showing, selector, filter, helpful,
+      spinner, reviews, itemId, showing, selector, filter, helpful, flagged,
     } = this.state;
     return (
       <div>
@@ -168,6 +173,7 @@ class Reviews extends Component {
             handleMore={this.handleMore}
             patch={this.patch}
             helpful={helpful}
+            flagged={flagged}
           />
         </div>
       </div>
