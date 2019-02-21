@@ -33,7 +33,7 @@ class Reviews extends Component {
     super(props);
     this.state = {
       reviews: [],
-      itemId: 1,
+      itemId: Math.ceil(Math.random() * 100),
       selector: 0,
       filter: 0,
       showing: 8,
