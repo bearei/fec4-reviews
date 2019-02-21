@@ -138,7 +138,7 @@ class ModalModel extends Component {
           <div role="button" tabIndex={0} onKeyPress={() => {}} onClick={this.handleOpen}>Be the first to review this product</div>
         </div>
         <div className={spinner ? 'spinner' : 'hidden'}>
-          <img alt="" src="/spinner.gif" />
+      <img alt="" src="http://localhost:3003/spinner.gif" />
         </div>
         <div className={(empty && !(empty && visible)) || spinner ? 'hidden' : ''}>
           <div role="button" tabIndex={0} className={empty ? 'hidden' : 'button-write f-right'} onKeyPress={() => {}} onClick={this.handleOpen}>Write Post</div>
