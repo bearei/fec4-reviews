@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
-// process.env.NODE_ENV
-// “NODE_ENV=test jest”
 
-const mongoUri = 'mongodb://localhost/hrei-reviews';
+const mongoUri = process.env.NODE_ENV==='test' ? 'mongodb://127.0.0.1/test_reviews' : 'mongodb://localhost/hrei-reviews';
 mongoose.connect(mongoUri, { useNewUrlParser: true });
 const db = mongoose.connection;
 

@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Item = require('../../server/db/Item');
-
-const db = 'mongodb://127.0.0.1/test_reviews';
-mongoose.connect(db, { useNewUrlParser: true });
+require('../../server/db/index');
 
 describe('Item model test', () => {
   beforeAll(async () => {
@@ -21,7 +19,7 @@ describe('Item model test', () => {
     expect(Item).toBeDefined();
   });
 
-  xdescribe('Get item', () => {
+  describe('Get item', () => {
     test('should get a item', async () => {
       const item = new Item({
         itemId: 1,

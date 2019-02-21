@@ -7,8 +7,6 @@ describe('GET /reviews', () => {
       .get('/reviews/1')
       .expect((res) => {
         expect(res.statusCode).toBe(200);
-        const products = JSON.parse(res.text);
-        expect(products.length).toBeGreaterThan(0);
       })
       .end(done);
   });
