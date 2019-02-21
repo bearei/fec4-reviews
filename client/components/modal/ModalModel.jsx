@@ -93,7 +93,9 @@ class ModalModel extends Component {
             this.setState({ spinner: false }, this.setState({
               companyName: res.data[0].companyName,
               productName: res.data[0].productName,
-            }, this.setState({ visible: true })));
+            }, () => {
+              window.scrollTo(0, 0);
+              this.setState({ visible: true })}));
           })
           .catch(err => console.log(err));
       });

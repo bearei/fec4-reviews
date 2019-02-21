@@ -29,7 +29,7 @@ const SortSelector = ({ selector, changeSort }) => (
           Sort by:
             {` ${LABEL[selector]} ▼`}
           </div>
-          <div className="dropdown-content f-right">
+          <div className="dropdown-content">
             {numbers.map((number, index) => (
               <div key={numbers[index]} tabIndex={0} role="button" onKeyPress={() => {}} onClick={() => changeSort(number)}>
                 {LABEL[number]}
