@@ -27,12 +27,12 @@ app.get('/items/:itemId', (req, res) => {
 });
 
 app.patch('/reviews/helpful/:postId', (req, res) => {
-  Reviews.update({ _id: req.params.postId }, { $inc: { helpful: 1 } })
+  Reviews.updateOne({ _id: req.params.postId }, { $inc: { helpful: 1 } })
     .then(data => res.status(200).send(data));
 });
 
 app.patch('/reviews/notHelpful/:postId', (req, res) => {
-  Reviews.update({ _id: req.params.postId }, { $inc: { notHelpful: 1 } })
+  Reviews.updateOne({ _id: req.params.postId }, { $inc: { notHelpful: 1 } })
     .then(data => res.status(200).send(data));
 });
 
