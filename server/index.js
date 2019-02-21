@@ -8,8 +8,12 @@ const PORT = process.env.PORT || 3003;
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
-
 app.use(express.static(`${__dirname}/../public`));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 app.get('/reviews/:itemId', (req, res) => {
   Reviews.find({ itemId: req.params.itemId })
