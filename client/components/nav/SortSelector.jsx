@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const LABEL = {
   0: 'Most Relevant',
@@ -15,7 +14,7 @@ const SortSelector = ({ selector, changeSort }) => (
   <div id="sort-selector">
     <div className="f-right">
       <div className="sort-text-container same-line">
-        <FontAwesomeIcon className={selector > 0 ? 'hidden' : ''} icon="question-circle" size="sm" />
+        <i className={selector > 0 ? 'hidden fas fa-question-circle fa-sm' : 'fas fa-question-circle fa-sm'} />
         <div className="sort-text hidden">
           <b className="bold-right">Relavancy sort</b>
           puts the best reviews at the top We

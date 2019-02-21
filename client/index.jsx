@@ -1,12 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import path from 'path';
 import axios from 'axios';
-import {
-  faTimesCircle, faCheckCircle, faQuestionCircle,
-} from '@fortawesome/free-solid-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import ReviewList from './components/review/ReviewList';
 import ModalModel from './components/modal/ModalModel';
 import RatingSnapshot from './components/nav/RatingSnapshot';
@@ -14,11 +9,6 @@ import Averages from './components/nav/Averages';
 import ReviewIndex from './components/nav/ReviewIndex';
 import SortSelector from './components/nav/SortSelector';
 import ActiveFilters from './components/nav/ActiveFilters';
-
-
-library.add(faTimesCircle);
-library.add(faCheckCircle);
-library.add(faQuestionCircle);
 
 const SORT = {
   0: (a, b) => b.text.length - a.text.length,

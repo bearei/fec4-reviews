@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Stars from '../util/Stars';
 import FitBarContainer from '../util/FitBarContainer';
 import ReviewListItemFooter from './ReviewListItemFooter';
@@ -23,7 +22,7 @@ const ReviewListItem = ({
         </span>
         <div className="title-review">{title}</div>
         <div className="text-review">{text}</div>
-        <FontAwesomeIcon icon={recommend ? 'check-circle' : 'times-circle'} />
+        <i className={recommend ? 'fas fa-check-circle' : 'fas fa-times-circle'} />
         <span className="bold">{recommend ? 'Yes, ' : 'No, '}</span>
         <span>I </span>
         <span>{recommend ? '' : 'don\'t '}</span>

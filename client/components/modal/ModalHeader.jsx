@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ModalHeader = ({ handleClose, companyName, productName }) => (
   <div className="modal-right-el">
-    <FontAwesomeIcon onClick={handleClose} className="cancel" icon="times-circle" size="lg" />
+    <i onClick={handleClose} className="fas fa-times-circle cancel fa-lg"/>
     <div className="review-title">
       {`My Review for ${companyName} ${productName}`}
     </div>

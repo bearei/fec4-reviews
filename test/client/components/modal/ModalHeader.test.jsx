@@ -14,7 +14,7 @@ describe('<ModalHeader />', () => {
     const expected = true;
     const spy = sinon.spy();
     const wrapper = shallow(<ModalHeader handleClose={spy} />);
-    wrapper.find('FontAwesomeIcon').simulate('click');
+    wrapper.find('i').simulate('click');
     expect(spy.called).toBe(expected);
   });
 

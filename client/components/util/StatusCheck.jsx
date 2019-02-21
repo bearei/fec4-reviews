@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const getClass = (active, required, submit, hasValue, visited) => {
   let result = 'hidden';
@@ -21,11 +20,7 @@ const StatusCheck = ({
   return (
     <div className={`status-check ${name}`}>
       <div className={name === 'check-red' ? 'required-text' : 'hidden'}>Required</div>
-      <FontAwesomeIcon
-        className={`icon ${name}`}
-        icon="check-circle"
-        size="lg"
-      />
+      <i className={`icon ${name} fas fa-check-circle fa-lg`} />
     </div>
   );
 };
