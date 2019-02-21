@@ -4,7 +4,7 @@ const Reviews = require('./db/Review.js');
 const Items = require('./db/Item.js');
 
 const app = express();
-const PORT = 3003;
+const PORT = process.env.PORT || 3003;
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
@@ -54,6 +54,5 @@ if (!module.parent) {
     console.log(`listening on port ${PORT}`);
   });
 }
-
 
 module.exports = app;
