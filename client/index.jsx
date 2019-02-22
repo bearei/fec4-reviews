@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import path from 'path';
 import axios from 'axios';
 import ReviewList from './components/review/ReviewList';
 import ModalModel from './components/modal/ModalModel';
@@ -62,6 +63,7 @@ class Reviews extends Component {
 
   fetch(callback) {
     const { itemId } = this.state;
+    console.log(path.join('reviews', classes.itemId.toString()));
     axios.get(path.join('reviews', classes.itemId.toString()))
     // axios.get(`http://localhost:3003/reviews/${itemId}`)
       .then((res) => {
