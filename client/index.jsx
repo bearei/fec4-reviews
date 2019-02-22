@@ -78,8 +78,8 @@ class Reviews extends Component {
 
   patch(id, key) {
     const { reviews, helpful, flagged } = this.state;
-    // axios.patch(path.join('reviews', key, id))
-    axios.patch(`http://localhost:3003/reviews/${key}/${id}`)
+    axios.patch(path.join('reviews', key, id))
+    // axios.patch(`http://localhost:3003/reviews/${key}/${id}`)
       .then(() => {
         if (key !== 'flag') {
           this.setState({
@@ -95,8 +95,8 @@ class Reviews extends Component {
   }
 
   submit(data, callback) {
-    // axios.post(path.join('reviews'), data)
-    axios.post('http://localhost:3003/reviews', data)
+    axios.post(path.join('reviews'), data)
+    // axios.post('http://localhost:3003/reviews', data)
       .then(() => {
         callback();
         this.setState({ selector: 0 }, this.fetch());
