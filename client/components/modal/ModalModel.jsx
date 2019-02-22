@@ -88,7 +88,7 @@ class ModalModel extends Component {
       // First time we should call spinner
       // Callback should stop spinner and setState to visible
       this.setState({ spinner: true }, () => {
-        axios.get(`http://localhost:3003/items/${itemId}`)
+        axios.get(`/items/${itemId}`)
           .then((res) => {
             this.setState({ spinner: false }, this.setState({
               companyName: res.data[0].companyName,
@@ -140,7 +140,7 @@ class ModalModel extends Component {
           <div role="button" tabIndex={0} onKeyPress={() => {}} onClick={this.handleOpen}>Be the first to review this product</div>
         </div>
         <div className={spinner ? 'spinner' : 'hidden'}>
-      <img alt="" src="http://localhost:3003/spinner.gif" />
+      <img alt="" src="/spinner.gif" />
         </div>
         <div className={(empty && !(empty && visible)) || spinner ? 'hidden' : ''}>
           <div role="button" tabIndex={0} className={empty ? 'hidden' : 'button-write f-right'} onKeyPress={() => {}} onClick={this.handleOpen}>Write Post</div>
