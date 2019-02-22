@@ -62,8 +62,8 @@ class Reviews extends Component {
 
   fetch(callback) {
     const { itemId } = this.state;
-    axios.get(path.join('reviews', classes.itemId.toString()))
-    // axios.get(`http://localhost:3003/reviews/${itemId}`)
+    // axios.get(path.join('reviews', classes.itemId.toString()))
+    axios.get(`http://18.191.56.173:3003/reviews/${itemId}`)
       .then((res) => {
         this.setState({
           reviews: res.data,
@@ -76,8 +76,8 @@ class Reviews extends Component {
 
   patch(id, key) {
     const { reviews, helpful, flagged } = this.state;
-    axios.patch(path.join('reviews', key, id))
-    // axios.patch(`http://localhost:3003/reviews/${key}/${id}`)
+    // axios.patch(path.join('reviews', key, id))
+    axios.patch(`http://18.191.56.173:3003/reviews/${key}/${id}`)
       .then(() => {
         if (key !== 'flag') {
           this.setState({
@@ -93,8 +93,8 @@ class Reviews extends Component {
   }
 
   submit(data, callback) {
-    axios.post(path.join('reviews'), data)
-    // axios.post('http://localhost:3003/reviews', data)
+    // axios.post(path.join('reviews'), data)
+    axios.post('http://18.191.56.173:3003/reviews', data)
       .then(() => {
         callback();
         this.setState({ selector: 0 }, this.fetch());
@@ -148,7 +148,7 @@ class Reviews extends Component {
       <div>
         <h1>HREI Reviews</h1>
         <div className={spinner ? 'spinner' : 'hidden'}>
-          <img alt="" src="/spinner.gif" />
+          <img alt="" src="http://18.191.56.173:3003/spinner.gif" />
         </div>
         <div className={spinner ? 'hidden' : ''}>
           <ModalModel
