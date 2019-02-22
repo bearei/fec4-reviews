@@ -62,8 +62,8 @@ class Reviews extends Component {
 
   fetch(callback) {
     const { itemId } = this.state;
-    // axios.get(path.join('reviews', classes.itemId.toString()))
-    axios.get(`http://localhost:3003/reviews/${itemId}`)
+    axios.get(path.join('reviews', classes.itemId.toString()))
+    // axios.get(`http://localhost:3003/reviews/${itemId}`)
       .then((res) => {
         this.setState({
           reviews: res.data,
