@@ -4,7 +4,7 @@ const Reviews = require('./db/Review.js');
 const Items = require('./db/Item.js');
 
 const app = express();
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 8081;
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
