@@ -97,8 +97,7 @@ class Reviews extends Component {
     axios.post(path.join('reviews'), data)
     // axios.post('http://localhost:3003/reviews', data)
       .then(() => {
-        callback();
-        this.setState({ selector: 0 }, this.fetch());
+        this.setState({ selector: 0 }, this.fetch(callback));
       })
       .catch(err => console.log('Post', err));
   }
