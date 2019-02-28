@@ -1,4 +1,5 @@
 const faker = require('faker');
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;  
 
 /*
 /reviews/:id - GET : User gets all reviews for an item based on an id 
@@ -25,10 +26,38 @@ sampleItems = [
 ]
 */
 
+const createProducts = createCsvWriter({  
+  path: 'products.csv',
+  header: [
+    {id: 'itemId', title: 'itemId'},
+    {id: 'companyName', title: 'companyName'},
+    {id: 'productName', title: 'productName'}
+  ]
+});
+
+const createReviews = createCsvWriter({  
+  path: 'reviews.csv',
+  header: [
+    {id: 'rating', title: 'rating'},
+    {id: 'title', title: 'title'},
+    {id: 'text', title: 'text'}
+    {id: 'recommend', title: 'recommend'},
+    {id: 'name', title: 'name'},
+    {id: 'fit', title: 'fit'}
+    {id: 'itemId', title: 'itemId'},
+    {id: 'helpful', title: 'helpful'},
+    {id: 'notHelpful', title: 'text'}
+    {id: 'flag', title: 'flag'},
+    {id: 'flag', title: 'flag'}
+  ]
+});
+
+
 const generateData = (numOfReviews, numOfProducts) {
-  // generateReviews (numOfReviews, numOfProducts)
-  // generateProducts(numOfProducts)
-  // write to file
+  createProducts.writeRecords(generateProducts(numOfProducts))
+    .then(() => console.log('************ Wrote 10M products...'))
+    .then(() => createReviews.writeRecords(generateReviews (numOfReviews, numOfProducts)))
+    .then(() => console.log('************ Wrote reviews for the products.'))
 }
 
 // Helper functions
