@@ -33,20 +33,24 @@ const generateData = (numOfReviews, numOfProducts) {
 
 // Helper functions
 
-const generateReviews = (numOfReviews, numOfProducts) => {
-  let count = 0,
-      reviews = [];
-  while (count < numOfReviews) {
-    reviews.push(generateReview(numOfProducts));
-    count++;
-  }
+const generateReviews = (numOfProducts) => {
+  const reviews = [];
+  
+  for (let i = 1; i <= numOfProducts; i++) {
+      let randomAmt = generateNum(0, 50),
+          count = 0;
+      while (count < randomAmt) {
+        reviews.push(generateReview(numOfProducts));
+        count++;
+      }
+    }
   return reviews;
 }
 
 const generateProducts = (numOfProducts) => {
   let products = [];
-  for (let index = 1; index <= numOfProducts; index++) {
-    products.push(generateSampleItems(index))
+  for (let itemId = 1; itemId <= numOfProducts; itemId++) {
+    products.push(generateSampleItems(itemId))
   }
   return products;
 }
@@ -62,7 +66,7 @@ const generateBoolean = () => {
   return true;
 }
 
-const generateReview = (numOfProducts) => {
+const generateReview = (itemId) => {
   return {
     rating: generateNum(1, 5),
     title: faker.lorem.words(),
@@ -70,10 +74,11 @@ const generateReview = (numOfProducts) => {
     recommend: generateBoolean(),
     name: faker.lorem.firstName(),
     fit: generateNum(0, 5),
-    itemId: generateNum(1, numOfProducts),
+    itemId,
     helpful: generateNum(0, 50),
     notHelpful: generateNum(0, 50),
-    flag: false
+    flag: false,
+    createdAt: faker.date.between('2015-01-01', '2019-02-28')
   }
 }
 
