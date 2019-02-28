@@ -1,3 +1,5 @@
+const faker = require('faker');
+
 // Goal: 10,000,000 records
 // Use faker, Lorem Ipsum or Lorem Flickr
 
