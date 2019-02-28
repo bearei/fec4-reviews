@@ -40,24 +40,23 @@ const createReviews = createCsvWriter({
   header: [
     {id: 'rating', title: 'rating'},
     {id: 'title', title: 'title'},
-    {id: 'text', title: 'text'}
+    {id: 'text', title: 'text'},
     {id: 'recommend', title: 'recommend'},
     {id: 'name', title: 'name'},
-    {id: 'fit', title: 'fit'}
+    {id: 'fit', title: 'fit'},
     {id: 'itemId', title: 'itemId'},
     {id: 'helpful', title: 'helpful'},
-    {id: 'notHelpful', title: 'text'}
+    {id: 'notHelpful', title: 'notHelpful'},
     {id: 'flag', title: 'flag'},
-    {id: 'flag', title: 'flag'}
+    {id: 'createdAt', title: 'createdAt'}
   ]
 });
 
-
-const generateData = (numOfReviews, numOfProducts) {
+const generateData = (numOfReviews, numOfProducts) => {
   createProducts.writeRecords(generateProducts(numOfProducts))
-    .then(() => console.log('************ Wrote 10M products...'))
+    .then(() => console.log(`************ Wrote ${numOfProducts} products...`))
     .then(() => createReviews.writeRecords(generateReviews (numOfReviews, numOfProducts)))
-    .then(() => console.log('************ Wrote reviews for the products.'))
+    .then(() => console.log(`************ Wrote ${numOfReviews} reviews.`))
 }
 
 // Helper functions
@@ -101,7 +100,7 @@ const generateReview = (itemId) => {
     title: faker.lorem.words(),
     text: faker.lorem.paragraph(),
     recommend: generateBoolean(),
-    name: faker.lorem.firstName(),
+    name: faker.name.firstName(),
     fit: generateNum(0, 5),
     itemId,
     helpful: generateNum(0, 50),
@@ -115,7 +114,7 @@ const generateSampleItems = (itemId) => {
   return {
     itemId,
     companyName: faker.company.companyName(),
-    productName: faker.company.productName()
+    productName: faker.commerce.productName()
   }
 }
 
