@@ -68,7 +68,7 @@ const generateReviews = (numOfProducts) => {
       let randomAmt = generateNum(0, 50),
           count = 0;
       while (count < randomAmt) {
-        reviews.push(generateReview(numOfProducts));
+        reviews.push(generateReview(i));
         count++;
       }
     }
