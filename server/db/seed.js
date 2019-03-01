@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./index');
+const csv = require('csv-parser');  
+const fs = require('fs');
 
 const Product = sequelize.define('Product', {
   itemId: Sequelize.INTEGER,
@@ -26,3 +28,13 @@ Review.drop();
 
 Product.sync();
 Review.sync();
+
+fs.createReadStream('products.csv')  
+  .pipe(csv())
+  .on('data', (row) => {
+    console.log(row);
+  })
+  .on('end', () => {
+    console.log('CSV file successfully processed');
+  });
+  

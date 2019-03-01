@@ -52,10 +52,10 @@ const createReviews = createCsvWriter({
   ]
 });
 
-const generateData = (numOfProducts) => {
+const generateData = (numOfProducts, maxReviews) => {
   createProducts.writeRecords(generateProducts(numOfProducts))
     .then(() => console.log(`************ Wrote ${numOfProducts} products...`))
-    .then(() => createReviews.writeRecords(generateReviews (numOfProducts)))
+    .then(() => createReviews.writeRecords(generateReviews (numOfProducts, maxReviews)))
     .then(() => console.log(`************ Wrote reviews for the products.`))
 }
 
@@ -69,10 +69,10 @@ const generateProducts = (numOfProducts) => {
   return products;
 }
 
-const generateReviews = (numOfProducts) => {
+const generateReviews = (numOfProducts, maxReviews) => {
   const reviews = [];
   for (let i = 1; i <= numOfProducts; i++) {
-      let randomAmt = generateNum(0, 30), // Change max reviews per product
+      let randomAmt = generateNum(0, maxReviews), // Change max reviews per product
           count = 0;
       while (count < randomAmt) {
         reviews.push(generateReview(i));
@@ -117,7 +117,5 @@ const generateSampleItems = (itemId) => {
   }
 }
 
-generateData(10000);
-
-// createProducts.writeRecords(generateProducts(10000000))
-//   .then(() => console.log(`************ Wrote ${10000000} products...`))
+// Params: number of products, max reviews
+generateData(20, 15);
