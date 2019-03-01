@@ -10,8 +10,8 @@
     "dev:react": "webpack -d --watch",
     "start": "node server/index.js",
     "build": "webpack --mode production",
-    "legacy_db:setup": "node server/db/seed.js",
-    "seed": "node --max-old-space-size=4096 ./server/db/data_generator/generate.js",
+    "seed": "node server/db/seed.js",
+    "makeData": "node --max-old-space-size=4096 ./server/db/data_generator/generate.js",
     "test": "jest --detectOpenHandles --forceExit",
     "testDbConnect": "node ./server/db/index.js"
   },
