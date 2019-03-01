@@ -11,7 +11,7 @@ const Product = sequelize.define('Product', {
 
 const Review = sequelize.define('Review', {
   rating: Sequelize.INTEGER,
-  title: Sequelize.STRING(30),
+  title: Sequelize.STRING(40),
   text: Sequelize.TEXT,
   recommend: Sequelize.BOOLEAN,
   name: Sequelize.STRING(30),
@@ -33,6 +33,19 @@ fs.createReadStream('products.csv')
   .pipe(csv())
   .on('data', (row) => {
     console.log(row);
+    Product.build(row)
+      .save();
+  })
+  .on('end', () => {
+    console.log('CSV file successfully processed');
+  });
+
+  fs.createReadStream('reviews.csv')  
+  .pipe(csv())
+  .on('data', (row) => {
+    console.log(row);
+    Review.build(row)
+      .save();
   })
   .on('end', () => {
     console.log('CSV file successfully processed');
