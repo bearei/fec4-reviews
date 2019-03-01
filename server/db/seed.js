@@ -29,7 +29,7 @@ Review.drop();
 Product.sync();
 Review.sync();
 
-fs.createReadStream('products.csv')  
+fs.createReadStream(__dirname + '/server/db/data/products.csv')  
   .pipe(csv())
   .on('data', (row) => {
     console.log(row);
@@ -40,7 +40,7 @@ fs.createReadStream('products.csv')
     console.log('CSV file successfully processed');
   });
 
-  fs.createReadStream('reviews.csv')  
+  fs.createReadStream(__dirname + '/server/db/data/reviews.csv')  
   .pipe(csv())
   .on('data', (row) => {
     console.log(row);
