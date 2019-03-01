@@ -12,8 +12,9 @@ Source code from Team 4.
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+2. [Endpoints](#Endpoints)
+3. [Requirements](#requirements)
+4. [Development](#development)
 
 ## Usage
 
@@ -22,6 +23,21 @@ Source code from Team 4.
 3. Open three terminal tabs for each of these processes: `npm run dev:react`, and `npm start`.
 4. Run tests with `npm test`.
 5. Navigate to `http://localhost:3003` to view the service.
+
+## Endpoints
+GET '/reviews/:itemId'
+
+GET '/items/:itemId'
+
+PATCH '/reviews/helpful/:postId'
+
+PATCH '/reviews/notHelpful/:postId'
+
+PATCH '/reviews/flag/:postId'
+
+POST '/reviews'
+
+DELETE '/reviews:postId'
 
 ## Requirements
 
