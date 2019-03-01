@@ -5,13 +5,13 @@ const fs = require('fs');
 
 const Product = sequelize.define('Product', {
   itemId: Sequelize.INTEGER,
-  companyName: Sequelize.STRING(30),
-  productName: Sequelize.STRING(30)
+  companyName: Sequelize.STRING(50),
+  productName: Sequelize.STRING(50)
 })
 
 const Review = sequelize.define('Review', {
   rating: Sequelize.INTEGER,
-  title: Sequelize.STRING(40),
+  title: Sequelize.STRING(50),
   text: Sequelize.TEXT,
   recommend: Sequelize.BOOLEAN,
   name: Sequelize.STRING(30),
@@ -29,7 +29,7 @@ Review.drop();
 Product.sync();
 Review.sync();
 
-fs.createReadStream(__dirname + '/server/db/data/products.csv')  
+fs.createReadStream(__dirname + '/data/products.csv')  
   .pipe(csv())
   .on('data', (row) => {
     console.log(row);
@@ -40,7 +40,7 @@ fs.createReadStream(__dirname + '/server/db/data/products.csv')
     console.log('CSV file successfully processed');
   });
 
-  fs.createReadStream(__dirname + '/server/db/data/reviews.csv')  
+  fs.createReadStream(__dirname + '/data/reviews.csv')  
   .pipe(csv())
   .on('data', (row) => {
     console.log(row);

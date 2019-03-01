@@ -16,32 +16,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/reviews/:itemId', (req, res) => {
-  Reviews.find({ itemId: req.params.itemId })
-    .then(data => res.status(200).send(data));
-});
 
-app.get('/items/:itemId', (req, res) => {
-  Items.find({ itemId: req.params.itemId })
-    .then(data => res.status(200).send(data));
-});
-
-app.patch('/reviews/helpful/:postId', (req, res) => {
-  Reviews.updateOne({ _id: req.params.postId }, { $inc: { helpful: 1 } })
-    .then(data => res.status(200).send(data));
-});
-
-app.patch('/reviews/notHelpful/:postId', (req, res) => {
-  Reviews.updateOne({ _id: req.params.postId }, { $inc: { notHelpful: 1 } })
-    .then(data => res.status(200).send(data));
-});
-
-app.patch('/reviews/flag/:postId', (req, res) => {
-  Reviews.updateOne({ _id: req.params.postId }, { flag: true })
-    .then(data => res.status(200).send(data));
-});
-
-app.post('/reviews', (req, res) => {
   Reviews.create({
     rating: req.body.rating,
     title: req.body.title,
