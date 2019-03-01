@@ -52,20 +52,27 @@ const createReviews = createCsvWriter({
   ]
 });
 
-const generateData = (numOfReviews, numOfProducts) => {
+const generateData = (numOfProducts) => {
   createProducts.writeRecords(generateProducts(numOfProducts))
     .then(() => console.log(`************ Wrote ${numOfProducts} products...`))
-    .then(() => createReviews.writeRecords(generateReviews (numOfReviews, numOfProducts)))
-    .then(() => console.log(`************ Wrote ${numOfReviews} reviews.`))
+    .then(() => createReviews.writeRecords(generateReviews (numOfProducts)))
+    .then(() => console.log(`************ Wrote reviews for the products.`))
 }
 
 // Helper functions
 
+const generateProducts = (numOfProducts) => {
+  const products = [];
+  for (let itemId = 1; itemId <= numOfProducts; itemId++) {
+    products.push(generateSampleItems(itemId))
+  }
+  return products;
+}
+
 const generateReviews = (numOfProducts) => {
   const reviews = [];
-  
   for (let i = 1; i <= numOfProducts; i++) {
-      let randomAmt = generateNum(0, 50),
+      let randomAmt = generateNum(0, 30), // Change max reviews per product
           count = 0;
       while (count < randomAmt) {
         reviews.push(generateReview(i));
@@ -73,14 +80,6 @@ const generateReviews = (numOfProducts) => {
       }
     }
   return reviews;
-}
-
-const generateProducts = (numOfProducts) => {
-  let products = [];
-  for (let itemId = 1; itemId <= numOfProducts; itemId++) {
-    products.push(generateSampleItems(itemId))
-  }
-  return products;
 }
 
 const generateNum = function(low, high) {
@@ -118,4 +117,7 @@ const generateSampleItems = (itemId) => {
   }
 }
 
-generateData(1000, 100);
+generateData(10000);
+
+// createProducts.writeRecords(generateProducts(10000000))
+//   .then(() => console.log(`************ Wrote ${10000000} products...`))
