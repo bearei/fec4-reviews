@@ -4,7 +4,10 @@ const csv = require('csv-parser');
 const fs = require('fs');
 
 const Product = sequelize.define('Product', {
-  itemId: Sequelize.INTEGER,
+  itemId: {
+    type: Sequelize.INTEGER,
+    primaryKey: true
+  },
   companyName: Sequelize.STRING(50),
   productName: Sequelize.STRING(50)
 })
@@ -22,6 +25,8 @@ const Review = sequelize.define('Review', {
   flag: Sequelize.BOOLEAN,
   createdAt: Sequelize.DATE
 })
+
+Review.belongsTo(Product, {foreignKey: 'itemId'});
 
 async function writeFile(file) {
   await fs.createReadStream(__dirname + file)  
