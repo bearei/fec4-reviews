@@ -1,43 +1,25 @@
-# HRR36 SDC Team 3 - beaREI Reviews Service
+# HRR36 FEC Team 4 - Reviews
 
-This repo includes the Reviews service of Team 3's System Design Capstone project.
-
-Source code from Team 4.
+This repo includes the Reviews service of Team 4's Front End Capstone project.
 
 ## Related Projects
 
-  - https://github.com/bearei/
-  - https://github.com/bearei/thomas-proxy
+  - https://github.com/hrr36-fec4/fec4-product-options
+  - https://github.com/hrr36-fec4/fec4-related-items-and-size-chart
 
 ## Table of Contents
 
 1. [Usage](#Usage)
-2. [Endpoints](#Endpoints)
-3. [Requirements](#requirements)
-4. [Development](#development)
+1. [Requirements](#requirements)
+1. [Development](#development)
 
 ## Usage
 
-1. Ensure that mariadb and cassandra are installed and running.
+1. Ensure that MongoDB is installed and running on your computer (`mongod`).
 2. [Install the project's dependencies](#installing-dependencies).
-3. Open three terminal tabs for each of these processes: `npm run dev:react`, and `npm start`.
+3. Open three terminal tabs for each of these processes: `mongod`, `npm run dev:react`, and `npm start`.
 4. Run tests with `npm test`.
 5. Navigate to `http://localhost:3003` to view the service.
-
-## Endpoints
-GET '/reviews/:itemId'
-
-GET '/items/:itemId'
-
-PATCH '/reviews/helpful/:postId'
-
-PATCH '/reviews/notHelpful/:postId'
-
-PATCH '/reviews/flag/:postId'
-
-POST '/reviews'
-
-DELETE '/reviews:postId'
 
 ## Requirements
 

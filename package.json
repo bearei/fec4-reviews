@@ -10,20 +10,31 @@
     "dev:react": "webpack -d --watch",
     "start": "node server/index.js",
     "build": "webpack --mode production",
-    "db:setup": "node server/db/seed.js",
-    "test": "jest --detectOpenHandles --forceExit"
+    "seed": "node server/db/seed.js",
+    "makeData": "node --max-old-space-size=4096 ./server/db/data/generate.js",
+    "test": "jest --detectOpenHandles --forceExit",
+    "testDbConnect": "node ./server/db/index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "csv-parser": "^2.1.0",
+    "csv-writer": "^1.2.0",
     "express": "^4.16.4",
+    "file-system": "^2.2.2",
     "jquery": "^3.3.1",
+    "mariadb": "^2.0.3",
+    "mariasql": "^0.2.6",
     "moment": "^2.24.0",
     "mongoose": "^5.4.14",
+    "mysql2": "^1.6.5",
+    "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-scripts": "^2.1.5"
+    "react-scripts": "^2.1.5",
+    "sequelize": "^5.0.0-beta.16",
+    "zero-fill": "^2.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",
@@ -43,6 +54,7 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
+    "faker": "^4.1.0",
     "jest": "^24.1.0",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.8.2",
