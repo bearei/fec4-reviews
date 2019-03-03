@@ -87,12 +87,19 @@ const generateData = (numOfProducts, maxReviews) => {
       }
     }
   }
+
+  let start = new Date();
+
+  function timer() {
+    let end = new Date() - start;
+    console.info('Execution time: %ds', end);
+  }
     
   clearFiles(__dirname + '/products')
     .then(() => clearFiles(__dirname + '/reviews'))
     .then(() => runProducts())
     .then(() => runReviews())
-    .then(() => console.log('Done!'));
+    .then(() => timer());
 }
 
 // Helper functions
