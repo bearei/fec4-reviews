@@ -153,4 +153,4 @@ const generateSampleItems = (itemId) => {
   }
 }
 
-generateData(1000000, 30);
+generateData(10000000, 15);

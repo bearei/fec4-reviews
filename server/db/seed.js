@@ -28,31 +28,48 @@ const Review = sequelize.define('Review', {
 
 Review.belongsTo(Product, {foreignKey: 'itemId'});
 
-async function writeFile(file) {
-  await fs.createReadStream(__dirname + file)  
+async function writeFile(pathAndFile) {
+  await fs.createReadStream(__dirname + pathAndFile)  
     .pipe(csv())
     .on('data', (row) => {
-      console.log(row);
       Product.build(row)
         .save();
     })
     .on('end', () => {
-      console.log(`${file} successfully processed`);
+      console.log(`${pathAndFiles} successfully processed`);
     });
 }
 
-async function loadDirFiles(directory, func) {
-  await fs.readdir(__dirname + directory, (err, files) => {
-    if (err) throw err;
-    for (const file of files) {
-      await func(directory);
-    }
-  });
+// async function loadDirFiles(directory, func) {
+//   await fs.readdir(__dirname + directory, (err, files) => {
+//     if (err) throw err;
+//     for (const file of files) {
+//       func(directory + '/' + file);
+//     }
+//   });
+// }
+
+function listFiles(directory) {
+  return new Promise((resolve, reject) => {
+    resolve(fs.readdirSync(__dirname + directory));
+    reject(console.log('Error reading' + directory));
+  })
 }
 
+async function loopFiles(directory, list) {
+  for (let i = 0; i < list.length; i++) {
+    await writeFile(directory + '/' + list[i]);
+  }
+}
+
+
 async function seedAll() {
-  await loadDirFiles('/products', writeFile);
-  await loadDirFiles('/reviews', writeFile);
+  let productDir = '/data/products',
+      reviewDir = '/data/reviews';
+  listFiles(productDir)
+    .then((list) => loopFiles(productDir, list))
+  // await loadDirFiles('/data/products', writeFile);
+  // await loadDirFiles('/data/reviews', writeFile);
 }
 
 Review.drop()
