@@ -19,7 +19,7 @@ const Review = sequelize.define('Review', {
   recommend: Sequelize.BOOLEAN,
   name: Sequelize.STRING(30),
   fit: Sequelize.INTEGER,
-  itemId: Sequelize.INTEGER,  //foreign key
+  itemId: Sequelize.INTEGER,
   helpful: Sequelize.INTEGER,
   notHelpful: Sequelize.INTEGER,
   flag: Sequelize.BOOLEAN,
@@ -28,26 +28,16 @@ const Review = sequelize.define('Review', {
 
 Review.belongsTo(Product, {foreignKey: 'itemId'});
 
-async function writeFile(pathAndFile) {
+async function writeFile(pathAndFile, table) {
   await fs.createReadStream(__dirname + pathAndFile)  
     .pipe(csv())
-    .on('data', (row) => {
-      Product.build(row)
-        .save();
+    .on('data', (json) => {
+      table.bulkCreate(json);
     })
     .on('end', () => {
       console.log(`${pathAndFiles} successfully processed`);
     });
 }
-
-// async function loadDirFiles(directory, func) {
-//   await fs.readdir(__dirname + directory, (err, files) => {
-//     if (err) throw err;
-//     for (const file of files) {
-//       func(directory + '/' + file);
-//     }
-//   });
-// }
 
 function listFiles(directory) {
   return new Promise((resolve, reject) => {
@@ -56,9 +46,9 @@ function listFiles(directory) {
   })
 }
 
-async function loopFiles(directory, list) {
+async function loopFiles(directory, list, table) {
   for (let i = 0; i < list.length; i++) {
-    await writeFile(directory + '/' + list[i]);
+    await writeFile(directory + '/' + list[i], table);
   }
 }
 
@@ -67,7 +57,7 @@ async function seedAll() {
   let productDir = '/data/products',
       reviewDir = '/data/reviews';
   listFiles(productDir)
-    .then((list) => loopFiles(productDir, list))
+    .then((list) => loopFiles(productDir, list, Product))
   // await loadDirFiles('/data/products', writeFile);
   // await loadDirFiles('/data/reviews', writeFile);
 }

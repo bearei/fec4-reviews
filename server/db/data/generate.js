@@ -67,7 +67,7 @@ const generateData = (numOfProducts, maxReviews) => {
         break;
       } else {
         fileName++;
-        idStart = idEnd + 1;
+        idStart = idEnd + 1;``
         idEnd = idEnd + 1000000 < numOfProducts ? idEnd + 1000000 : numOfProducts
       }
     }
