@@ -58,7 +58,7 @@ const generateData = (numOfProducts, maxReviews) => {
   const runProducts = async function() {
     while (idEnd <= numOfProducts) {
       await createProducts(pad(4, fileName)).writeRecords(generateProducts(idStart,idEnd))
-        .then(() => console.log(`************ Wrote ${idEnd} products...`));
+        .then(() => console.log(`Wrote ${idEnd} products...`));
       
       if (idEnd === numOfProducts) {
         idStart = 1;
@@ -76,7 +76,7 @@ const generateData = (numOfProducts, maxReviews) => {
   const runReviews = async function() {
     while (idEnd <= numOfProducts) {
       await createReviews(pad(4, fileName)).writeRecords(generateReviews(idStart, idEnd, maxReviews))
-        .then(() => console.log(`************ Wrote reviews for ${idEnd} products...`));
+        .then(() => console.log(`Wrote reviews for ${idEnd} products...`));
       
       if (idEnd === numOfProducts) {
         break;
@@ -160,4 +160,4 @@ const generateSampleItems = (itemId) => {
   }
 }
 
-generateData(10000000, 15);
+generateData(1000, 15);

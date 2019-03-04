@@ -51,14 +51,14 @@ async function loopFiles(directory, list, table) {
   }
 }
 
-
 async function seedAll() {
   let productDir = '/data/products',
       reviewDir = '/data/reviews';
   await listFiles(productDir)
     .then((list) => loopFiles(productDir, list, Product))
-  // await loadDirFiles('/data/products', writeFile);
-  // await loadDirFiles('/data/reviews', writeFile);
+  await listFiles(reviewDir)
+    .then((list) => loopFiles(reviewDir, list, Review))
+
 }
 
 Review.drop()

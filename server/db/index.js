@@ -1,15 +1,34 @@
-const Sequelize = require('sequelize');
-module.exports = new Sequelize('beaREI_db', 'root', null, {
-  dialect: 'mariadb',
-  port: 3306
+const mariadb = require('mariadb');
+
+const pool = mariadb.createPool({
+  host: 'localhost',
+  port: 3306,
+  user:'root', 
+  database: 'bearEI_db'
 });
 
+async function asyncFunction() {
+  let conn;
 
-// TEST CONNECTION
-// sequelize
-//   .authenticate()
-//   .then(function(err) {
-//     console.log('Connection has been established successfully.');
-//   }, function (err) { 
-//     console.log('Unable to connect to the database:', err);
-//   });
+  try {
+  conn = await pool.getConnection();
+  const rows = await conn.query("SELECT 1 as val");
+  console.log(rows); //[ {val: 1}, meta: ... ]
+  const res = await conn.query("INSERT INTO myTable value (?, ?)", [1, "mariadb"]);
+  console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
+
+  } catch (err) {
+  throw err;
+  } finally {
+  if (conn) return conn.end();
+  }
+}
+
+asyncFunction();
+
+// SEQUELIZE
+// const Sequelize = require('sequelize');
+// module.exports = new Sequelize('beaREI_db', 'root', null, {
+//   dialect: 'mariadb',
+//   port: 3306
+// });
