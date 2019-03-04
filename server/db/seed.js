@@ -31,18 +31,17 @@ Review.belongsTo(Product, {foreignKey: 'itemId'});
 async function writeFile(pathAndFile, table) {
   await fs.createReadStream(__dirname + pathAndFile)  
     .pipe(csv())
-    .on('data', (json) => {
-      table.bulkCreate(json);
+    .on('data', (row) => {
+      table.create(row)
     })
     .on('end', () => {
-      console.log(`${pathAndFiles} successfully processed`);
+      console.log(`${pathAndFile} successfully processed`);
     });
 }
 
 function listFiles(directory) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     resolve(fs.readdirSync(__dirname + directory));
-    reject(console.log('Error reading' + directory));
   })
 }
 
@@ -56,7 +55,7 @@ async function loopFiles(directory, list, table) {
 async function seedAll() {
   let productDir = '/data/products',
       reviewDir = '/data/reviews';
-  listFiles(productDir)
+  await listFiles(productDir)
     .then((list) => loopFiles(productDir, list, Product))
   // await loadDirFiles('/data/products', writeFile);
   // await loadDirFiles('/data/reviews', writeFile);
