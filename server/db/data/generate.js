@@ -148,7 +148,7 @@ const generateReview = (itemId) => {
     helpful: generateNum(0, 50),
     notHelpful: generateNum(0, 50),
     flag: false,
-    createdAt: faker.date.between('2015-01-01', '2019-02-28')
+    createdAt: faker.date.between('2018-01-01', '2018-03-31')
   }
 }
 
