@@ -2,7 +2,7 @@ const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const fs = require('fs');
 const path = require('path');
-const pad = require('zero-fill');
+let DateGenerator = require('random-date-generator');
 
 // CSV Writer Setup
 
@@ -57,7 +57,7 @@ const generateData = (numOfProducts, maxReviews) => {
   
   const runProducts = async function() {
     while (idEnd <= numOfProducts) {
-      await createProducts(pad(4, fileName)).writeRecords(generateProducts(idStart,idEnd))
+      await createProducts(fileName).writeRecords(generateProducts(idStart,idEnd))
         .then(() => console.log(`Wrote ${idEnd} products...`));
       
       if (idEnd === numOfProducts) {
@@ -75,7 +75,7 @@ const generateData = (numOfProducts, maxReviews) => {
 
   const runReviews = async function() {
     while (idEnd <= numOfProducts) {
-      await createReviews(pad(4, fileName)).writeRecords(generateReviews(idStart, idEnd, maxReviews))
+      await createReviews(fileName).writeRecords(generateReviews(idStart, idEnd, maxReviews))
         .then(() => console.log(`Wrote reviews for ${idEnd} products...`));
       
       if (idEnd === numOfProducts) {
@@ -140,7 +140,7 @@ const generateReview = (itemId) => {
   return {
     rating: generateNum(1, 5),
     title: faker.lorem.words(),
-    text: faker.lorem.paragraph(),
+    text: faker.fake("{{lorem.sentence}} {{lorem.sentence}} {{lorem.sentence}}"),
     recommend: generateBoolean(),
     name: faker.name.firstName(),
     fit: generateNum(0, 5),
@@ -149,7 +149,7 @@ const generateReview = (itemId) => {
     notHelpful: generateNum(0, 50),
     flag: false,
     // createdAt: faker.date.between('2018-01-01', '2018-03-31')
-    createdAt: faker.date.past(1)
+    createdAt: DateGenerator.getRandomDate()
   }
 }
 

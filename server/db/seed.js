@@ -13,9 +13,9 @@ async function runSeed() {
 
     conn = await db.getConnection();
     await conn.query('DROP TABLE IF EXISTS `Products`');
-    await conn.query('CREATE TABLE `Products` (`itemId` INTEGER NOT NULL,`companyName` CHAR(50) NOT NULL,`productName` CHAR(50) NULL,PRIMARY KEY (`itemId`));')
+    await conn.query('CREATE TABLE `Products` (`itemId` INTEGER NOT NULL,`companyName` CHAR(50) NOT NULL,`productName` CHAR(40) NULL,PRIMARY KEY (`itemId`));')
     await conn.query('DROP TABLE IF EXISTS `Reviews`;');
-    await conn.query('CREATE TABLE `Reviews` (`rating` INTEGER NOT NULL,`title` CHAR(50) NOT NULL,`text` MEDIUMTEXT NULL DEFAULT NULL,`recommend` CHAR(5) NOT NULL,`name` CHAR(30) NULL DEFAULT NULL,`fit` INTEGER NULL DEFAULT NULL,`itemId` INTEGER NULL DEFAULT NULL,`helpful` INTEGER NULL DEFAULT NULL,`notHelpful` INTEGER NULL DEFAULT NULL,`flag` CHAR(5) NULL DEFAULT NULL,`createdAt` CHAR(75) NULL DEFAULT NULL);');
+    await conn.query('CREATE TABLE `Reviews` (`rating` TINYINT NOT NULL,`title` CHAR(50) NOT NULL,`text` TEXT NULL DEFAULT NULL,`recommend` CHAR(5) NOT NULL,`name` CHAR(15) NULL DEFAULT NULL,`fit` TINYINT NULL DEFAULT NULL,`itemId` INTEGER NULL DEFAULT NULL,`helpful` TINYINT NULL DEFAULT NULL,`notHelpful` TINYINT NULL DEFAULT NULL,`flag` CHAR(5) NULL DEFAULT NULL,`createdAt` CHAR(70) NULL DEFAULT NULL);');
     
 
     let productList = await listFiles('/data/products'),
@@ -25,12 +25,14 @@ async function runSeed() {
 
     for (let i = 0; i < productList.length; i++) {
       await conn.query(`LOAD DATA INFILE '${productPath + productList[i]}' INTO TABLE Products FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`)
-        .then((success) => console.log('Wrote product file ${productPath + productList[i]}...'));
+        .then((success) => console.log(`Wrote product file ${productPath + productList[i]}...`))
+        .catch((err) => console.log(err));
     }
 
     for (let i = 0; i < reviewList.length; i++) {
       await conn.query(`LOAD DATA INFILE '${reviewPath + reviewList[i]}' INTO TABLE Reviews FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`)
-        .then((success) => console.log('Wrote review file ${productList[i]}...'));
+        .then((success) => console.log(`Wrote review file ${reviewList[i]}...`))
+        .catch((err) => console.log(err));
     }
 
   } catch (err) {
