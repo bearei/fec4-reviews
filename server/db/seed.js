@@ -13,11 +13,11 @@ async function runSeed() {
 
     let productList = await listFiles('/data/products'),
         reviewList = await listFiles('/data/reviews'),
-        productPath = '/Users/thomashsu/Dropbox/HRR36/fec4-reviews/server/db/data/products/'
-        reviewPath = '/Users/thomashsu/Dropbox/HRR36/fec4-reviews/server/db/data/reviews/';
+        productPath = __dirname + '/data/products/',
+        reviewPath = __dirname + '/data/reviews/';
 
         
-    await conn.query(`LOAD DATA INFILE '/Users/thomashsu/Dropbox/HRR36/fec4-reviews/server/db/data/products/0001.csv' INTO TABLE Products FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`);
+    await conn.query(`LOAD DATA INFILE '${productPath}0001.csv' INTO TABLE Products FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`);
     await conn.query(`LOAD DATA INFILE '/Users/thomashsu/Dropbox/HRR36/fec4-reviews/server/db/data/reviews/0001.csv' INTO TABLE Reviews FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`);
 
     // for (let i = 0; i < productList.length; i++) {
