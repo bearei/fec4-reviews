@@ -53,7 +53,7 @@ const generateData = (numOfProducts, maxReviews) => {
 
   let fileName = 1,
       idStart = 1,
-      idEnd = numOfProducts < 1000000 ? numOfProducts : 1000000;
+      idEnd = numOfProducts < 1000 ? numOfProducts : 1000;
   
   const runProducts = async function() {
     while (idEnd <= numOfProducts) {
@@ -62,13 +62,13 @@ const generateData = (numOfProducts, maxReviews) => {
       
       if (idEnd === numOfProducts) {
         idStart = 1;
-        idEnd = numOfProducts < Math.floor(1000000 * 2 / maxReviews) ? numOfProducts : Math.floor(1000000 * 2 / maxReviews);
+        idEnd = numOfProducts < Math.floor(1000 * 2 / maxReviews) ? numOfProducts : Math.floor(1000 * 2 / maxReviews);
         fileName = 1;
         break;
       } else {
         fileName++;
         idStart = idEnd + 1;``
-        idEnd = idEnd + 1000000 < numOfProducts ? idEnd + 1000000 : numOfProducts
+        idEnd = idEnd + 1000 < numOfProducts ? idEnd + 1000 : numOfProducts
       }
     }
   }
@@ -83,7 +83,7 @@ const generateData = (numOfProducts, maxReviews) => {
       } else {
         fileName++;
         idStart = idEnd + 1;
-        idEnd = idEnd + Math.floor(1000000 * 2 / maxReviews) < numOfProducts ? Math.floor(idEnd + 1000000 * 2 / maxReviews) : numOfProducts
+        idEnd = idEnd + Math.floor(1000 * 2 / maxReviews) < numOfProducts ? Math.floor(idEnd + 1000 * 2 / maxReviews) : numOfProducts
       }
     }
   }
@@ -161,4 +161,4 @@ const generateSampleItems = (itemId) => {
   }
 }
 
-generateData(1000, 15);
+generateData(10000, 15);
