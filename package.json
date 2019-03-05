@@ -11,7 +11,7 @@
     "start": "node server/index.js",
     "build": "webpack --mode production",
     "seed": "node server/db/seed.js",
-    "makeData": "node --max-old-space-size=4096 ./server/db/data/generate.js",
+    "makeData": "node --max-old-space-size=6144 ./server/db/data/generate.js",
     "test": "jest --detectOpenHandles --forceExit",
     "testDbConnect": "node ./server/db/index.js"
   },

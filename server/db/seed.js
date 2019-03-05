@@ -7,8 +7,8 @@ async function runSeed() {
     let start = new Date();
 
     function timer() {
-      let end = new Date() - start;
-      console.info('Execution time: %dms', end);
+      let end = (new Date() - start) / 60000;
+      console.info('Execution time: %dm', end);
     }
 
     conn = await db.getConnection();
@@ -25,12 +25,12 @@ async function runSeed() {
 
     for (let i = 0; i < productList.length; i++) {
       await conn.query(`LOAD DATA INFILE '${productPath + productList[i]}' INTO TABLE Products FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`)
-        .then((success) => console.log(success));
+        .then((success) => console.log('Wrote product file ${productPath + productList[i]}...'));
     }
 
     for (let i = 0; i < reviewList.length; i++) {
       await conn.query(`LOAD DATA INFILE '${reviewPath + reviewList[i]}' INTO TABLE Reviews FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`)
-        .then((success) => console.log(success));
+        .then((success) => console.log('Wrote review file ${productList[i]}...'));
     }
 
   } catch (err) {
