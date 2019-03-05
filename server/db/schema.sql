@@ -39,14 +39,8 @@ CREATE TABLE `Reviews` (
   `notHelpful` INTEGER NULL DEFAULT NULL,
   `flag` BOOLEAN NULL DEFAULT NULL,
   `createdAt` DATE NULL DEFAULT NULL,
-  PRIMARY KEY (`productId`, `itemId`)
+  PRIMARY KEY (`productId`)
 );
-
--- ---
--- Foreign Keys 
--- ---
-
-ALTER TABLE `Products` ADD FOREIGN KEY (itemId) REFERENCES `Reviews` (`itemId`);
 
 -- ---
 -- Table Properties
