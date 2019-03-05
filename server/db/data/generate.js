@@ -148,14 +148,15 @@ const generateReview = (itemId) => {
     helpful: generateNum(0, 50),
     notHelpful: generateNum(0, 50),
     flag: false,
-    createdAt: faker.date.between('2018-01-01', '2018-03-31')
+    // createdAt: faker.date.between('2018-01-01', '2018-03-31')
+    createdAt: faker.date.past(1)
   }
 }
 
 const generateSampleItems = (itemId) => {
   return {
     itemId,
-    companyName: faker.company.companyName(),
+    companyName: faker.lorem.words(), //changed temporarily to avoid commas
     productName: faker.commerce.productName()
   }
 }

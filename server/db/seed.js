@@ -1,20 +1,40 @@
 const db = require('./index');
+const fs = require('file-system');
 
 async function runSeed() {
   let conn;
   try {
     conn = await db.getConnection();
-    console.log(__dirname + '/schema.sql')
     await conn.query('DROP TABLE IF EXISTS `Products`');
-    await conn.query('CREATE TABLE `Products` (`itemId` INTEGER NOT NULL AUTO_INCREMENT,`companyName` CHAR(50) NOT NULL,`productName` CHAR(50) NULL,PRIMARY KEY (`itemId`));')
+    await conn.query('CREATE TABLE `Products` (`itemId` INTEGER NOT NULL,`companyName` CHAR(50) NOT NULL,`productName` CHAR(50) NULL,PRIMARY KEY (`itemId`));')
     await conn.query('DROP TABLE IF EXISTS `Reviews`;');
-    await conn.query('CREATE TABLE `Reviews` (`productId` INTEGER NOT NULL AUTO_INCREMENT,`rating` INTEGER NOT NULL,`title` CHAR(50) NOT NULL,`text` MEDIUMTEXT NULL DEFAULT NULL,`recommend` BOOLEAN NOT NULL,`name` CHAR(30) NULL DEFAULT NULL,`fit` INTEGER NULL DEFAULT NULL,`itemId` INTEGER NULL DEFAULT NULL,`helpful` INTEGER NULL DEFAULT NULL,`notHelpful` INTEGER NULL DEFAULT NULL,`flag` BOOLEAN NULL DEFAULT NULL,`createdAt` DATE NULL DEFAULT NULL,PRIMARY KEY (`productId`));');
-  
+    await conn.query('CREATE TABLE `Reviews` (`rating` INTEGER NOT NULL,`title` CHAR(50) NOT NULL,`text` MEDIUMTEXT NULL DEFAULT NULL,`recommend` CHAR(5) NOT NULL,`name` CHAR(30) NULL DEFAULT NULL,`fit` INTEGER NULL DEFAULT NULL,`itemId` INTEGER NULL DEFAULT NULL,`helpful` INTEGER NULL DEFAULT NULL,`notHelpful` INTEGER NULL DEFAULT NULL,`flag` CHAR(5) NULL DEFAULT NULL,`createdAt` CHAR(75) NULL DEFAULT NULL);');
+    
+
+    let productList = await listFiles('/data/products'),
+        reviewList = await listFiles('/data/reviews'),
+        productPath = '/Users/thomashsu/Dropbox/HRR36/fec4-reviews/server/db/data/products/'
+        reviewPath = '/Users/thomashsu/Dropbox/HRR36/fec4-reviews/server/db/data/reviews/';
+
+        
+    await conn.query(`LOAD DATA INFILE '/Users/thomashsu/Dropbox/HRR36/fec4-reviews/server/db/data/products/0001.csv' INTO TABLE Products FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`);
+    await conn.query(`LOAD DATA INFILE '/Users/thomashsu/Dropbox/HRR36/fec4-reviews/server/db/data/reviews/0001.csv' INTO TABLE Reviews FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`);
+
+    // for (let i = 0; i < productList.length; i++) {
+    //   await conn.query(`LOAD DATA INFILE ${__dirname}/${productList[i]} INTO TABLE Products;`);
+    // }
+
   } catch (err) {
   throw err;
   } finally {
   if (conn) return conn.end();
   }
+}
+
+function listFiles(directory) {
+  return new Promise((resolve) => {
+    resolve(fs.readdirSync(__dirname + directory));
+  })
 }
 
 runSeed();
