@@ -4,6 +4,13 @@ const fs = require('file-system');
 async function runSeed() {
   let conn;
   try {
+    let start = new Date();
+
+    function timer() {
+      let end = new Date() - start;
+      console.info('Execution time: %dms', end);
+    }
+
     conn = await db.getConnection();
     await conn.query('DROP TABLE IF EXISTS `Products`');
     await conn.query('CREATE TABLE `Products` (`itemId` INTEGER NOT NULL,`companyName` CHAR(50) NOT NULL,`productName` CHAR(50) NULL,PRIMARY KEY (`itemId`));')
@@ -27,9 +34,10 @@ async function runSeed() {
     }
 
   } catch (err) {
-  throw err;
+    throw err;
   } finally {
-  if (conn) return conn.end();
+    timer();
+    if (conn) return conn.end();
   }
 }
 
