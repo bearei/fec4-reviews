@@ -114,14 +114,17 @@ const generateProducts = (itemIdStart, itemIdEnd) => {
   return products;
 }
 
+const reviewID = 1;
+
 const generateReviews = (itemIdStart, itemIdEnd, maxReviews) => {
   const reviews = [];
   for (let i = itemIdStart; i <= itemIdEnd; i++) {
     let randomAmt = generateNum(0, maxReviews),
         count = 0;
     while (count < randomAmt) {
-      reviews.push(generateReview(i));
+      reviews.push(generateReview(i, reviewID));
       count++;
+      reviewID++;
     }
   }
   return reviews;
@@ -138,11 +141,11 @@ const generateBoolean = () => {
   return true;
 }
 
-const generateReview = (itemId) => {
+const generateReview = (itemId, productId) => {
   return {
     rating: generateNum(1, 5),
     title: faker.lorem.words(),
-    text: faker.lorem.paragraph(),
+    text: faker.lorem.sentence(),
     recommend: generateBoolean(),
     name: faker.name.firstName(),
     fit: generateNum(0, 5),
@@ -150,7 +153,8 @@ const generateReview = (itemId) => {
     helpful: generateNum(0, 30),
     notHelpful: generateNum(0, 30),
     flag: false,
-    createdAt: faker.date.past()
+    createdAt: faker.date.past(),
+    productId
   }
 }
 
