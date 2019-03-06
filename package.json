@@ -10,14 +10,16 @@
     "dev:react": "webpack -d --watch",
     "start": "node server/index.js",
     "build": "webpack --mode production",
-    "seed": "node server/db/seed.js",
-    "makeData": "node --max-old-space-size=6144 ./server/db/data/generate.js",
+    "mariaSeed": "node server/db/maria-seed.js",
+    "cassSeed": "node server/db/cassandra-seed.js",
+    "DISABLEDmakeData": "node --max-old-space-size=6144 ./server/db/data/generate.js",
     "test": "jest --detectOpenHandles --forceExit",
     "testDbConnect": "node ./server/db/index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "cassandra-driver": "^4.0.0",
     "csv-parser": "^2.1.0",
     "csv-writer": "^1.2.0",
     "express": "^4.16.4",

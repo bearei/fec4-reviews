@@ -2,7 +2,6 @@ const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const fs = require('fs');
 const path = require('path');
-let DateGenerator = require('random-date-generator');
 
 // CSV Writer Setup
 
@@ -88,7 +87,7 @@ const generateData = (numOfProducts, maxReviews) => {
     }
   }
 
-  let start = new Date();
+  let start;
 
   function timer() {
     let end = (new Date() - start) / 60000;
@@ -97,7 +96,10 @@ const generateData = (numOfProducts, maxReviews) => {
     
   clearFiles(__dirname + '/products')
     .then(() => clearFiles(__dirname + '/reviews'))
+    .then(() => start = new Date())
     .then(() => runProducts())
+    .then(() => timer())
+    .then(() => start = new Date())
     .then(() => runReviews())
     .then(() => timer());
 }
@@ -140,16 +142,15 @@ const generateReview = (itemId) => {
   return {
     rating: generateNum(1, 5),
     title: faker.lorem.words(),
-    text: faker.fake("{{lorem.sentence}} {{lorem.sentence}} {{lorem.sentence}}"),
+    text: faker.lorem.paragraph(),
     recommend: generateBoolean(),
     name: faker.name.firstName(),
     fit: generateNum(0, 5),
     itemId,
-    helpful: generateNum(0, 50),
-    notHelpful: generateNum(0, 50),
+    helpful: generateNum(0, 30),
+    notHelpful: generateNum(0, 30),
     flag: false,
-    // createdAt: faker.date.between('2018-01-01', '2018-03-31')
-    createdAt: DateGenerator.getRandomDate()
+    createdAt: faker.date.past()
   }
 }
 
