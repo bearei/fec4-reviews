@@ -7,12 +7,12 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "dev:react": "webpack -d --watch",
-    "start": "node server/index.js",
+    "start": "nodemon server/index.js",
     "build": "webpack --mode production",
-    "mariaSeed": "node server/db/maria-seed.js",
-    "cassSeed": "node server/db/cassandra-seed.js",
-    "DISABLEDmakeData": "node --max-old-space-size=6144 ./server/db/data/generate.js",
+    "devbuild": "webpack -d --watch",
+    "seed": "node server/db/seed.js",
+    "DISABLEDcassSeed": "node server/db/cassandra-seed.js",
+    "makeData": "node --max-old-space-size=6144 ./server/db/data/generate.js",
     "test": "jest --detectOpenHandles --forceExit",
     "testDbConnect": "node ./server/db/index.js"
   },

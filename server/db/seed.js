@@ -1,4 +1,4 @@
-const db = require('./maria-index');
+const db = require('./index');
 const fs = require('file-system');
 
 async function runSeed() {

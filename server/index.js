@@ -3,7 +3,7 @@ const parser = require('body-parser');
 const db = require('./db/index');
 
 const app = express();
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 3000;
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));

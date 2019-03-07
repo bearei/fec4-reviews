@@ -62,8 +62,9 @@ class Reviews extends Component {
   }
 
   fetch(callback) {
+    const url = 'http://localhost:3000';
     const { itemId } = this.state;
-    axios.get(`http://fec4.fypzmbkzag.us-west-2.elasticbeanstalk.com/reviews/${itemId}`)
+    axios.get(`${url}/reviews/${itemId}`)
     // axios.get(path.join('reviews', itemId.toString()))
     // axios.get(`http://localhost:3003/reviews/${itemId}`)
       .then((res) => {
