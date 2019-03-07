@@ -30,7 +30,8 @@ const createReviews = function(fileName) {
       {id: 'helpful', title: 'helpful'},
       {id: 'notHelpful', title: 'notHelpful'},
       {id: 'flag', title: 'flag'},
-      {id: 'createdAt', title: 'createdAt'}
+      {id: 'createdAt', title: 'createdAt'},
+      {id: 'reviewId', title: 'reviewId'}
     ]
   });
 }
@@ -114,7 +115,7 @@ const generateProducts = (itemIdStart, itemIdEnd) => {
   return products;
 }
 
-const reviewID = 1;
+let reviewId = 1;
 
 const generateReviews = (itemIdStart, itemIdEnd, maxReviews) => {
   const reviews = [];
@@ -122,9 +123,9 @@ const generateReviews = (itemIdStart, itemIdEnd, maxReviews) => {
     let randomAmt = generateNum(0, maxReviews),
         count = 0;
     while (count < randomAmt) {
-      reviews.push(generateReview(i, reviewID));
+      reviews.push(generateReview(i, reviewId));
       count++;
-      reviewID++;
+      reviewId++;
     }
   }
   return reviews;
@@ -141,7 +142,7 @@ const generateBoolean = () => {
   return true;
 }
 
-const generateReview = (itemId, productId) => {
+const generateReview = (itemId, reviewId) => {
   return {
     rating: generateNum(1, 5),
     title: faker.lorem.words(),
@@ -154,7 +155,7 @@ const generateReview = (itemId, productId) => {
     notHelpful: generateNum(0, 30),
     flag: false,
     createdAt: faker.date.past(),
-    productId
+    reviewId
   }
 }
 

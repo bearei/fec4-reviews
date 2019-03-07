@@ -7,8 +7,6 @@ module.exports = mariadb.createPool({
   database: 'bearEI_db'
 });
 
-
-
 // SAMPLE MARIADB CONNECTION
 // async function asyncFunction() {
 //   let conn;
