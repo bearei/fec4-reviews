@@ -30,7 +30,7 @@ const ReviewListItem = ({
         <ReviewListItemFooter
           helpful={helpful}
           not={notHelpful}
-          flag={flagged || flag}
+          flag={flagged || (flag === 'false' ? false : true)}
           id={reviewId}
           patch={patch}
           helpfulClicked={helpfulClicked}

@@ -15,7 +15,6 @@ module.exports.findItem = function(req, res) {
 };
 
 module.exports.markHelpful = function(req, res) {
-  console.log('heard patch for helpful')
   db.then(conn => {
     conn.query(`UPDATE reviews SET helpful = helpful + 1 WHERE reviewId = ${req.params.reviewId}`)
       .then(data => res.status(200).send(data))
@@ -23,10 +22,17 @@ module.exports.markHelpful = function(req, res) {
   }) 
 }
 ;
-module.exports.marUnhelpful = function(req, res) {
-  console.log('heard patch for unhelpful')
+module.exports.markUnhelpful = function(req, res) {
   db.then(conn => {
     conn.query(`UPDATE reviews SET helpful = helpful - 1 WHERE reviewId = ${req.params.reviewId}`)
+      .then(data => res.status(200).send(data))
+      .catch(err => console.log(err));
+  }) 
+};
+
+module.exports.flag = function(req, res) {
+  db.then(conn => {
+    conn.query(`UPDATE reviews SET flag = true WHERE reviewId = ${req.params.reviewId}`)
       .then(data => res.status(200).send(data))
       .catch(err => console.log(err));
   }) 

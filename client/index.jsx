@@ -78,7 +78,7 @@ class Reviews extends Component {
   }
 
   patch(id, key) {
-    console.log('patch was triggered', id, key);
+    console.log(this.state.helpful);
     const { reviews, helpful, flagged } = this.state;
     axios.patch(`${this.url}/reviews/${key}/${id}`)
       .then(() => {

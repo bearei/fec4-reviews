@@ -1,6 +1,6 @@
 const express = require('express');
 const parser = require('body-parser');
-const q = require('./db/query');
+const query = require('./db/query');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,10 +15,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/reviews/:itemId', q.findReview);
-app.get('/items/:itemId', q.findItem);
-app.patch('/reviews/helpful/:reviewId', q.markHelpful);
-app.patch('/reviews/notHelpful/:reviewId', q.marUnhelpful);
+app.get('/reviews/:itemId', query.findReview);
+app.get('/items/:itemId', query.findItem);
+app.patch('/reviews/helpful/:reviewId', query.markHelpful);
+app.patch('/reviews/notHelpful/:reviewId', query.markUnhelpful);
 
 app.patch('/reviews/flag/:reviewId', (req, res) => {
   q.updateReview({ _id: req.params.reviewId }, { flag: true })
