@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const parser = require('body-parser');
 const query = require('./db/query');
@@ -11,7 +12,7 @@ app.use('/:itemId/', express.static(`${__dirname}/../public`));
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS,  PATCH');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATCH, DELETE');
   next();
 });
 
@@ -20,19 +21,8 @@ app.get('/items/:itemId', query.findItem);
 app.patch('/reviews/helpful/:reviewId', query.markHelpful);
 app.patch('/reviews/notHelpful/:reviewId', query.markUnhelpful);
 app.patch('/reviews/flag/:reviewId', query.flag);
-app.post('/reviews', (req, res) => {
-  query.createReview({
-    rating: req.body.rating,
-    title: req.body.title,
-    text: req.body.text,
-    recommend: req.body.recommend ? req.body.recommend : true,
-    name: req.body.name,
-    fit: req.body.fit ? req.body.fit : 0,
-    itemId: req.body.itemId,
-  })
-    .then(data => res.status(201).send(data));
-});
-// app.delete('/reviews/:reviewId', query.delete);
+app.post('/reviews/', query.createReview);
+app.delete('/reviews/:reviewId', query.delete);
 
 
 if (!module.parent) {

@@ -5,6 +5,7 @@
 bower_components
 node_modules
 bundle.js
+newrelic.js
 report*.*
 server/db/data/products
 server/db/data/reviews

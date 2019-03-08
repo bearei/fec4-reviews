@@ -42,6 +42,26 @@ module.exports.createReview = function(req, res) {
   db.then(conn => {
     conn.query(`SELECT * FROM products WHERE itemId = ${req.params.itemId}`)
       .then(data => res.status(200).send(data));
+
+      // (req, res) => {
+      //   query.createReview({
+      //     rating: req.body.rating,
+      //     title: req.body.title,
+      //     text: req.body.text,
+      //     recommend: req.body.recommend ? req.body.recommend : true,
+      //     name: req.body.name,
+      //     fit: req.body.fit ? req.body.fit : 0,
+      //     itemId: req.body.itemId,
+      //   })
+      //     .then(data => res.status(201).send(data));
   }) 
 };
+
+module.exports.delete = function(req, res) {
+  db.then(conn => {
+    conn.query(`SELECT * FROM products WHERE itemId = ${req.params.itemId}`)
+      .then(data => res.status(200).send(data));
+  }) 
+};
+
 
