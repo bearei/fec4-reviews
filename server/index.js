@@ -19,11 +19,7 @@ app.get('/reviews/:itemId', query.findReview);
 app.get('/items/:itemId', query.findItem);
 app.patch('/reviews/helpful/:reviewId', query.markHelpful);
 app.patch('/reviews/notHelpful/:reviewId', query.markUnhelpful);
-
-app.patch('/reviews/flag/:reviewId', (req, res) => {
-  q.updateReview({ _id: req.params.reviewId }, { flag: true })
-    .then(data => res.status(200).send(data));
-});
+app.patch('/reviews/flag/:reviewId', query.flag);
 
 app.post('/reviews', (req, res) => {
   q.createReview({
