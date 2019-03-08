@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import path from 'path';
 import axios from 'axios';
 import ReviewList from './components/review/ReviewList';
 import ModalModel from './components/modal/ModalModel';
@@ -24,7 +23,7 @@ class Reviews extends Component {
     super(props);
     this.state = {
       reviews: [],
-      itemId: Math.ceil(Math.random() * 100),
+      itemId: window.location.pathname.split('/')[1],
       selector: 0,
       filter: 0,
       showing: 8,
@@ -39,6 +38,8 @@ class Reviews extends Component {
     this.fetch = this.fetch.bind(this);
     this.submit = this.submit.bind(this);
     this.patch = this.patch.bind(this);
+
+    // Set URL here:
     this.url = 'http://localhost:3000';
   }
 
@@ -65,8 +66,6 @@ class Reviews extends Component {
   fetch(callback) {
     const { itemId } = this.state;
     axios.get(`${this.url}/reviews/${itemId}`)
-    // axios.get(path.join('reviews', itemId.toString()))
-    // axios.get(`http://localhost:3003/reviews/${itemId}`)
       .then((res) => {
         this.setState({
           reviews: res.data,
@@ -96,9 +95,7 @@ class Reviews extends Component {
   }
 
   submit(data, callback) {
-    // axios.post('http://fec4.fypzmbkzag.us-west-2.elasticbeanstalk.com/reviews', data)
-    // axios.post(path.join('reviews'), data)
-    axios.post('http://localhost:3003/reviews', data)
+    axios.post(`${this.url}/reviews/`, data)
       .then(() => {
         this.setState({ selector: 0 }, this.fetch(callback));
       })

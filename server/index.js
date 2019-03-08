@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
-app.use(express.static(`${__dirname}/../public`));
+app.use('/:itemId/', express.static(`${__dirname}/../public`));
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -20,9 +20,8 @@ app.get('/items/:itemId', query.findItem);
 app.patch('/reviews/helpful/:reviewId', query.markHelpful);
 app.patch('/reviews/notHelpful/:reviewId', query.markUnhelpful);
 app.patch('/reviews/flag/:reviewId', query.flag);
-
 app.post('/reviews', (req, res) => {
-  q.createReview({
+  query.createReview({
     rating: req.body.rating,
     title: req.body.title,
     text: req.body.text,
@@ -33,6 +32,8 @@ app.post('/reviews', (req, res) => {
   })
     .then(data => res.status(201).send(data));
 });
+// app.delete('/reviews/:reviewId', query.delete);
+
 
 if (!module.parent) {
   app.listen(PORT, () => {
