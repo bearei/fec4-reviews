@@ -11,7 +11,7 @@ async function runSeed() {
       console.info('Execution time: %dm', end);
     }
 
-    conn = await db.getConnection();
+    conn = await db.pool.getConnection();
     await conn.query('DROP TABLE IF EXISTS `Products`');
     await conn.query('CREATE TABLE `Products` (`itemId` INTEGER NOT NULL,`companyName` CHAR(50) NOT NULL,`productName` CHAR(40) NULL,PRIMARY KEY (`itemId`));')
     await conn.query('DROP TABLE IF EXISTS `Reviews`;');
