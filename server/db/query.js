@@ -1,15 +1,41 @@
 const db = require('./index');
 
-let conn;
-
-module.exports.findReview = async function(itemId) {
-  conn = await db.getConnection();
-  await conn.query(`SELECT * FROM reviews WHERE itemId = ${itemId}`);
+module.exports.findReview = function(req, res) {
+  db.then(conn => {
+    conn.query(`SELECT * FROM reviews WHERE itemId = ${req.params.itemId}`)
+      .then(data => res.status(200).send(data));
+  }) 
 };
 
-module.exports.findItem = '';
+module.exports.findItem = function(req, res) {
+  db.then(conn => {
+    conn.query(`SELECT * FROM products WHERE itemId = ${req.params.itemId}`)
+      .then(data => res.status(200).send(data));
+  }) 
+};
 
-module.exports.updateReview = '';
+module.exports.markHelpful = function(req, res) {
+  console.log('heard patch for helpful')
+  db.then(conn => {
+    conn.query(`UPDATE reviews SET helpful = helpful + 1 WHERE reviewId = ${req.params.reviewId}`)
+      .then(data => res.status(200).send(data))
+      .catch(err => console.log(err));
+  }) 
+}
+;
+module.exports.marUnhelpful = function(req, res) {
+  console.log('heard patch for unhelpful')
+  db.then(conn => {
+    conn.query(`UPDATE reviews SET helpful = helpful - 1 WHERE reviewId = ${req.params.reviewId}`)
+      .then(data => res.status(200).send(data))
+      .catch(err => console.log(err));
+  }) 
+};
 
-module.exports.createReview = '';
+module.exports.createReview = function(req, res) {
+  db.then(conn => {
+    conn.query(`SELECT * FROM products WHERE itemId = ${req.params.itemId}`)
+      .then(data => res.status(200).send(data));
+  }) 
+};
 

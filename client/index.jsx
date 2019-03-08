@@ -39,6 +39,7 @@ class Reviews extends Component {
     this.fetch = this.fetch.bind(this);
     this.submit = this.submit.bind(this);
     this.patch = this.patch.bind(this);
+    this.url = 'http://localhost:3000';
   }
 
   componentWillMount() {
@@ -62,9 +63,8 @@ class Reviews extends Component {
   }
 
   fetch(callback) {
-    const url = 'http://localhost:3000';
     const { itemId } = this.state;
-    axios.get(`${url}/reviews/${itemId}`)
+    axios.get(`${this.url}/reviews/${itemId}`)
     // axios.get(path.join('reviews', itemId.toString()))
     // axios.get(`http://localhost:3003/reviews/${itemId}`)
       .then((res) => {
@@ -78,10 +78,10 @@ class Reviews extends Component {
   }
 
   patch(id, key) {
+    console.log(this.state.reviews);
+    console.log('patch was triggered', id, key);
     const { reviews, helpful, flagged } = this.state;
-    axios.patch(`http://fec4.fypzmbkzag.us-west-2.elasticbeanstalk.com/${key}/${id}`)
-    // axios.patch(path.join('reviews', key, id))
-    // axios.patch(`http://localhost:3003/reviews/${key}/${id}`)
+    axios.patch(`${this.url}/reviews/${key}/${id}`)
       .then(() => {
         if (key !== 'flag') {
           this.setState({
@@ -97,9 +97,9 @@ class Reviews extends Component {
   }
 
   submit(data, callback) {
-    axios.post('http://fec4.fypzmbkzag.us-west-2.elasticbeanstalk.com/reviews', data)
+    // axios.post('http://fec4.fypzmbkzag.us-west-2.elasticbeanstalk.com/reviews', data)
     // axios.post(path.join('reviews'), data)
-    // axios.post('http://localhost:3003/reviews', data)
+    axios.post('http://localhost:3003/reviews', data)
       .then(() => {
         this.setState({ selector: 0 }, this.fetch(callback));
       })

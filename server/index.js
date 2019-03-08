@@ -15,28 +15,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/reviews/:itemId', (req, res) => {
-  q.findReview({ itemId: req.params.itemId })
-    .then(data => res.status(200).send(data));
-});
+app.get('/reviews/:itemId', q.findReview);
+app.get('/items/:itemId', q.findItem);
+app.patch('/reviews/helpful/:reviewId', q.markHelpful);
+app.patch('/reviews/notHelpful/:reviewId', q.marUnhelpful);
 
-app.get('/items/:itemId', (req, res) => {
-  q.findItem({ itemId: req.params.itemId })
-    .then(data => res.status(200).send(data));
-});
-
-app.patch('/reviews/helpful/:postId', (req, res) => {
-  q.updateReview({ _id: req.params.postId }, { $inc: { helpful: 1 } })
-    .then(data => res.status(200).send(data));
-});
-
-app.patch('/reviews/notHelpful/:postId', (req, res) => {
-  q.updateReview({ _id: req.params.postId }, { $inc: { notHelpful: 1 } })
-    .then(data => res.status(200).send(data));
-});
-
-app.patch('/reviews/flag/:postId', (req, res) => {
-  q.updateReview({ _id: req.params.postId }, { flag: true })
+app.patch('/reviews/flag/:reviewId', (req, res) => {
+  q.updateReview({ _id: req.params.reviewId }, { flag: true })
     .then(data => res.status(200).send(data));
 });
 

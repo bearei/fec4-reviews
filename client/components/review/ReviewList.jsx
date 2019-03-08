@@ -12,7 +12,7 @@ const ReviewList = ({
         <ReviewListItem
           helpfulClicked={helpful[index]}
           flagged={flagged[index]}
-          key={review._id}
+          key={review.reviewId}
           review={review}
           patch={patch}
         />
