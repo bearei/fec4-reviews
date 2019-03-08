@@ -78,18 +78,17 @@ class Reviews extends Component {
   }
 
   patch(id, key) {
-    console.log(this.state.reviews);
     console.log('patch was triggered', id, key);
     const { reviews, helpful, flagged } = this.state;
     axios.patch(`${this.url}/reviews/${key}/${id}`)
       .then(() => {
         if (key !== 'flag') {
           this.setState({
-            helpful: helpful.map((element, index) => (reviews[index]._id === id ? key : element)),
+            helpful: helpful.map((element, index) => (reviews[index].reviewId === id ? key : element)),
           });
         } else {
           this.setState({
-            flagged: flagged.map((element, index) => (reviews[index]._id === id ? true : element)),
+            flagged: flagged.map((element, index) => (reviews[index].reviewId === id ? true : element)),
           });
         }
       })
