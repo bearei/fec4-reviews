@@ -15,7 +15,7 @@ async function runSeed() {
     await conn.query('DROP TABLE IF EXISTS `Products`');
     await conn.query('CREATE TABLE `Products` (`itemId` INTEGER NOT NULL,`companyName` CHAR(50) NOT NULL,`productName` CHAR(40) NULL, PRIMARY KEY (`itemId`));')
     await conn.query('DROP TABLE IF EXISTS `Reviews`;');
-    await conn.query('CREATE TABLE `Reviews` (`rating` TINYINT NOT NULL,`title` CHAR(50) NOT NULL,`text` TEXT NULL DEFAULT NULL,`recommend` CHAR(5) NOT NULL,`name` CHAR(15) NULL DEFAULT NULL,`fit` TINYINT NULL DEFAULT NULL,`itemId` INTEGER NULL DEFAULT NULL,`helpful` TINYINT NULL DEFAULT NULL,`notHelpful` TINYINT NULL DEFAULT NULL,`flag` CHAR(5) NULL DEFAULT NULL,`createdAt` CHAR(70) NULL DEFAULT NULL, `reviewId` INTEGER, PRIMARY KEY (`reviewId`)));');
+    await conn.query('CREATE TABLE `Reviews` (`rating` TINYINT NOT NULL,`title` CHAR(50) NOT NULL,`text` TEXT NULL DEFAULT NULL,`recommend` CHAR(5) NOT NULL,`name` CHAR(15) NULL DEFAULT NULL,`fit` TINYINT NULL DEFAULT NULL,`itemId` INTEGER NULL DEFAULT NULL,`helpful` TINYINT NULL DEFAULT 0,`notHelpful` TINYINT NULL DEFAULT 0,`flag` CHAR(5) NULL DEFAULT `false`, `createdAt` CHAR(70) NULL DEFAULT NULL, `reviewId` INTEGER, PRIMARY KEY (`reviewId`)));');
     await conn.query('CREATE INDEX review_itemId ON reviews (`itemId`);'); 
 
     let productList = await listFiles('/data/products'),
