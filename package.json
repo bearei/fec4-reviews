@@ -15,7 +15,7 @@
     "DISABLEDcassSeed": "node server/db/cassandra-seed.js",
     "makeData": "node --max-old-space-size=6144 ./server/db/data/generate.js",
     "test": "jest --detectOpenHandles --forceExit",
-    "stresstest": "artillery run newrelictest.yml"
+    "stresstest": "artillery run stresstest.yml"
   },
   "dependencies": {
     "axios": "^0.18.0",
