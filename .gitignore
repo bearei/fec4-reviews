@@ -7,10 +7,7 @@ node_modules
 bundle.js
 newrelic.js
 report*.*
-server/db/data/products
-server/db/data/reviews
-server/db/data/productsTemp
-server/db/data/reviewsTemp
+*.csv
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

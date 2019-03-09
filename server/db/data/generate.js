@@ -169,4 +169,4 @@ const generateSampleItems = (itemId) => {
 
 // Parameter 1: Total primary records
 // Parameter 2: Max reviews per item
-generateData(10000000, 15);
+generateData(1000, 15);
