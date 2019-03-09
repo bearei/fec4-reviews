@@ -46,7 +46,7 @@ module.exports.flag = function(req, res) {
 
 module.exports.createReview = function(req, res) {
   db.then(conn => {
-    conn.query(`INSERT INTO reviews (rating, title, text, recommend, name, fit, itemId, createdAt) VALUES (${req.body.rating}, '${req.body.title}', '${req.body.text}', ${req.body.recommend}, '${req.body.name}', ${req.body.fit}, ${req.body.itemId}, '${Date().toString()}'`)
+    conn.query(`INSERT INTO reviews (rating, title, text, recommend, name, fit, itemId, createdAt) VALUES (${req.body.rating}, '${req.body.title}', '${req.body.text}', ${req.body.recommend}, '${req.body.name}', ${req.body.fit}, ${req.body.itemId}, '${Date().toString()}')`)
       .then(data => res.status(200).send(data))
       .then(conn => conn.end())
       .catch(err => console.log(err));
