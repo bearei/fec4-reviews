@@ -152,8 +152,9 @@ class Reviews extends Component {
         </div>
         <div className={spinner ? 'hidden' : ''}>
           <ModalModel
+            url={this.url}
             empty={reviews.length === 0}
-            itemId={itemId}
+            itemId={Number(this.state.itemId)}
             submit={this.submit}
           />
           <div className={reviews.length === 0 ? 'hidden' : 'nav'}>

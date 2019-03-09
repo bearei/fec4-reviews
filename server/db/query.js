@@ -21,8 +21,8 @@ module.exports.markHelpful = function(req, res) {
   db.then(conn => {
     conn.query(`UPDATE reviews SET helpful = helpful + 1 WHERE reviewId = ${req.params.reviewId}`)
       .then(ddata => res.status(200).send(data))
-      .catch(err => console.log(err))
-      .then(conn => conn.end());
+      .then(conn => conn.end())
+      .catch(err => console.log(err));
   }) 
 }
 ;
@@ -30,8 +30,8 @@ module.exports.markUnhelpful = function(req, res) {
   db.then(conn => {
     conn.query(`UPDATE reviews SET helpful = helpful - 1 WHERE reviewId = ${req.params.reviewId}`)
       .then(data => res.status(200).send(data))
-      .catch(err => console.log(err))
-      .then(conn => conn.end());
+      .then(conn => conn.end())
+      .catch(err => console.log(err));
   }) 
 };
 
@@ -39,18 +39,18 @@ module.exports.flag = function(req, res) {
   db.then(conn => {
     conn.query(`UPDATE reviews SET flag = true WHERE reviewId = ${req.params.reviewId}`)
       .then(data => res.status(200).send(data))
-      .catch(err => console.log(err))
-      .then(conn => conn.end());
+      .then(conn => conn.end())
+      .catch(err => console.log(err));
   }) 
 };
 
 // Not yet functioning in client
 module.exports.createReview = function(req, res) {
   db.then(conn => {
-    conn.query(`INSERT INTO reviews (rating, title, text, recommend, name, fit, itemId) VALUES (${req.body.rating}, '${req.body.title}', '${req.body.text}', ${req.body.recommend}, '${req.body.name}', ${req.body.fit}, ${req.body.itemId})`)
+    conn.query(`INSERT INTO reviews (rating, title, text, recommend, name, fit, itemId, createdAt) VALUES (${req.body.rating}, '${req.body.title}', '${req.body.text}', ${req.body.recommend}, '${req.body.name}', ${req.body.fit}, ${req.body.itemId}, '${Date().toString()}')`)
       .then(data => res.status(200).send(data))
-      .catch(err => console.log(err))
-      .then(conn => conn.end());
+      .then(conn => conn.end())
+      .catch(err => console.log(err));
   }) 
 };
 
@@ -58,7 +58,8 @@ module.exports.createReview = function(req, res) {
 module.exports.delete = function(req, res) {
   db.then(conn => {
     conn.query(`DELETE FROM reviews where reviewId = ${req.body.reviewId};`)
-      .then(data => res.status(200).send(data));
+    .then(conn => conn.end())
+    .catch(err => console.log(err));
   }) 
 };
 

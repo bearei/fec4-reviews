@@ -1,0 +1,28 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 30
+      arrivalRate: 250
+      rampTo: 500
+      name: "Warm up the application"
+    - duration: 60
+      arrivalRate: 1000
+      name: "Sustained max load"
+  defaults:
+    headers:
+      x-my-service-auth: 'bf8f2f603414bb45fefc542e5efa0da247b15b6f'
+scenarios:
+  - flow:
+    - get:
+        url: "/reviews/1"
+    - post:
+        url: "/reviews"
+        json:
+          rating: 5
+          title: 'NEWRELIC TEST'
+          text: 'This is probably the greatest product ever.'
+          recommend: 'true'
+          name: 'Bob Boblaw'
+          fit: 3
+          itemId: 2
+
