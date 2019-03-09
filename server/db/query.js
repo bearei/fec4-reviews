@@ -44,7 +44,6 @@ module.exports.flag = function(req, res) {
   }) 
 };
 
-// Not yet functioning in client
 module.exports.createReview = function(req, res) {
   db.then(conn => {
     conn.query(`INSERT INTO reviews (rating, title, text, recommend, name, fit, itemId, createdAt) VALUES (${req.body.rating}, '${req.body.title}', '${req.body.text}', ${req.body.recommend}, '${req.body.name}', ${req.body.fit}, ${req.body.itemId}, '${Date().toString()}'`)

@@ -40,7 +40,7 @@ class Reviews extends Component {
     this.patch = this.patch.bind(this);
 
     // Set URL here:
-    this.url = 'http://localhost:3000';
+    this.url = 'http://localhost:3003';
   }
 
   componentWillMount() {
