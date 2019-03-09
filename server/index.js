@@ -4,7 +4,7 @@ const parser = require('body-parser');
 const query = require('./db/query');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
