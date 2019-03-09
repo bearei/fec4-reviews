@@ -1,10 +1,19 @@
 *.log
+*.err
+*.err.2019*
 .DS_Store
 bower_components
 node_modules
 bundle.js
+newrelic.js
+report*.*
+server/db/data/products
+server/db/data/reviews
+server/db/data/productsTemp
+server/db/data/reviewsTemp
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+

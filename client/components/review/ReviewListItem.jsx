@@ -7,7 +7,7 @@ import ReviewListItemFooter from './ReviewListItemFooter';
 
 const ReviewListItem = ({
   patch, helpfulClicked, flagged, review: {
-    rating, name, createdAt, title, text, recommend, helpful, notHelpful, flag, fit, _id,
+    rating, name, createdAt, title, text, recommend, helpful, notHelpful, flag, fit, reviewId,
   },
 }) => (
   <div>
@@ -30,8 +30,8 @@ const ReviewListItem = ({
         <ReviewListItemFooter
           helpful={helpful}
           not={notHelpful}
-          flag={flagged || flag}
-          id={_id}
+          flag={flagged || (flag === 'false' ? false : true)}
+          id={reviewId}
           patch={patch}
           helpfulClicked={helpfulClicked}
         />

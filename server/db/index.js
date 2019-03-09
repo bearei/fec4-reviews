@@ -1,15 +1,15 @@
-const Sequelize = require('sequelize');
-module.exports = new Sequelize('beaREI_db', 'root', null, {
-  dialect: 'mariadb',
-  port: 3306
+const mariadb = require('mariadb');
+
+module.exports = mariadb.createConnection({
+  host: 'localhost',
+  port: 3306,
+  user:'root', 
+  database: 'bearEI_db'
 });
 
-
-// TEST CONNECTION
-// sequelize
-//   .authenticate()
-//   .then(function(err) {
-//     console.log('Connection has been established successfully.');
-//   }, function (err) { 
-//     console.log('Unable to connect to the database:', err);
-//   });
+module.exports.pool = mariadb.createPool({
+  host: 'localhost',
+  port: 3306,
+  user:'root', 
+  database: 'bearEI_db'
+});

@@ -2,7 +2,6 @@ const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const fs = require('fs');
 const path = require('path');
-const pad = require('zero-fill');
 
 // CSV Writer Setup
 
@@ -31,7 +30,8 @@ const createReviews = function(fileName) {
       {id: 'helpful', title: 'helpful'},
       {id: 'notHelpful', title: 'notHelpful'},
       {id: 'flag', title: 'flag'},
-      {id: 'createdAt', title: 'createdAt'}
+      {id: 'createdAt', title: 'createdAt'},
+      {id: 'reviewId', title: 'reviewId'}
     ]
   });
 }
@@ -57,8 +57,8 @@ const generateData = (numOfProducts, maxReviews) => {
   
   const runProducts = async function() {
     while (idEnd <= numOfProducts) {
-      await createProducts(pad(4, fileName)).writeRecords(generateProducts(idStart,idEnd))
-        .then(() => console.log(`************ Wrote ${idEnd} products...`));
+      await createProducts(fileName).writeRecords(generateProducts(idStart,idEnd))
+        .then(() => console.log(`Wrote ${idEnd} products...`));
       
       if (idEnd === numOfProducts) {
         idStart = 1;
@@ -67,7 +67,7 @@ const generateData = (numOfProducts, maxReviews) => {
         break;
       } else {
         fileName++;
-        idStart = idEnd + 1;
+        idStart = idEnd + 1;``
         idEnd = idEnd + 1000000 < numOfProducts ? idEnd + 1000000 : numOfProducts
       }
     }
@@ -75,8 +75,8 @@ const generateData = (numOfProducts, maxReviews) => {
 
   const runReviews = async function() {
     while (idEnd <= numOfProducts) {
-      await createReviews(pad(4, fileName)).writeRecords(generateReviews(idStart, idEnd, maxReviews))
-        .then(() => console.log(`************ Wrote reviews for ${idEnd} products...`));
+      await createReviews(fileName).writeRecords(generateReviews(idStart, idEnd, maxReviews))
+        .then(() => console.log(`Wrote reviews for ${idEnd} products...`));
       
       if (idEnd === numOfProducts) {
         break;
@@ -87,12 +87,22 @@ const generateData = (numOfProducts, maxReviews) => {
       }
     }
   }
+
+  let start;
+
+  function timer() {
+    let end = (new Date() - start) / 60000;
+    console.info('Execution time: %dm', end);
+  }
     
   clearFiles(__dirname + '/products')
     .then(() => clearFiles(__dirname + '/reviews'))
+    .then(() => start = new Date())
     .then(() => runProducts())
+    .then(() => timer())
+    .then(() => start = new Date())
     .then(() => runReviews())
-    .then(() => console.log('Done!'));
+    .then(() => timer());
 }
 
 // Helper functions
@@ -105,14 +115,17 @@ const generateProducts = (itemIdStart, itemIdEnd) => {
   return products;
 }
 
+let reviewId = 1;
+
 const generateReviews = (itemIdStart, itemIdEnd, maxReviews) => {
   const reviews = [];
   for (let i = itemIdStart; i <= itemIdEnd; i++) {
     let randomAmt = generateNum(0, maxReviews),
         count = 0;
     while (count < randomAmt) {
-      reviews.push(generateReview(i));
+      reviews.push(generateReview(i, reviewId));
       count++;
+      reviewId++;
     }
   }
   return reviews;
@@ -129,28 +142,31 @@ const generateBoolean = () => {
   return true;
 }
 
-const generateReview = (itemId) => {
+const generateReview = (itemId, reviewId) => {
   return {
     rating: generateNum(1, 5),
     title: faker.lorem.words(),
-    text: faker.lorem.paragraph(),
+    text: faker.lorem.sentence(),
     recommend: generateBoolean(),
     name: faker.name.firstName(),
     fit: generateNum(0, 5),
     itemId,
-    helpful: generateNum(0, 50),
-    notHelpful: generateNum(0, 50),
+    helpful: generateNum(0, 30),
+    notHelpful: generateNum(0, 30),
     flag: false,
-    createdAt: faker.date.between('2015-01-01', '2019-02-28')
+    createdAt: faker.date.past(),
+    reviewId
   }
 }
 
 const generateSampleItems = (itemId) => {
   return {
     itemId,
-    companyName: faker.company.companyName(),
+    companyName: faker.lorem.words(), //changed temporarily to avoid commas
     productName: faker.commerce.productName()
   }
 }
 
-generateData(1000000, 30);
+// Parameter 1: Total primary records
+// Parameter 2: Max reviews per item
+generateData(10000000, 15);
