@@ -9,6 +9,7 @@ import Averages from './components/nav/Averages';
 import ReviewIndex from './components/nav/ReviewIndex';
 import SortSelector from './components/nav/SortSelector';
 import ActiveFilters from './components/nav/ActiveFilters';
+import './styles.css';
 
 const SORT = {
   0: (a, b) => b.text.length - a.text.length,
