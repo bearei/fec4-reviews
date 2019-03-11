@@ -66,7 +66,8 @@ class Reviews extends Component {
 
   fetch(callback) {
     const { itemId } = this.state;
-    axios.get(`${this.url}/reviews/${itemId}`)
+    // axios.get(`${this.url}/reviews/${itemId}`)
+    axios.get(`/reviews/${itemId}`)
       .then((res) => {
         this.setState({
           reviews: res.data,
@@ -80,7 +81,8 @@ class Reviews extends Component {
   patch(id, key) {
     console.log(this.state.helpful);
     const { reviews, helpful, flagged } = this.state;
-    axios.patch(`${this.url}/reviews/${key}/${id}`)
+    // axios.patch(`${this.url}/reviews/${key}/${id}`)
+    axios.patch(`/reviews/${key}/${id}`)
       .then(() => {
         if (key !== 'flag') {
           this.setState({
@@ -96,7 +98,8 @@ class Reviews extends Component {
   }
 
   submit(data, callback) {
-    axios.post(`${this.url}/reviews/`, data)
+    // axios.post(`${this.url}/reviews/`, data)
+    axios.post(`/reviews/`, data)
       .then(() => {
         this.setState({ selector: 0 }, this.fetch(callback));
       })
