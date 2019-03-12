@@ -33,13 +33,13 @@ async function runSeed() {
     for (let i = 0; i < productList.length; i++) {
       await conn.query(`LOAD DATA INFILE '${productPath + productList[i]}' INTO TABLE products FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`)
         .then((success) => console.log(`Wrote product file ${productPath + productList[i]}...`))
-        .catch((err) => console.log('ERROR WRITING PRODUCT FILES', err));
+        .catch((err) => console.log(`ERROR WRITING PRODUCT FILES to ${productPath}`,  err));
     }
 
     for (let i = 0; i < reviewList.length; i++) {
       await conn.query(`LOAD DATA INFILE '${reviewPath + reviewList[i]}' INTO TABLE reviews FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`)
         .then((success) => console.log(`Wrote review file ${reviewList[i]}...`))
-        .catch((err) => console.log('ERROR WRITING REVIEW FILES', err));
+        .catch((err) => console.log(`ERROR WRITING REVIEW FILES TO ${reviewPath}`, err));
     }
 
   } catch (err) {
