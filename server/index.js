@@ -1,4 +1,4 @@
-require('newrelic');
+// require('newrelic');
 const express = require('express');
 const parser = require('body-parser');
 const query = require('./db/query');

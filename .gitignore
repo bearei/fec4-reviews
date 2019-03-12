@@ -8,6 +8,7 @@ bundle.js
 newrelic.js
 report*.*
 *.csv
+*.pem
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
