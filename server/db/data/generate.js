@@ -7,7 +7,8 @@ const path = require('path');
 
 const createProducts = function(fileName) {
   return createCsvWriter({  
-    path: __dirname + `/products/${fileName}.csv`,
+    // path: __dirname + `/products/${fileName}.csv`,
+    path: `/tmp/data/products/${fileName}.csv`,
     header: [
       {id: 'itemId', title: 'itemId'},
       {id: 'companyName', title: 'companyName'},
@@ -18,7 +19,7 @@ const createProducts = function(fileName) {
 
 const createReviews = function(fileName) {
   return createCsvWriter({  
-    path: __dirname + `/reviews/${fileName}.csv`,
+    path: `/tmp/data/reviews/${fileName}.csv`,
     header: [
       {id: 'rating', title: 'rating'},
       {id: 'title', title: 'title'},

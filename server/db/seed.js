@@ -25,10 +25,10 @@ async function runSeed() {
     await conn.query('CREATE INDEX review_reviewId ON reviews (`reviewId`);')
       .catch((err) => console.log('CREATE REVIEWID INDEX ERROR', err));
 
-    let productList = await listFiles('/data/products'),
-        reviewList = await listFiles('/data/reviews'),
-        productPath = __dirname + '/data/products/',
-        reviewPath = __dirname + '/data/reviews/';
+    let productList = await listFiles('/tmp/data/products'),
+        reviewList = await listFiles('/tmp/data/reviews'),
+        productPath = '/tmp/data/products/',
+        reviewPath = '/tmp/data/reviews/';
 
     for (let i = 0; i < productList.length; i++) {
       await conn.query(`LOAD DATA INFILE '${productPath + productList[i]}' INTO TABLE products FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`)
