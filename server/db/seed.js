@@ -25,10 +25,13 @@ async function runSeed() {
     await conn.query('CREATE INDEX review_reviewId ON reviews (`reviewId`);')
       .catch((err) => console.log('CREATE REVIEWID INDEX ERROR', err));
 
-    let productList = await listFiles('/tmp/data/products'),
-        reviewList = await listFiles('/tmp/data/reviews'),
-        productPath = '/tmp/data/products/',
-        reviewPath = '/tmp/data/reviews/';
+    // Testing make director if not exists;
+    await fs.mkdir('/tmp/data/products/', '-p', (err) => console.log(err));
+
+    let productPath = '/tmp/data/products/',
+        reviewPath = '/tmp/data/reviews/',
+        productList = await listFiles(productPath),
+        reviewList = await listFiles(reviewPath);
 
     for (let i = 0; i < productList.length; i++) {
       console.log('entered first write loop...')
