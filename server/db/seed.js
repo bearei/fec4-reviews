@@ -12,13 +12,13 @@ async function runSeed() {
     }
 
     conn = await db.pool.getConnection();
-    await conn.query('DROP TABLE IF EXISTS `Products`')
+    await conn.query('DROP TABLE IF EXISTS `products`')
       .catch((err) => console.log('DROP REVIEWS ERROR', err));
-    await conn.query('CREATE TABLE `Products` (`itemId` INTEGER NOT NULL,`companyName` CHAR(50) NOT NULL,`productName` CHAR(40) NULL, PRIMARY KEY (`itemId`));')
+    await conn.query('CREATE TABLE `products` (`itemId` INTEGER NOT NULL,`companyName` CHAR(50) NOT NULL,`productName` CHAR(40) NULL, PRIMARY KEY (`itemId`));')
       .catch((err) => console.log('CREATE REVIEWS ERROR', err));
-    await conn.query('DROP TABLE IF EXISTS `Reviews`;')
+    await conn.query('DROP TABLE IF EXISTS `reviews`;')
       .catch((err) => console.log('DROP PRODUCTS ERROR', err));
-    await conn.query('CREATE TABLE `Reviews` (`rating` TINYINT NOT NULL,`title` CHAR(50) NOT NULL,`text` TEXT NULL DEFAULT NULL,`recommend` CHAR(5) NOT NULL,`name` CHAR(30) NULL DEFAULT NULL,`fit` TINYINT NULL DEFAULT NULL,`itemId` INTEGER NOT NULL,`helpful` TINYINT NULL DEFAULT 0,`notHelpful` TINYINT NULL DEFAULT 0, `flag` CHAR(5) NOT NULL DEFAULT false, `createdAt` CHAR(70) NULL DEFAULT NULL, `reviewId` INTEGER);')
+    await conn.query('CREATE TABLE `reviews` (`rating` TINYINT NOT NULL,`title` CHAR(50) NOT NULL,`text` TEXT NULL DEFAULT NULL,`recommend` CHAR(5) NOT NULL,`name` CHAR(30) NULL DEFAULT NULL,`fit` TINYINT NULL DEFAULT NULL,`itemId` INTEGER NOT NULL,`helpful` TINYINT NULL DEFAULT 0,`notHelpful` TINYINT NULL DEFAULT 0, `flag` CHAR(5) NOT NULL DEFAULT false, `createdAt` CHAR(70) NULL DEFAULT NULL, `reviewId` INTEGER);')
       .catch((err) => console.log('CREATE PRODUCTS ERROR', err));
     await conn.query('CREATE INDEX review_itemId ON reviews (`itemId`);')
       .catch((err) => console.log('CREATE ITEMID INDEX ERROR', err));
@@ -31,13 +31,13 @@ async function runSeed() {
         reviewPath = __dirname + '/data/reviews/';
 
     for (let i = 0; i < productList.length; i++) {
-      await conn.query(`LOAD DATA INFILE '${productPath + productList[i]}' INTO TABLE Products FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`)
+      await conn.query(`LOAD DATA INFILE '${productPath + productList[i]}' INTO TABLE products FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`)
         .then((success) => console.log(`Wrote product file ${productPath + productList[i]}...`))
         .catch((err) => console.log('ERROR WRITING PRODUCT FILES', err));
     }
 
     for (let i = 0; i < reviewList.length; i++) {
-      await conn.query(`LOAD DATA INFILE '${reviewPath + reviewList[i]}' INTO TABLE Reviews FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`)
+      await conn.query(`LOAD DATA INFILE '${reviewPath + reviewList[i]}' INTO TABLE reviews FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' IGNORE 1 LINES;`)
         .then((success) => console.log(`Wrote review file ${reviewList[i]}...`))
         .catch((err) => console.log('ERROR WRITING REVIEW FILES', err));
     }
