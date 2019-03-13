@@ -15,7 +15,8 @@
     "DISABLEDcassSeed": "node server/db/cassandra-seed.js",
     "makeData": "node --max-old-space-size=6144 ./server/db/data/generate.js",
     "test": "jest --detectOpenHandles --forceExit",
-    "stresstest": "artillery run stresstest.yml"
+    "stresstest": "artillery run stresstest.yml",
+    "connect": "ssh -i 'thomhsu_es2_key.pem' ec2-user@ec2-3-17-28-196.us-east-2.compute.amazonaws.com"
   },
   "dependencies": {
     "axios": "^0.18.0",
