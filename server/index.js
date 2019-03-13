@@ -17,7 +17,49 @@ app.use((req, res, next) => {
 });
 
 app.use(
-  '/:itemId',
+  '/reviews/:itemId',
+  proxy({
+    target:'http://18.217.98.173:3004/',
+    changeOrigin: true
+  })
+);
+app.use(
+  '/items/:itemId',
+  proxy({
+    target:'http://18.217.98.173:3004/',
+    changeOrigin: true
+  })
+);
+app.use(
+  '/reviews/helpful/:reviewId',
+  proxy({
+    target:'http://18.217.98.173:3004/',
+    changeOrigin: true
+  })
+);
+app.use(
+  '/reviews/notHelpful/:reviewId',
+  proxy({
+    target:'http://18.217.98.173:3004/',
+    changeOrigin: true
+  })
+);
+app.use(
+  '/reviews/flag/:reviewId',
+  proxy({
+    target:'http://18.217.98.173:3004/',
+    changeOrigin: true
+  })
+);
+app.use(
+  '/reviews/',
+  proxy({
+    target:'http://18.217.98.173:3004/',
+    changeOrigin: true
+  })
+);
+app.use(
+  '/reviews/:reviewId',
   proxy({
     target:'http://18.217.98.173:3004/',
     changeOrigin: true
