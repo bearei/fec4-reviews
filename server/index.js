@@ -1,7 +1,6 @@
 require('newrelic');
 const express = require('express');
 const parser = require('body-parser');
-const query = require('./db/query');
 const proxy = require('http-proxy-middleware');
 
 const app = express();
