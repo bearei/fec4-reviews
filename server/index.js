@@ -1,7 +1,8 @@
-// require('newrelic');
+require('newrelic');
 const express = require('express');
 const parser = require('body-parser');
 const query = require('./db/query');
+const proxy = require('http-proxy-middleware');
 
 const app = express();
 const PORT = process.env.PORT || 3003;
@@ -16,13 +17,21 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/reviews/:itemId', query.findReview);
-app.get('/items/:itemId', query.findItem);
-app.patch('/reviews/helpful/:reviewId', query.markHelpful);
-app.patch('/reviews/notHelpful/:reviewId', query.markUnhelpful);
-app.patch('/reviews/flag/:reviewId', query.flag);
-app.post('/reviews/', query.createReview);
-app.delete('/reviews/:reviewId', query.delete);
+app.use(
+  '/:itemId',
+  proxy({
+    target:'http://18.217.98.173:3004/',
+    changeOrigin: true
+  })
+);
+
+// app.get('/reviews/:itemId', query.findReview);
+// app.get('/items/:itemId', query.findItem);
+// app.patch('/reviews/helpful/:reviewId', query.markHelpful);
+// app.patch('/reviews/notHelpful/:reviewId', query.markUnhelpful);
+// app.patch('/reviews/flag/:reviewId', query.flag);
+// app.post('/reviews/', query.createReview);
+// app.delete('/reviews/:reviewId', query.delete);
 
 
 if (!module.parent) {
