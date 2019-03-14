@@ -2,7 +2,7 @@ require('newrelic');
 const express = require('express');
 const parser = require('body-parser');
 const proxy = require('http-proxy-middleware');
-const query = require('./db/query');
+// const query = require('./db/query');
 const app = express();
 const PORT = process.env.PORT || 3003;
 
@@ -16,63 +16,63 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use(
-//   '/reviews/:itemId',
-//   proxy({
-//     target:'http://52.15.132.177:3004/',
-//     changeOrigin: true
-//   })
-// );
-// app.use(
-//   '/items/:itemId',
-//   proxy({
-//     target:'http://52.15.132.177:3004/',
-//     changeOrigin: true
-//   })
-// );
-// app.use(
-//   '/reviews/helpful/:reviewId',
-//   proxy({
-//     target:'http://52.15.132.177:3004/',
-//     changeOrigin: true
-//   })
-// );
-// app.use(
-//   '/reviews/notHelpful/:reviewId',
-//   proxy({
-//     target:'http://52.15.132.177:3004/',
-//     changeOrigin: true
-//   })
-// );
-// app.use(
-//   '/reviews/flag/:reviewId',
-//   proxy({
-//     target:'http://52.15.132.177:3004/',
-//     changeOrigin: true
-//   })
-// );
-// app.use(
-//   '/reviews/',
-//   proxy({
-//     target:'http://52.15.132.177:3004/',
-//     changeOrigin: true
-//   })
-// );
-// app.use(
-//   '/reviews/:reviewId',
-//   proxy({
-//     target:'http://52.15.132.177:3004/',
-//     changeOrigin: true
-//   })
-// );
+app.use(
+  '/reviews/:itemId',
+  proxy({
+    target:'http://52.15.132.177:3004/',
+    changeOrigin: true
+  })
+);
+app.use(
+  '/items/:itemId',
+  proxy({
+    target:'http://52.15.132.177:3004/',
+    changeOrigin: true
+  })
+);
+app.use(
+  '/reviews/helpful/:reviewId',
+  proxy({
+    target:'http://52.15.132.177:3004/',
+    changeOrigin: true
+  })
+);
+app.use(
+  '/reviews/notHelpful/:reviewId',
+  proxy({
+    target:'http://52.15.132.177:3004/',
+    changeOrigin: true
+  })
+);
+app.use(
+  '/reviews/flag/:reviewId',
+  proxy({
+    target:'http://52.15.132.177:3004/',
+    changeOrigin: true
+  })
+);
+app.use(
+  '/reviews/',
+  proxy({
+    target:'http://52.15.132.177:3004/',
+    changeOrigin: true
+  })
+);
+app.use(
+  '/reviews/:reviewId',
+  proxy({
+    target:'http://52.15.132.177:3004/',
+    changeOrigin: true
+  })
+);
 
-app.get('/reviews/:itemId', query.findReview);
-app.get('/items/:itemId', query.findItem);
-app.patch('/reviews/helpful/:reviewId', query.markHelpful);
-app.patch('/reviews/notHelpful/:reviewId', query.markUnhelpful);
-app.patch('/reviews/flag/:reviewId', query.flag);
-app.post('/reviews/', query.createReview);
-app.delete('/reviews/:reviewId', query.delete);
+// app.get('/reviews/:itemId', query.findReview);
+// app.get('/items/:itemId', query.findItem);
+// app.patch('/reviews/helpful/:reviewId', query.markHelpful);
+// app.patch('/reviews/notHelpful/:reviewId', query.markUnhelpful);
+// app.patch('/reviews/flag/:reviewId', query.flag);
+// app.post('/reviews/', query.createReview);
+// app.delete('/reviews/:reviewId', query.delete);
 
 
 if (!module.parent) {
