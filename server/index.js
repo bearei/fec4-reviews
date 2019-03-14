@@ -55,7 +55,7 @@ app.use(
   })
 );
 app.use(
-  '/reviews/',
+  '/reviews',
   proxy({
     target:'http://52.15.132.177:3004',
     changeOrigin: true
