@@ -1,5 +1,6 @@
 require('newrelic');
 const express = require('express');
+const path = require('path');
 const parser = require('body-parser');
 const proxy = require('http-proxy-middleware');
 // const query = require('./db/query');
@@ -9,7 +10,7 @@ const PORT = process.env.PORT || 3003;
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 // app.use('/:itemId/', express.static(`${__dirname}/../public`));
-app.use('/', express.static(`${__dirname}/../loaderio`));
+app.use('/loaderio-ab0fe327cb7c6635392e69b4cf0f1834', express.static(path.join(__dirname, 'loaderio')));
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
