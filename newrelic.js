@@ -9,7 +9,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['beaREI Reviews'],
+  app_name: ['beaREI Reviews EC2'],
   /**
    * Your New Relic license key.
    */
