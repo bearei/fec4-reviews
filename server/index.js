@@ -2,7 +2,7 @@ require('newrelic');
 const express = require('express');
 const parser = require('body-parser');
 const proxy = require('http-proxy-middleware');
-
+const query = require('./db/query');
 const app = express();
 const PORT = process.env.PORT || 3003;
 
