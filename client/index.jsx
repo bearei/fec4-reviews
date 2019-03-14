@@ -99,6 +99,7 @@ class Reviews extends Component {
 
   submit(data, callback) {
     // axios.post(`${this.url}/reviews/`, data)
+    console.log(data)
     axios.post(`/reviews/`, data)
       .then(() => {
         this.setState({ selector: 0 }, this.fetch(callback));

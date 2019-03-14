@@ -84,7 +84,6 @@ class ModalModel extends Component {
 
   handleOpen() {
     const { itemId, productName, companyName } = this.state;
-    console.log(this.state);
     if (productName === '' && companyName === '') {
       // First time we should call spinner
       // Callback should stop spinner and setState to visible
@@ -92,8 +91,6 @@ class ModalModel extends Component {
         axios.get(`/items/${itemId}`)
         // axios.get(path.join('items', itemId.toString()))
           .then((res) => {
-            console.log(res.data[0].companyName);
-            console.log(res.data[0].productName);
             this.setState({ spinner: false }, this.setState({
               companyName: res.data[0].companyName,
               productName: res.data[0].productName,
