@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3003;
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 // app.use('/:itemId/', express.static(`${__dirname}/../public`));
-app.use('/', express.static(`${__dirname}/../loaderio`));
+app.use('/', express.static(`${__dirname}/../sloaderio`));
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
