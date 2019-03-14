@@ -89,7 +89,7 @@ class ModalModel extends Component {
       // First time we should call spinner
       // Callback should stop spinner and setState to visible
       this.setState({ spinner: true }, () => {
-        axios.get(`${this.props.url}/items/${itemId}`)
+        axios.get(`/items/${itemId}`)
         // axios.get(path.join('items', itemId.toString()))
           .then((res) => {
             this.setState({ spinner: false }, this.setState({
