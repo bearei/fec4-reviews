@@ -92,6 +92,8 @@ class ModalModel extends Component {
         axios.get(`/items/${itemId}`)
         // axios.get(path.join('items', itemId.toString()))
           .then((res) => {
+            console.log(res.data[0].companyName);
+            console.log(res.data[0].productName);
             this.setState({ spinner: false }, this.setState({
               companyName: res.data[0].companyName,
               productName: res.data[0].productName,
