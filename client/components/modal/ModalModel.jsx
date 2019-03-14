@@ -84,6 +84,7 @@ class ModalModel extends Component {
 
   handleOpen() {
     const { itemId, productName, companyName } = this.state;
+    console.log(this.state);
     if (productName === '' && companyName === '') {
       // First time we should call spinner
       // Callback should stop spinner and setState to visible
