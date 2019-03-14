@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3003;
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
-app.use('shoppping/:itemId/', express.static(`${__dirname}/../public`));
+app.use('/:itemId/', express.static(`${__dirname}/../public`));
 app.use('/', express.static(`${__dirname}/../loaderio`));
 
 app.use((req, res, next) => {
