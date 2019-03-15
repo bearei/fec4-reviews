@@ -153,7 +153,7 @@ class Reviews extends Component {
       <div>
         <h1>HREI Reviews</h1>
         <div className={spinner ? 'spinner' : 'hidden'}>
-          <img alt="" src="./shopping/1/spinner.gif" />
+          <img alt="" src="./spinner.gif" />
         </div>
         <div className={spinner ? 'hidden' : ''}>
           <ModalModel
