@@ -7,7 +7,7 @@ const proxy = require('http-proxy-middleware');
 const app = express();
 const PORT = process.env.PORT || 3003;
 
-app.use('/:itemId/', express.static(`${__dirname}/../public`));
+// app.use('/:itemId/', express.static(`${__dirname}/../public`));
 app.use('/', express.static(`${__dirname}/../loaderio`));
 
 app.use((req, res, next) => {
