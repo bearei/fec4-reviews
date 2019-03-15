@@ -24,7 +24,7 @@ class Reviews extends Component {
     super(props);
     this.state = {
       reviews: [],
-      itemId: window.location.pathname.split('/')[1],
+      itemId: window.location.pathname.split('/')[2],
       selector: 0,
       filter: 0,
       showing: 8,
