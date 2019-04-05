@@ -17,7 +17,7 @@ This project is currently deployed at http://3.16.21.170:3003/shopping/1/.  To v
 
 ## Usage
 
-1. [Install the project's dependencies](#installing-dependencies).. 
+1. [Install the project's dependencies](#installing-dependencies).
 2.  Install and run the database service at https://github.com/bearei/fec4-reviews-db.
 3. Navigate to `http://localhost:3003` to view the service.
 4. For stress test, run `npm run stresstest`.  This will write reviews to for itemId = 2 (endpoint `/2`).  To clear test rows in mariadb, run from shell: "DELETE FROM reviews where itemId = 2;"
