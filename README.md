@@ -7,8 +7,8 @@ This service was seeded with 10 million primary records and 50 million secondary
 This project is currently deployed at http://3.16.21.170:3003/shopping/1/.  To view additional product reviews, visit endpoints up to /10000000.
 
 ## Related Projects
-  
-  - https://github.com/bearei
+  - https://github.com/bearei/fec4-reviews-db - For the required database service
+  - https://github.com/bearei - For proxy server and additional services
 
 ## Table of Contents
 
