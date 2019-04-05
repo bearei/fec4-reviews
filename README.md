@@ -14,7 +14,6 @@ This project is currently deployed at http://3.16.21.170:3003/shopping/1/.  To v
 
 1. [Usage](#Usage)
 2. [Requirements](#requirements)
-1. [Development](#development)
 
 ## Usage
 
