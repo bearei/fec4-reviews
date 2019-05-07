@@ -1,6 +1,6 @@
 # HREI - Reviews Module
 
-This repo is the front-end for the Reviews service for beaREI, a outdoor wear product retail page.  To run, you must separately install and run the database for this service at https://github.com/bearei/fec4-reviews-db.  
+This repo is the front-end for the Reviews service for beaREI, a outdoor wear product retail page.  To run, you must separately install and run the server and database for this service at https://github.com/bearei/fec4-reviews-db.  
 
 This service was seeded with 10 million primary records and 50 million secondary records to determine the best database solution and optimize query times. I optimized this service through reducing middleware - this lead to an average network latency for combined GET and POST requests of 5-7ms as tested using Loader.io and New Relic; data generation and insertion was also reduced from ~4 hours to 15 minutes. The backend was created with Express and MariaDB and the service is currently deployed on AWS EC2. The tech stack tested but not used in final product include Sequelize and Apache Cassandra. The legacy front end code was created using React. This page was originally served on a proxy page which included product description/checkout and related products services.
 
